@@ -274,7 +274,7 @@ h6 {
   }
 }
 p {
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
 }
 a {
   color: #555;
@@ -305,8 +305,23 @@ hr {
 }
 blockquote {
   padding: 0 15px;
-  color: #666;
-  border-left: 4px solid #ddd;
+/*
+  color: #8b7462;
+  border: 1px solid #8b7462;
+  border-style: dashed;
+  border-left: 5px solid #bd3b45;
+  */
+  color: #afb9dc;
+  border: 1px dashed #ed6c82;
+  border-left: 5px solid #ee91a4;
+  padding-top: 10px;
+/* 配色方案
+    color: #108c89;
+    border: 1px solid #f1756d;
+    border-style: dashed;
+    border-left: 5px solid #f14e49;
+    padding-top: 10px;
+    */
 }
 blockquote cite::before {
   content: "-";
@@ -476,7 +491,7 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
-  color: #4d4d4c;
+  color: #24150e;
   background: #f7f7f7;
   line-height: 1.6;
 }
@@ -487,8 +502,8 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #555;
-  background: #eee;
+  color: #86d3b7;
+  background: #fafafe;
   border-radius: 3px;
   font-size: 13px;
 }
@@ -1692,7 +1707,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0a98ff;
+  background: #c144ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2854,20 +2869,4 @@ pre .javascript .function {
   .post-body {
     text-align: justify;
   }
-}
-code {
-  color: #69caa6;
-  background: #f8f8f8;
-  margin: 2px;
-}
-.highlight,
-pre {
-  margin: 5px 0;
-  padding: 5px;
-  border-radius: 3px;
-}
-.highlight,
-code,
-pre {
-  border: 1px solid rgba(214,214,214,0);
 }

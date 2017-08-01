@@ -273,6 +273,177 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/01/Hexo-Next-的优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="果果茶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Always with Sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/01/Hexo-Next-的优化/" itemprop="url">Hexo + Next 的优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T23:05:00+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TRY/" itemprop="url" rel="index">
+                    <span itemprop="name">TRY</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/01/Hexo-Next-的优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/08/01/Hexo-Next-的优化/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。</p>
+</blockquote>
+<hr>
+<h1 id="修改过程"><a href="#修改过程" class="headerlink" title="修改过程"></a>修改过程</h1><h2 id="修改心得"><a href="#修改心得" class="headerlink" title="修改心得"></a>修改心得</h2><p>在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改)</p>
+<p>在进行代码块修改之后，总结了一个小套路：</p>
+<ul>
+<li>首先确定好自己想要修改的模块</li>
+<li>使用浏览器的<code>检查元素</code>，可以找到对应的模块的<code>css样式</code></li>
+<li>然后先在检察元素模式下对css样式进行修改</li>
+<li><strong>然后把原先的css样式复制，用Sublime的Find in Files，找到对应文件(一般在自己使用的主题目录下,比如我是Next目录下的文件中)，对文件进行修改就可以了</strong></li>
+</ul>
+<p>这样就不需要想修改说明就去搜索啦 ~ (我的<code>blockquote</code>的样式修改就是这样完成的~)</p>
+<h2 id="修改-blockquote-引言-样式"><a href="#修改-blockquote-引言-样式" class="headerlink" title="修改 blockquote(引言) 样式"></a>修改 blockquote(引言) 样式</h2><ol>
+<li><p>在Chrome下右键<code>检查元素</code>，我的组件显示在浏览器右侧，选中<code>blockquote</code>模块，则原有的css样式如下</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line"><span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line"><span class="attribute">color</span>: <span class="number">#666</span>;</div><div class="line"><span class="attribute">border-left</span>: <span class="number">4px</span> solid <span class="number">#ddd</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在样式中<code>color: #666</code>定义了内部文字的颜色，<code>border-left: 4px solid #ddd</code>定义了左边的侧边栏的颜色。</p>
+</li>
+<li><p>然后我们就可以对其进行修改啦 ~ </p>
+<p> 复制<code>border-left: 4px solid #ddd;</code>在Sublime里搜索，找到对应文件。</p>
+<p> 注意自己在<code>Find Results</code>判断，哪个是原有的文件，哪个是后来生成的。</p>
+<p> 我的搜索结果是<code>\themes\next\source\css\_common\scaffolding\base.styl</code>，因此开心地自己修改啦~</p>
+</li>
+<li><p>修改结果，嘛，就跟本文的第一句一样了。这里提供几种配色方案~（自己从图片上取色做的配色，慎用）</p>
+ <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//异色红绿</div><div class="line">color: #108c89;</div><div class="line">border: 1px solid #f1756d;</div><div class="line">border-left: 5px solid #f14e49;</div><div class="line"></div><div class="line">//棕色系</div><div class="line">color: #8b7462;</div><div class="line">border: 1px solid #8b7462;</div><div class="line">border-left: 5px solid #bd3b45;</div><div class="line"></div><div class="line">//蓝色系</div><div class="line">color: #328daa;</div><div class="line">border: 1px solid #8ed3f4;</div><div class="line">border-left: 5px solid #8ed3f4;</div><div class="line"></div><div class="line">//异色橙绿</div><div class="line">color: #9ba646;</div><div class="line">border: 1px solid #f29d4c;</div><div class="line">border-left: 5px solid #f29d4c;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/28/前端动画收集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -497,14 +668,14 @@
             <h1 id="一-fullPage-js插件"><a href="#一-fullPage-js插件" class="headerlink" title="(一) fullPage.js插件"></a>(一) fullPage.js插件</h1><p>fullPage.js是基于JQuery的插件，因此在引入之前需要先引入jQuery</p>
 <ol>
 <li><p>使用<a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="external"><code>github</code></a>官方地址引入最新版本<br> 最新版本在文件夹dist中，可以打开文件夹，选择对应的<code>jquery.fullpage.js(css)</code>文件，在html中可直接如下引入：     </p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"https://rawgit.com/alvarotrigo/fullPage.js/master/dist/jquery.fullpage.css"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"https://rawgit.com/alvarotrigo/fullPage.js/master/dist/jquery.fullpage.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.</span></span></div><div class="line">js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"https://rawgit.com/alvarotrigo/fullPage.js/master/dist/jquery.</span></span></div><div class="line">fullpage.css"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"https://rawgit.com/alvarotrigo/fullPage.js/master/dist/jquery.</span></span></div><div class="line">fullpage.js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p> <strong>小技巧</strong></p>
 <blockquote>
 <p>在使用github原码时，一般在点击raw的时候的地址形如:<br><code>https://raw.githubusercontent.com/username/repository/branch/folder/file</code>.<br>如果直接引入这个地址，应该会在console中报错为“js文件不是可执行的”<br>只需要把前面的<code>raw.githubusercontent.com</code>改成<code>rawgit.com</code>即可</p>
 </blockquote>
 </li>
 <li><p>从<a href="https://cdnjs.com/" target="_blank" rel="external"><code>cdnjs</code></a>引入固定版本</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax</span></span></div><div class="line">/libs/fullPage.js/2.9.4/jquery.fullpage.css"&gt;</div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.</span></span></div><div class="line">js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.</span></span></div><div class="line">fullpage.js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>当然，也可以自行下载js文件，直接从本地引入，这样就不需要担心自己在写网页的时候会遇到网络问题啦 ~&gt; $\omega$ &lt;~</p>
 </li>
@@ -590,7 +761,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -601,7 +772,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -612,7 +783,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
