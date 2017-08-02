@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   修改过程修改心得在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改 然后把原先的css样式">
+<meta name="description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
 <meta name="keywords" content="前端,博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo + Next 的优化">
 <meta property="og:url" content="http://yoursite.com/2017/08/01/Hexo-Next-的优化/index.html">
 <meta property="og:site_name" content="Always with Sunshine">
-<meta property="og:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   修改过程修改心得在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改 然后把原先的css样式">
+<meta property="og:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-01T16:33:02.796Z">
+<meta property="og:updated_time" content="2017-08-02T04:35:05.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + Next 的优化">
-<meta name="twitter:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   修改过程修改心得在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改 然后把原先的css样式">
+<meta name="twitter:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
 
 
 
@@ -373,33 +373,50 @@
 <p>本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。</p>
 </blockquote>
 <hr>
-<h1 id="修改过程"><a href="#修改过程" class="headerlink" title="修改过程"></a>修改过程</h1><h2 id="修改心得"><a href="#修改心得" class="headerlink" title="修改心得"></a>修改心得</h2><p>在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改)</p>
+<h1 id="样式页面样式修改"><a href="#样式页面样式修改" class="headerlink" title="样式页面样式修改"></a>样式页面样式修改</h1><h2 id="整体修改思路"><a href="#整体修改思路" class="headerlink" title="整体修改思路"></a>整体修改思路</h2><p>在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改)</p>
 <p>在进行代码块修改之后，总结了一个小套路：</p>
 <ul>
 <li>首先确定好自己想要修改的模块</li>
 <li>使用浏览器的<code>检查元素</code>，可以找到对应的模块的<code>css样式</code></li>
-<li>然后先在检察元素模式下对css样式进行修改</li>
-<li><strong>然后把原先的css样式复制，用Sublime的Find in Files，找到对应文件(一般在自己使用的主题目录下,比如我是Next目录下的文件中)，对文件进行修改就可以了</strong></li>
+<li>然后先在检察元素模式下对css样式进行修改，调整出自己喜欢的样式</li>
+<li><strong>最后把原先的css样式复制，用Sublime的Find in Files，找到对应文件(一般在自己使用的主题目录下,比如我是Next目录下的文件中)，对文件进行修改就可以了</strong></li>
 </ul>
 <p>这样就不需要想修改说明就去搜索啦 ~ (我的<code>blockquote</code>的样式修改就是这样完成的~)</p>
-<h2 id="修改-blockquote-引言-样式"><a href="#修改-blockquote-引言-样式" class="headerlink" title="修改 blockquote(引言) 样式"></a>修改 blockquote(引言) 样式</h2><ol>
-<li><p>在Chrome下右键<code>检查元素</code>，我的组件显示在浏览器右侧，选中<code>blockquote</code>模块，则原有的css样式如下</p>
- <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line"><span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line"><span class="attribute">color</span>: <span class="number">#666</span>;</div><div class="line"><span class="attribute">border-left</span>: <span class="number">4px</span> solid <span class="number">#ddd</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="修改-blockquote-引言-样式"><a href="#修改-blockquote-引言-样式" class="headerlink" title="修改 blockquote(引言) 样式"></a>修改 blockquote(引言) 样式</h2><p>在Chrome下右键<code>检查元素</code>，我的组件显示在浏览器右侧，选中<code>blockquote</code>模块，则原有的css样式如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#666</span>;</div><div class="line">    <span class="attribute">border-left</span>: <span class="number">4px</span> solid <span class="number">#ddd</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在样式中<code>color: #666</code>定义了内部文字的颜色，<code>border-left: 4px solid #ddd</code>定义了左边的侧边栏的颜色。然后我们就可以对其进行修改啦 ~ </p>
+<ul>
+<li><p>复制<code>border-left: 4px solid #ddd;</code>在Sublime里搜索，找到对应文件。</p>
 </li>
-<li><p>在样式中<code>color: #666</code>定义了内部文字的颜色，<code>border-left: 4px solid #ddd</code>定义了左边的侧边栏的颜色。</p>
+<li><p>注意自己在<code>Find Results</code>判断，哪个是原有的文件，哪个是后来生成的。</p>
 </li>
-<li><p>然后我们就可以对其进行修改啦 ~ </p>
-<p> 复制<code>border-left: 4px solid #ddd;</code>在Sublime里搜索，找到对应文件。</p>
-<p> 注意自己在<code>Find Results</code>判断，哪个是原有的文件，哪个是后来生成的。</p>
-<p> 我的搜索结果是<code>\themes\next\source\css\_common\scaffolding\base.styl</code>，因此开心地自己修改啦~</p>
+<li><p>我的搜索结果是<code>\themes\next\source\css\_common\scaffolding\base.styl</code>，因此开心地自己修改啦~</p>
 </li>
-<li><p>修改结果，嘛，就跟本文的第一句一样了。这里提供几种配色方案~（自己从图片上取色做的配色，慎用）</p>
- <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//异色红绿</div><div class="line">color: #108c89;</div><div class="line">border: 1px solid #f1756d;</div><div class="line">border-left: 5px solid #f14e49;</div><div class="line"></div><div class="line">//棕色系</div><div class="line">color: #8b7462;</div><div class="line">border: 1px solid #8b7462;</div><div class="line">border-left: 5px solid #bd3b45;</div><div class="line"></div><div class="line">//蓝色系</div><div class="line">color: #328daa;</div><div class="line">border: 1px solid #8ed3f4;</div><div class="line">border-left: 5px solid #8ed3f4;</div><div class="line"></div><div class="line">//异色橙绿</div><div class="line">color: #9ba646;</div><div class="line">border: 1px solid #f29d4c;</div><div class="line">border-left: 5px solid #f29d4c;</div></pre></td></tr></table></figure>
+</ul>
+<p>修改结果，嘛，就跟本文的第一句一样了。这里提供几种配色方案~（自己从图片上取色做的配色，慎用）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//异色红绿</div><div class="line">color: #108c89;</div><div class="line">border: 1px solid #f1756d;</div><div class="line">border-left: 5px solid #f14e49;</div><div class="line">//棕色系</div><div class="line">color: #8b7462;</div><div class="line">border: 1px solid #8b7462;</div><div class="line">border-left: 5px solid #bd3b45;</div><div class="line">//蓝色系</div><div class="line">color: #328daa;</div><div class="line">border: 1px solid #8ed3f4;</div><div class="line">border-left: 5px solid #8ed3f4;</div><div class="line">//异色橙绿</div><div class="line">color: #9ba646;</div><div class="line">border: 1px solid #f29d4c;</div><div class="line">border-left: 5px solid #f29d4c;</div></pre></td></tr></table></figure>
+<h2 id="在网页中使用外部字体"><a href="#在网页中使用外部字体" class="headerlink" title="在网页中使用外部字体"></a>在网页中使用外部字体</h2><p>在网页中定义外部字体大概有三种方式，可参考博文 <a href="https://www.qianduan.net/how-to-use-personalized-fonts-in-web-design/" target="_blank" rel="external">如何在网页设计中使用个性化字体</a></p>
+<p>我选用的是利用css3的<code>@font-face</code>方式，先前我都是直接在源文件上修改的，其实为了避免自己修改的时候出差错难以恢复，可以在<code>/theme/next/source/css/_custom/custom.styl</code>中添加定义。这里我选择的字体是 <a href="https://www.qianduanmei.com/15-Amazing-Free-Fonts-for-Designers/" target="_blank" rel="external">15设计师常用英文字体</a> 一文中提到的YeahPapa。步骤如下：</p>
+<ul>
+<li>下载对应字体的ttf文件（当然font-face支持的其他类型文件均可，可见“如何在网页设计中…”一文</li>
+<li>将ttf文件放在<code>\theme\source\fonts\</code>文件夹中</li>
+<li><p>在<code>/theme/next/source/css/_custom/custom.styl</code>中添加：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: YeahPapa;</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'/fonts/YeahPapa.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-</ol>
+<li><p>然后在自己想使用的地方使用<code>font-family:&#39;YeahPapa&#39;</code>即可</p>
+</li>
+</ul>
+<p>完成效果参考下一节的 <strong>在文章尾部添加End</strong></p>
+<hr>
+<h1 id="文章布局修改"><a href="#文章布局修改" class="headerlink" title="文章布局修改"></a>文章布局修改</h1><h2 id="整体修改思路-1"><a href="#整体修改思路-1" class="headerlink" title="整体修改思路"></a>整体修改思路</h2><p>在<code>\themes\layout\_macro\post.swig</code>中是文章的整体定义。利用Sublime将局部收起，我们可以很清晰地看到文章的整体架构，因此，在如果想在文章头部或者尾部增加一些元素，或者调整文章局部元素，都可以通过修改<code>post.swig</code>中的部分代码实现。</p>
+<h2 id="在文章尾部添加End"><a href="#在文章尾部添加End" class="headerlink" title="在文章尾部添加End"></a>在文章尾部添加End</h2><p>根据思路，可以看到<code>post.swig</code>中文章结束应该是在<code>&lt;div class=&quot;post-body.....&lt;/div&gt;</code>之后，后面是微信打赏部分<code>&#39;wechat-subscriber.swig&#39;</code>，在两者中间添加自己定义的样式的结束标志即可~</p>
+<p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color:#73a2c0;font-size:25px;padding-top:40px;font-family:'YeahPapa';"</span>&gt;</span></div><div class="line">    ---------------- ♥ The End ♥ ----------------</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>熟悉html和css的同学可以自己定义字体，颜色，大小啦 ~ 也可以自己试着定义canvas动画。</p>
 
       
     </div>
+
+    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
 
     <div>
       
@@ -633,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修改过程"><span class="nav-number">1.</span> <span class="nav-text">修改过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改心得"><span class="nav-number">1.1.</span> <span class="nav-text">修改心得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-blockquote-引言-样式"><span class="nav-number">1.2.</span> <span class="nav-text">修改 blockquote(引言) 样式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#样式页面样式修改"><span class="nav-number">1.</span> <span class="nav-text">样式页面样式修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体修改思路"><span class="nav-number">1.1.</span> <span class="nav-text">整体修改思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-blockquote-引言-样式"><span class="nav-number">1.2.</span> <span class="nav-text">修改 blockquote(引言) 样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在网页中使用外部字体"><span class="nav-number">1.3.</span> <span class="nav-text">在网页中使用外部字体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文章布局修改"><span class="nav-number">2.</span> <span class="nav-text">文章布局修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体修改思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">整体修改思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在文章尾部添加End"><span class="nav-number">2.2.</span> <span class="nav-text">在文章尾部添加End</span></a></li></ol></li></ol></div>
             
 
           </div>

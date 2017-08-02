@@ -488,9 +488,9 @@ body {
 pre,
 .highlight {
   overflow: auto;
-  margin: 20px 0;
+  margin: 0px 0px;
   padding: 0;
-  font-size: 13px;
+  font-size: 12px;
   color: #24150e;
   background: #f7f7f7;
   line-height: 1.6;
@@ -505,7 +505,7 @@ code {
   color: #86d3b7;
   background: #fafafe;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: 12px;
 }
 pre code {
   padding: 0;
@@ -1707,7 +1707,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c144ff;
+  background: #41b624;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2869,4 +2869,8 @@ pre .javascript .function {
   .post-body {
     text-align: justify;
   }
+}
+@font-face {
+  font-family: YeahPapa;
+  src: url("/fonts/YeahPapa.ttf") format('truetype');
 }
