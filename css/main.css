@@ -1708,7 +1708,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #dbffff;
+  background: #ffffcb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2875,14 +2875,27 @@ pre .javascript .function {
   font-family: YeahPapa;
   src: url("/fonts/YeahPapa.ttf") format('truetype');
 }
-a {
+.menu a:hover {
+  color: #0abda0;
+}
+.menu a:hover::before {
+  content: "\5B";
+  left: -10px;
+}
+.menu a:hover::after {
+  content: "\5D";
+  right: -10px;
+}
+.post-body a {
   color: #6975a7;
+  position: relative;
   text-decoration: none;
   border-bottom: 1px dashed #6465a5;
   background-color: transparent;
   word-wrap: break-word;
 }
-a:hover {
+.post-body a:hover {
   color: #f15838;
   border-bottom: 1px dashed #f28a31;
+  padding-bottom: 3px;
 }
