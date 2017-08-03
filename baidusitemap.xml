@@ -3,24 +3,48 @@
 
 
     
-    
-    
   <url>
     <loc>https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2017-08-03T15:14:36.221Z</lastmod>
+    <lastmod>2017-08-03T15:34:58.065Z</lastmod>
     <data>
         <display>
         <title>fullPage.js学习</title>
         <pubTime>2017-07-27T09:10:04.000Z</pubTime>
         
-        <tag>前端学习</tag>
+        <tag>前端</tag>
          
         <tag>javascript</tag>
          
          
            
              
-              <breadCrumb title="Learn" url="https://simguo.github.io/categories/Learn/"/>
+              <breadCrumb title="JustForFun" url="https://simguo.github.io/categories/JustForFun/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://simguo.github.io/2017/08/03/%E5%9C%A8hexo-next%E5%8D%9A%E6%96%87%E4%B8%AD%E4%BD%BF%E7%94%A8codepen/</loc>
+    <lastmod>2017-08-03T15:32:17.209Z</lastmod>
+    <data>
+        <display>
+        <title>在hexo+next博文中使用codepen</title>
+        <pubTime>2017-08-03T15:25:02.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>博客</tag>
+         
+        <tag>Hexo</tag>
+         
+        <tag>Next</tag>
+         
+         
+           
+             
+              <breadCrumb title="JustForFun" url="https://simguo.github.io/categories/JustForFun/"/>
           
         </display>
     </data>
@@ -29,7 +53,7 @@
     
   <url>
     <loc>https://simguo.github.io/2017/08/01/Hexo-Next-%E7%9A%84%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2017-08-03T06:00:23.873Z</lastmod>
+    <lastmod>2017-08-03T15:26:51.621Z</lastmod>
     <data>
         <display>
         <title>Hexo + Next 的优化</title>
@@ -39,13 +63,19 @@
          
         <tag>博客</tag>
          
+        <tag>Hexo</tag>
+         
+        <tag>Next</tag>
+         
          
            
              
-              <breadCrumb title="TRY" url="https://simguo.github.io/categories/TRY/"/>
+              <breadCrumb title="JustForFun" url="https://simguo.github.io/categories/JustForFun/"/>
           
         </display>
     </data>
     </url>
 
+    
+    
 </urlset>

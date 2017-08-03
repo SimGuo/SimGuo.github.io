@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simguo.github.io/"/>
-  <updated>2017-08-03T06:00:23.873Z</updated>
+  <updated>2017-08-03T15:32:17.209Z</updated>
   <id>https://simguo.github.io/</id>
   
   <author>
@@ -16,11 +16,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在hexo+next博文中使用codepen</title>
+    <link href="https://simguo.github.io/2017/08/03/%E5%9C%A8hexo-next%E5%8D%9A%E6%96%87%E4%B8%AD%E4%BD%BF%E7%94%A8codepen/"/>
+    <id>https://simguo.github.io/2017/08/03/在hexo-next博文中使用codepen/</id>
+    <published>2017-08-03T15:25:02.000Z</published>
+    <updated>2017-08-03T15:32:17.209Z</updated>
+    
+    <content type="html"><![CDATA[<p>在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示<code>css + js + html</code>的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示&lt;code&gt;css + js + html&lt;/code&gt;的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="JustForFun" scheme="https://simguo.github.io/categories/JustForFun/"/>
+    
+    
+      <category term="前端" scheme="https://simguo.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="博客" scheme="https://simguo.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Hexo" scheme="https://simguo.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="https://simguo.github.io/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo + Next 的优化</title>
     <link href="https://simguo.github.io/2017/08/01/Hexo-Next-%E7%9A%84%E4%BC%98%E5%8C%96/"/>
     <id>https://simguo.github.io/2017/08/01/Hexo-Next-的优化/</id>
     <published>2017-08-01T15:05:00.000Z</published>
-    <updated>2017-08-03T06:00:23.873Z</updated>
+    <updated>2017-08-03T15:26:51.621Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。</p>
@@ -93,12 +123,16 @@
     
     </summary>
     
-      <category term="TRY" scheme="https://simguo.github.io/categories/TRY/"/>
+      <category term="JustForFun" scheme="https://simguo.github.io/categories/JustForFun/"/>
     
     
       <category term="前端" scheme="https://simguo.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="博客" scheme="https://simguo.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Hexo" scheme="https://simguo.github.io/tags/Hexo/"/>
+    
+      <category term="Next" scheme="https://simguo.github.io/tags/Next/"/>
     
   </entry>
   
@@ -107,7 +141,7 @@
     <link href="https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/"/>
     <id>https://simguo.github.io/2017/07/27/fullPage-js学习/</id>
     <published>2017-07-27T09:10:04.000Z</published>
-    <updated>2017-08-03T15:14:36.221Z</updated>
+    <updated>2017-08-03T15:34:58.065Z</updated>
     
     <content type="html"><![CDATA[<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -134,7 +168,10 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <p>关于<code>$(&#39;#yourid&#39;).fullpage()</code>函数中使用的配置项，<a href="http://www.dowebok.com/77.html" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js</a> 一文中有详细说明，同时该文后也提供的在线演示：<a href="http://www.dowebok.com/demo/2014/77/" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js演示</a> </p>
 <h1 id="三-简单样例"><a href="#三-简单样例" class="headerlink" title="(三)简单样例"></a>(三)简单样例</h1><p>下面是简单的使用fullPage.js实现自动循环滚动的样例。当然你也可以通过</p>
 <p></p><p data-height="240" data-theme-id="light" data-slug-hash="vJXrjw" data-default-tab="result" data-user="SimGuo" data-embed-version="2" data-pen-title="FullPage_Example" class="codepen">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>]]></content>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<hr>
+<iframe height="240" scrolling="no" title="FullPage_Example" src="//codepen.io/SimGuo/embed/vJXrjw/?height=240&theme-id=light&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>]]></content>
     
     <summary type="html">
     
@@ -149,10 +186,10 @@ tex2jax: {inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]]
     
     </summary>
     
-      <category term="Learn" scheme="https://simguo.github.io/categories/Learn/"/>
+      <category term="JustForFun" scheme="https://simguo.github.io/categories/JustForFun/"/>
     
     
-      <category term="前端学习" scheme="https://simguo.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
+      <category term="前端" scheme="https://simguo.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="javascript" scheme="https://simguo.github.io/tags/javascript/"/>
     
