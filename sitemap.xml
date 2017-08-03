@@ -2,37 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://simguo.github.io/2017/08/01/Hexo-Next-%E7%9A%84%E4%BC%98%E5%8C%96/</loc>
-    
-    <lastmod>2017-08-02T08:16:23.754Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/</loc>
-    
-    <lastmod>2017-08-01T14:57:44.623Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://simguo.github.io/categories/index.html</loc>
     
-    <lastmod>2017-08-01T06:25:05.575Z</lastmod>
+    <lastmod>2017-08-03T15:19:54.286Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://simguo.github.io/tags/index.html</loc>
     
-    <lastmod>2017-08-01T06:22:12.846Z</lastmod>
+    <lastmod>2017-08-03T15:19:33.110Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://simguo.github.io/2017/07/28/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E6%94%B6%E9%9B%86/</loc>
+    <loc>https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/</loc>
     
-    <lastmod>2017-07-28T04:54:08.698Z</lastmod>
+    <lastmod>2017-08-03T15:14:36.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://simguo.github.io/2017/08/01/Hexo-Next-%E7%9A%84%E4%BC%98%E5%8C%96/</loc>
+    
+    <lastmod>2017-08-03T06:00:23.873Z</lastmod>
     
   </url>
   
