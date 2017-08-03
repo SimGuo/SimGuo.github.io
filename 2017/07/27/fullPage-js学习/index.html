@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Always with Sunshine">
 <meta property="og:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });    (一) fullPage.js插件fullPage.js是基于JQuery的插件，因此在引入之前需要先引入jQuery  使用github官方地址引入最新版本最新版本在文件夹dist中，可以打开文件夹，选择对应的jquery.fullpage">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-03T15:36:42.703Z">
+<meta property="og:updated_time" content="2017-08-03T15:38:50.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fullPage.js学习">
 <meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });    (一) fullPage.js插件fullPage.js是基于JQuery的插件，因此在引入之前需要先引入jQuery  使用github官方地址引入最新版本最新版本在文件夹dist中，可以打开文件夹，选择对应的jquery.fullpage">
@@ -414,7 +414,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <p>在自己想使用fullPage.js的地方使用如上结构之后，在HTML中加入如下的script代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    $(document).ready(function()&#123;</div><div class="line">        $('#yourid').fullpage(&#123;</div><div class="line">            //这里是一些配置项，这里我的配置项是为了能让页面自动滚动，并且头尾相接</div><div class="line">            continuousVertical: true,</div><div class="line">            afterRender: function()&#123;</div><div class="line">                setInterval(function()&#123;</div><div class="line">                    $.fn.fullpage.moveSectionDown();</div><div class="line">                &#125;,8000);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>关于<code>$(&#39;#yourid&#39;).fullpage()</code>函数中使用的配置项，<a href="http://www.dowebok.com/77.html" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js</a> 一文中有详细说明，同时该文后也提供的在线演示：<a href="http://www.dowebok.com/demo/2014/77/" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js演示</a> </p>
-<h1 id="三-简单样例"><a href="#三-简单样例" class="headerlink" title="(三)简单样例"></a>(三)简单样例</h1><p>下面是简单的使用fullPage.js实现自动循环滚动的样例。当然你也可以通过</p>
+<h1 id="三-简单样例"><a href="#三-简单样例" class="headerlink" title="(三)简单样例"></a>(三)简单样例</h1><p>下面是简单的使用fullPage.js实现自动循环滚动的样例。</p>
 <p></p><p data-height="240" data-theme-id="light" data-slug-hash="vJXrjw" data-default-tab="result" data-user="SimGuo" data-embed-version="2" data-pen-title="FullPage_Example" class="codepen">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simguo.github.io/"/>
-  <updated>2017-08-03T15:32:17.209Z</updated>
+  <updated>2017-08-03T17:22:05.384Z</updated>
   <id>https://simguo.github.io/</id>
   
   <author>
@@ -20,15 +20,65 @@
     <link href="https://simguo.github.io/2017/08/03/%E5%9C%A8hexo-next%E5%8D%9A%E6%96%87%E4%B8%AD%E4%BD%BF%E7%94%A8codepen/"/>
     <id>https://simguo.github.io/2017/08/03/在hexo-next博文中使用codepen/</id>
     <published>2017-08-03T15:25:02.000Z</published>
-    <updated>2017-08-03T15:32:17.209Z</updated>
+    <updated>2017-08-03T17:22:05.384Z</updated>
     
-    <content type="html"><![CDATA[<p>在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示<code>css + js + html</code>的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。</p>
+    <content type="html"><![CDATA[<h2 id="Above-All"><a href="#Above-All" class="headerlink" title="Above All"></a>Above All</h2><p>在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示<code>css + js + html</code>的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。</p>
+<p>实现在博文中嵌入<code>codepen</code>只需要下面几步走~</p>
+<hr>
+<h2 id="你将得到的结果"><a href="#你将得到的结果" class="headerlink" title="你将得到的结果"></a>你将得到的结果</h2><p>下面这个样例已经在之前的博文 <a href="https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/"><i class="fa fa-book"></i> fullPage.js学习</a> 使用过了。下面我将演示如何将其插入文档。</p>
+<iframe height="265" scrolling="no" title="FullPage_Example" src="//codepen.io/SimGuo/embed/vJXrjw/?height=265&theme-id=light&default-tab=js,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<hr>
+<h2 id="注册一个codepen账号"><a href="#注册一个codepen账号" class="headerlink" title="注册一个codepen账号"></a>注册一个codepen账号</h2><p>官网传送门 <a href="https://codepen.io/" target="_blank" rel="external"><i class="fa fa-link"></i> https://codepen.io/</a></p>
+<p>对于嵌入<code>codepen</code>来讲，我觉得免费账号就够用啦。</p>
+<h2 id="创建一个新的Pen"><a href="#创建一个新的Pen" class="headerlink" title="创建一个新的Pen"></a>创建一个新的Pen</h2><p><i class="fa fa-circle-o"></i> 打开首页，点击右上角的Create-&gt;new pen来创建。</p>
+<p style="position: relative; padding: 5px 5px; color: white; background: black; border-radius: 3px; width: 120px; margin-left: 20px;"> Create <i class=" fa fa-chevron-right"></i> New Pen </p> 
+
+<p><i class="fa fa-circle-o"></i> 则你面前会是这样一块可供编辑的页面（这里我调整了设置），然后就可以愉快地直接写html和css以及js，也可以直接<code>ctrl+s</code>来保存，而页面下侧是实时的效果。</p>
+<p><img src="/img/20170803/layout1.PNG"></p>
+<p><i class="fa fa-circle-o"></i> 因为我觉得默认的黑色的模式没有白色好看，所以我的调整是：</p>
+<p style="position: relative; padding: 5px 5px; color: white; background: black; border-radius: 3px; width: 110px; margin-left: 20px;"> 头像 <i class=" fa fa-chevron-right"></i> Settings </p> 
+
+<p>打开后是这样的界面：</p>
+<p><img src="/img/20170803/layout2.PNG"></p>
+<p>我的选择是：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">设置项</th>
+<th style="text-align:center">选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Syntax Highlighting</td>
+<td style="text-align:center">MDN Like</td>
+</tr>
+<tr>
+<td style="text-align:center">Code Font Family</td>
+<td style="text-align:center">Source Code Pro, 12px</td>
+</tr>
+</tbody>
+</table>
+<h2 id="在你的Pen中引入外部库"><a href="#在你的Pen中引入外部库" class="headerlink" title="在你的Pen中引入外部库"></a>在你的Pen中引入外部库</h2><p>因为在pen中是直接根据你提供的js等代码生成的，所以外部js的使用也是需要知道的比较重要的事情。</p>
+<p>点击右上角的<code>settings</code>，得到类似下面的界面</p>
+<p><img src="/img/20170803/extern.PNG"></p>
+<p>选择需要引入的文件类型，比如我使用了<code>jQuery.js + fullpage.js</code>，则在<code>Add External JavaScript</code>下面加了两者的链接。</p>
+<h2 id="在文章中引入Codepen的展示窗口"><a href="#在文章中引入Codepen的展示窗口" class="headerlink" title="在文章中引入Codepen的展示窗口"></a>在文章中引入Codepen的展示窗口</h2><p>假定你在Codepen中愉快地编辑好了一个项目，现在想把它加到文件中，就只剩下复制粘贴了~</p>
+<p style="color: #9BC53D;"> <i class="fa fa-star" style="color: #9BC53D; font-size: 25px;"></i> 点击右下角的 Embed，得到下面界面</p>
+
+<p><img src="/img/20170803/res.PNG"></p>
+<p style="color: #9BC53D;"> <i class="fa fa-star" style="color: #9BC53D; font-size: 25px;"></i> 你可以在Theme中调整颜色主题 </p>
+
+<p style="color: #9BC53D;"> <i class="fa fa-star" style="color: #9BC53D; font-size: 25px;"></i> 将最下面提供的html和iframe代码直接复制粘贴到文中相应位置即可，如下是本文开头的文本 </p>
+
+<p><img src="/img/20170803/article.PNG"></p>
+<p>果然还是很简单的操作啦。不过需要注意的一点是，选择<code>iframe</code>可能会更好一些，因为我在使用<code>html</code>插入文章前面的情况下，会导致markdown文件后面产生问题。但使用<code>iframe</code>没有遇到问题。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示&lt;code&gt;css + js + html&lt;/code&gt;的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。&lt;/p&gt;
-
+      &lt;h2 id=&quot;Above-All&quot;&gt;&lt;a href=&quot;#Above-All&quot; class=&quot;headerlink&quot; title=&quot;Above All&quot;&gt;&lt;/a&gt;Above All&lt;/h2&gt;&lt;p&gt;在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示&lt;code&gt;css +
     
     </summary>
     
@@ -141,7 +191,7 @@
     <link href="https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/"/>
     <id>https://simguo.github.io/2017/07/27/fullPage-js学习/</id>
     <published>2017-07-27T09:10:04.000Z</published>
-    <updated>2017-08-03T15:36:42.703Z</updated>
+    <updated>2017-08-03T15:38:50.867Z</updated>
     
     <content type="html"><![CDATA[<script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -166,7 +216,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <p>在自己想使用fullPage.js的地方使用如上结构之后，在HTML中加入如下的script代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    $(document).ready(function()&#123;</div><div class="line">        $('#yourid').fullpage(&#123;</div><div class="line">            //这里是一些配置项，这里我的配置项是为了能让页面自动滚动，并且头尾相接</div><div class="line">            continuousVertical: true,</div><div class="line">            afterRender: function()&#123;</div><div class="line">                setInterval(function()&#123;</div><div class="line">                    $.fn.fullpage.moveSectionDown();</div><div class="line">                &#125;,8000);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>关于<code>$(&#39;#yourid&#39;).fullpage()</code>函数中使用的配置项，<a href="http://www.dowebok.com/77.html" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js</a> 一文中有详细说明，同时该文后也提供的在线演示：<a href="http://www.dowebok.com/demo/2014/77/" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js演示</a> </p>
-<h1 id="三-简单样例"><a href="#三-简单样例" class="headerlink" title="(三)简单样例"></a>(三)简单样例</h1><p>下面是简单的使用fullPage.js实现自动循环滚动的样例。当然你也可以通过</p>
+<h1 id="三-简单样例"><a href="#三-简单样例" class="headerlink" title="(三)简单样例"></a>(三)简单样例</h1><p>下面是简单的使用fullPage.js实现自动循环滚动的样例。</p>
 <p></p><p data-height="240" data-theme-id="light" data-slug-hash="vJXrjw" data-default-tab="result" data-user="SimGuo" data-embed-version="2" data-pen-title="FullPage_Example" class="codepen">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
