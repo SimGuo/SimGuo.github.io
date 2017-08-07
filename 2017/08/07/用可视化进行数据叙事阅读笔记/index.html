@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="baidu-site-verification" content="Y7TrdjqIm8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="qOa5sYnqibCBEjy_O0zyO07-XqEiQmGCxGnGUQWXFz4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="可视化,PacificVis," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="阅读论文： ChartAccent: Annotation for Data-Driven Storytelling（PacificVis2017）其实基本上是翻译了（死   摘要（基本上和介绍说的一样的内容）简单介绍了annotation的重要性，和本文的内容。 介绍强调annotation的重要性  帮助展示着解释数据中的核心信息 强调图表中重要的部分 吸引观看者的兴趣 可以增加图表的上下文">
+<meta name="keywords" content="可视化,PacificVis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用可视化进行数据叙事阅读笔记">
+<meta property="og:url" content="https://simguo.github.io/2017/08/07/用可视化进行数据叙事阅读笔记/index.html">
+<meta property="og:site_name" content="Always with Sunshine">
+<meta property="og:description" content="阅读论文： ChartAccent: Annotation for Data-Driven Storytelling（PacificVis2017）其实基本上是翻译了（死   摘要（基本上和介绍说的一样的内容）简单介绍了annotation的重要性，和本文的内容。 介绍强调annotation的重要性  帮助展示着解释数据中的核心信息 强调图表中重要的部分 吸引观看者的兴趣 可以增加图表的上下文">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-07T16:18:49.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用可视化进行数据叙事阅读笔记">
+<meta name="twitter:description" content="阅读论文： ChartAccent: Annotation for Data-Driven Storytelling（PacificVis2017）其实基本上是翻译了（死   摘要（基本上和介绍说的一样的内容）简单介绍了annotation的重要性，和本文的内容。 介绍强调annotation的重要性  帮助展示着解释数据中的核心信息 强调图表中重要的部分 吸引观看者的兴趣 可以增加图表的上下文">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://simguo.github.io/2017/08/07/用可视化进行数据叙事阅读笔记/"/>
+
+
+
+
+
+  <title>用可视化进行数据叙事阅读笔记 | Always with Sunshine</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103779771-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?babcd1a6aa2a9cc46b0a97909d5b8a83";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Always with Sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">—— growth of a fruit seed</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2017/08/07/用可视化进行数据叙事阅读笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="果果茶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Always with Sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用可视化进行数据叙事阅读笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T14:38:28+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/07/用可视化进行数据叙事阅读笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://simguo.github.io/2017/08/07/用可视化进行数据叙事阅读笔记/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>阅读论文： ChartAccent: Annotation for Data-Driven Storytelling（PacificVis2017）<br>其实基本上是翻译了（死</p>
+</blockquote>
+<hr>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>（基本上和介绍说的一样的内容）<br>简单介绍了<code>annotation</code>的重要性，和本文的内容。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>强调<code>annotation</code>的重要性</p>
+<ul>
+<li>帮助展示着解释数据中的核心信息</li>
+<li>强调图表中重要的部分</li>
+<li>吸引观看者的兴趣</li>
+<li>可以增加图表的上下文环境</li>
+<li>可以加深对图表的记忆和印象</li>
+</ul>
+<p>开发<code>ChartAccent</code>的必要性：</p>
+<ul>
+<li>主流绘图软件对增加<code>annotation</code>的支持有限</li>
+<li>为了增加个性化的<code>annotation``annotation</code>的脱节。</li>
+</ul>
+<p>因此以下几个问题需要被着重考虑：</p>
+<ul>
+<li><code>annotation</code>有哪些不同的类别</li>
+<li>不同类别的<code>annotation</code>一般都各自起什么作用</li>
+<li>这些<code>annotation</code>元素可以如何以 <strong>用户可修改 + 数据驱动(不与数据脱节)</strong> 的方式添加到图表上</li>
+</ul>
+<p>从而，在论文介绍的工作中包括：</p>
+<ul>
+<li>介绍如何快而简单的为图表增加<code>annotation</code></li>
+<li>基于调查设计了图表的<code>design space</code></li>
+<li><code>annotation</code>的意义和定义（哪些被认为是<code>annotation</code>）</li>
+<li>工具<code>ChartAccent</code>的介绍</li>
+<li>让人们使用<code>ChartAccent</code>对图表进行reproduction，得到了一些经验</li>
+<li>日常地口胡未来发展方向</li>
+</ul>
+<h2 id="背景和相关工作"><a href="#背景和相关工作" class="headerlink" title="背景和相关工作"></a>背景和相关工作</h2><p>对先前的<code>data-driven storytelling</code>和<code>可视化</code>的工作中<code>annotation</code>的角色和相关的技术支持和工具支持进行评价。</p>
+<h3 id="有关data-driven-storytelling中的annotation"><a href="#有关data-driven-storytelling中的annotation" class="headerlink" title="有关data-driven storytelling中的annotation"></a>有关data-driven storytelling中的annotation</h3><p><code>data-driven storytelling</code>包括可视化技术支持和笔下或口头的叙事。</p>
+<p>文中列举参考文献的内容：</p>
+<ul>
+<li>[40]中定义<code>data-driven storytelling</code>为<code>narrative visualization</code>，也指出了文本和图形标记的重要性。</li>
+<li>[29]中也强调了标记和高亮的重要性，特别是在现场演示的情况下</li>
+<li>[30]也提到对观众理解故事的帮助，并指出通过简单的操作创建标记和对已有的故事元素的再利用是有意义的。</li>
+<li>[41]给了七种常见的标记技术</li>
+<li>[14]中通过实际实验给出了标记的重要性的证明</li>
+<li>[26]认为叙事分四层：数据，可视化表示，交互性和标记，除标记以外的三层都有相当多的技术和工具支持，标记层仍待开发。</li>
+</ul>
+<p>本文的目的是枚举和实现，在数据可视化叙事的标记层，可以从哪些方面进行设计。</p>
+<h3 id="现在的标记工具"><a href="#现在的标记工具" class="headerlink" title="现在的标记工具"></a>现在的标记工具</h3><p>现有的标记工具，主要是要么是为智能产业提供支持，要么是作为可视化分析工具的插件存在的，比如<code>ManyEyes [44], sense.us [25], and CommentSpace [46]</code>。</p>
+<h4 id="Data-aware-annotation"><a href="#Data-aware-annotation" class="headerlink" title="Data-aware annotation"></a>Data-aware annotation</h4><p>annotation对数据有感知？</p>
+<ul>
+<li>对交互的支持，与数据有关的图形和文本</li>
+</ul>
+<p>几个例子：</p>
+<ul>
+<li>[12]、[13]中，提供交互的操作</li>
+<li>[23]中根据查询条件选择标签，根据相关性选择展示的标签</li>
+<li>[27]提出即时标注的概念，标注在人机交互中自动完成</li>
+</ul>
+<p>关于<code>ChartAccent</code>，作者</p>
+<ul>
+<li>提供对选择哪些不标记的支持</li>
+<li>选择哪些标记是数据驱动的（动态的</li>
+<li>哪些标记是静态的，固定不动的（静态的标记同样重要</li>
+</ul>
+<h4 id="Interactive-visualization-authoring-tools"><a href="#Interactive-visualization-authoring-tools" class="headerlink" title="Interactive visualization authoring tools"></a>Interactive visualization authoring tools</h4><p>Excel不提供<code>Data-driven annotation</code>，Lyra和IVISDesigner支持，但学习时间长，标注过程无趣。<br>Mr ChartMaker更好一些。</p>
+<p>Tableau Desktop从作者的角度看已经做得不错了，然后ChartAccent会提供更多可标记的选择，高亮和强调也做得更加灵活，选中的标记可以不影响周围的直接高亮。</p>
+<h4 id="Annotation-via-programming"><a href="#Annotation-via-programming" class="headerlink" title="Annotation via programming"></a>Annotation via programming</h4><p>当然也可以通过一些可视化编程来实现对图的精准的控制，比如ggplot,d3.js等等。<br>使用ggplot可以增加复杂的数据标记，甚至可以用很复杂的数据统计模型计算。<br>但这些都需要编程知识，而ChartAccent不需要，并能提供及时反馈。</p>
+<h2 id="ANNOTATION-DESIGN-SPACE"><a href="#ANNOTATION-DESIGN-SPACE" class="headerlink" title="ANNOTATION DESIGN SPACE"></a>ANNOTATION DESIGN SPACE</h2><p>设计空间的定义不够充分，因此作者收集了图片的语料库来提取。</p>
+<p>首先有一些图表元素不被认为是annotation：</p>
+<ul>
+<li>柱状图中的柱形，散点图里面的三点，这些与数据直接相关的图形表示不认为是annotation</li>
+<li>图表标题，图例，轴，轴标签和刻度线，以及网格线或刻度线。</li>
+</ul>
+<p>当然，虽然这些元素不算为annotation，但仍是可以被标记的</p>
+<p>最后，主要关注的应该是利用图片可视化来传达信息。</p>
+<h3 id="关于被标注图表的调查"><a href="#关于被标注图表的调查" class="headerlink" title="关于被标注图表的调查"></a>关于被标注图表的调查</h3><p>实际上是有很丰富的可视化标注的资源的：科学杂志，期刊，政府企业备忘录、在线的演讲中的配图等等。</p>
+<p>首先使用的资源是“Quantified Self”资料库，（大概是用数据描述自己的生活这样的意思）。通过这个群体用来传达自身观点的图表，提取的常见标记有：</p>
+<ul>
+<li><strong>文字、图形、趋势线、通过颜色或纹理分割突出显示的范围、指示重要值的线</strong></li>
+</ul>
+<p>为了扩充设计空间，也从新闻媒体中提取资源，因为他们面向对象广，通常围绕一个故事展开，数量多，易于获取。</p>
+<p>到底，作者就可以设定了<code>annotation space</code>的基本样式和<code>annotation</code>的类型</p>
+<p>（我觉得作者后面这段真是有点强行口胡）</p>
+<p>说什么根机器学习一样，自己提取样式的图库只是训练集，也要测试集来验证他们的是否可以泛华。（讲道理，我觉得要泛华，首先这个训练集大小可以随意变吧，若是不是人工提取的样式，我觉得说还有道理，但如果是人工的话，考虑人工的效率，就不能认为训练集大小可以随意大了）</p>
+<p>Anyway，作者收集了一些图，主要是条形图，折线图，散点图。筛选后，选出了257个。</p>
+<p>筛选，如果出现两张图，都有写在柱形边的文字，则只留下一个。否则，如果两张图一张有独特的标记（比如柱形图中表示平均值的竖线）则同时保留两个图。在丢弃具有重复注释形式的图表之后，留下了23个经济学人图表和39个WSJ图表。</p>
+<p>然后，作者同样再从 The New York Times (10), FiveThirtyEight (11), The Washington Post (11), and Bloomberg Visual Data (12) 又收集了一些条形、折线、散点图，最后收集了106张。</p>
+<p>项目图片网页：<a href="https:// chartaccent.github.io/#section-survey" target="_blank" rel="external">https:// chartaccent.github.io/#section-survey.</a></p>
+<p>在这个语料库中，类型有：标注的图表的元素、标注的类型、元素的大小颜色宽度和附加的评论。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>根据对这些图的调研，把对于标注的设计分为标注格式和标注对象两个格式。</p>
+<p>标注由各种各样的目的，因人而异，本文主要关注注释的交流目的。</p>
+<h4 id="维度一：注释格式"><a href="#维度一：注释格式" class="headerlink" title="维度一：注释格式"></a>维度一：注释格式</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">文本</td>
+<td style="text-align:left">包括类型： 点值对，上下限，平均值，上下文。属性：大小，字体，位置，对齐等等</td>
+</tr>
+<tr>
+<td style="text-align:center">图形</td>
+<td style="text-align:left">类型: 线，箭头，曲线，矩形，椭圆，括号，星型，语音气泡。 目的：可以是非数据驱动的，用来对注释的位置进行区分，或者着重突出某个元素，也可以是数据驱动的，比如线性拟合。（文中图1）</td>
+</tr>
+<tr>
+<td style="text-align:center">高亮</td>
+<td style="text-align:left">用来强调<strong>或者减弱</strong>重要性，一般通过调整填充色和大小</td>
+</tr>
+<tr>
+<td style="text-align:center">图像</td>
+<td style="text-align:left">图像/图标属性：大小，不透明度或饱和度，位置，在前景还是背景中。  图像注释提升图表的可记忆性，如图一中的国旗</td>
+</tr>
+</tbody>
+</table>
+<h4 id="维度二：注释目标类型"><a href="#维度二：注释目标类型" class="headerlink" title="维度二：注释目标类型"></a>维度二：注释目标类型</h4><p>只解释柱状图，散点图和折线图中可能的类型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数据项</td>
+<td style="text-align:left">数据项中又有：数据的某个单项、反映数据整体的值（平均值等）、一组有关的数据（11月两个城市的气温）、满足不等式条件的数据、极端值</td>
+</tr>
+<tr>
+<td style="text-align:center">坐标空间</td>
+<td style="text-align:left">笛卡尔坐标轴的定量尺度： 比如某个轴对应的属性值之间、特定属性的部分跨度（感觉和数据类型里面不等式条件的数据有点类似诶）。意义主要是：表示一段范围，这段范围不一定要包含数据项，可以为这个范围添加相应的与数据无关的上下文</td>
+</tr>
+<tr>
+<td style="text-align:center">结构化的图表元素</td>
+<td style="text-align:left">包括：图表标题，轴，轴标签和刻度线，图例，图表的绘图区域，图表本身。在图表内部，可以有一些前面提到的标注，但在图表外部也可以能额外的上下文和信息（内容较多，在图表内部无法容纳啊）</td>
+</tr>
+<tr>
+<td style="text-align:center">注释前缀</td>
+<td style="text-align:left">只是用来更直接地指代注释。图2中的(a) - (k)就是这种类型，在提及时，可以直接说注释(a)。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="CHARTACCENT"><a href="#CHARTACCENT" class="headerlink" title="CHARTACCENT"></a>CHARTACCENT</h2><p>本节介绍<code>ChartAccent</code>如何实现上面两个方面</p>
+<h3 id="与ChartAccent的交互"><a href="#与ChartAccent的交互" class="headerlink" title="与ChartAccent的交互"></a>与ChartAccent的交互</h3><p>将创建图表和创建注释分开以能够独立评估注释系统，并支持到其他注释工具的移植</p>
+<h4 id="注释对象选择"><a href="#注释对象选择" class="headerlink" title="注释对象选择"></a>注释对象选择</h4><p>典型的使用鼠标的点击和拖动实现标注对象的选择。鼠标放在坐标轴的位置，则可以选择坐标对应范围</p>
+<p><strong>数据驱动的选择</strong> 采用Heer等的设计，可以通过点击一个图例选择整个类的数据<br>点击后出现的会是默认值，可以在编辑器的Target位置（图3-6）进一步修改目标，比如使用avg等等。Target中支持一些简单的根据数据集的属性得到的公式。包括一组基本统计功能，包括最小值，最大值，平均值和中值。</p>
+<p>可以选择超过某值或者低于某值的项等等。</p>
+<h4 id="标注格式的调整"><a href="#标注格式的调整" class="headerlink" title="标注格式的调整"></a>标注格式的调整</h4><p>每个数据项的注释，都有一个默认格式，可以再editor里调整，另外也提供了手动标注的工具。在editor中还有表示趋势线的开关，可以再editor中调整文字内容，大小，颜色，字体、边框、填充色等等。</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>通过两个场景的解说和视频来讲解如何使用。</p>
+<h4 id="场景一"><a href="#场景一" class="headerlink" title="场景一"></a>场景一</h4><blockquote>
+<p>每月的温度图 —— 从2014七月到2015六月的美国各城市平均气温图。 我们想转达的是纽约的气候没有另外两个城市怡人。</p>
+</blockquote>
+<p>为了证实这一点，我们需要强调什么时候另外两个城市的温度比纽约高，利用的是柱状图。</p>
+<p>第一步选中所有条形，在editor中调低亮度，来降低整体的显著性</p>
+<p>在y轴画一根直线，在editor中输入avg@NewYork（会自动补全），然后生成一个手动的标签“NY’s average”放在直线左边。</p>
+<p>接着，在这条线的editor中选择：使用这条线选择（Select Items Using this Line），在下拉菜单中选择Above，并勾选目标城市。</p>
+<p>调整完样式后，就可以到处为png或者svg图像。</p>
+<h4 id="场景二"><a href="#场景二" class="headerlink" title="场景二"></a>场景二</h4><blockquote>
+<p>使用2000年来数国的生育率和预计寿命。目的：（i）传达更高的生育率与较低的预期寿命相关联的整体趋势，（ii）强调北美和南美国家，（iii）强调美国，中国和印度。</p>
+</blockquote>
+<p>可以建立以这两个值为维度的散点图，添加趋势线来表示两者关系，国家之间用颜色区分。</p>
+<p>对于某个州大类，可以通过图例选择，然后使用BubbleSet标注出来。</p>
+<p>对于某个国家，以China为例，可以选择China，然后添加国旗作为图片标注。</p>
+<p>最后见图1-右。</p>
+<h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><p>首先实现了ChartAccent.js库来为基于SVG的图表标记（可以使用D3.js生成）。图4表示了CHartAccent.js，Chart和ChartCreator以及终端使用者之间的关系。</p>
+<p>使得一个图表“annotatable”，图表创建者首先创建一个<code>ChartAccent 对象</code>，在其中定义好一个图表元素（应该是js中已经设计好了创建函数，然后根据传入的参数画图）– 坐标轴、标记、图例、元数据，数据之间的关系等等, ChartAccent.js中也定义了给图表创建、管理、调整标注的函数，同时也包括了对于不同的标注类型的处理函数。</p>
+<p>blabla。</p>
+<p>最后，ChartAccent就是一个包括了操作界面和封装了ChartAccent.js的独立工具。虽然目前只支持三种图。</p>
+<h2 id="评估"><a href="#评估" class="headerlink" title="评估"></a>评估</h2><p>让一些人通过这个工具对一些标注好的图片进行重现，通过实验的结果来说明他们的工具是否是易于学习的，可使用的，高效的。特别是data-driven的标记特别吸引研究者的兴趣。</p>
+<h3 id="参加者和设置"><a href="#参加者和设置" class="headerlink" title="参加者和设置"></a>参加者和设置</h3><p>11名各行业，频繁使用图表交流的参与者。有酬劳。固定的硬件配置，会录像。</p>
+<h3 id="任务和数据集"><a href="#任务和数据集" class="headerlink" title="任务和数据集"></a>任务和数据集</h3><p>图6总结了所有任务。<a href="https://chartaccent.github.io/#section-examples" target="_blank" rel="external">每个任务的逐步动画GIF</a>。为练习任务准备了十二个注释图表。</p>
+<p>创建这些图表的数据集包括：各个城市的月平均降雨量[48]（任务1）;西雅图每月降水量[48]（任务2）;北京空气质素指标[3]（任务3）;各种车辆的里程数据[32]（任务4）;各国生育率和预期寿命[18]（任务5）;Old Faithful Geyser爆发[2]（任务6）;美国主要城市的月度气温[17]（任务7）。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>先是一个熟悉ChartAccent的教程，然后使用12个练习任务进一步熟悉任务过程和工具。</p>
+<p>在开始任务前，参与者可以描述他们看到的标注，来明确自己需要标注哪些内容，然后开始，最后提交生成一张图片，进行下一个任务。允许重置，平均完成时间是22分钟。</p>
+<p>当他们卡住或者提交有误的时候会有提示，当然颜色的偏差和某一些区域的x，y值的偏差不影响，重要的是鼓励参与者尽快完成。标注7个任务的时间平均是15分钟（所以还有7分钟是？）。最后，需要填个问卷。</p>
+<p>整个过程长达1.5h。</p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>11个人中9个完成了任务，2人迟到没有足够的时间完成了前五个。</p>
+<h4 id="提示和任务完成时间"><a href="#提示和任务完成时间" class="headerlink" title="提示和任务完成时间"></a>提示和任务完成时间</h4><p>提供两种提示：一种是错误标注，一种是标注和目标结果之间的差别（多标注或者少标注了什么）</p>
+<p>Table1提供了提示数据，总的来说，需要的提示比较少，出现的都是小错误。在任务5出错最多，可能是因为是data=driven的，比较复杂。</p>
+<p>图7是各个参赛者完成各个任务的时间，完成时间其实都比较短。在过程比较复杂的Task花的时间比较多。（这个复杂主要是与highlight有关似乎）</p>
+<h4 id="用户评价"><a href="#用户评价" class="headerlink" title="用户评价"></a>用户评价</h4><p>感觉是一致好评，简单易学，以后会用。</p>
+<h2 id="探讨和未来的工作"><a href="#探讨和未来的工作" class="headerlink" title="探讨和未来的工作"></a>探讨和未来的工作</h2><h3 id="对带标记图表的反思"><a href="#对带标记图表的反思" class="headerlink" title="对带标记图表的反思"></a>对带标记图表的反思</h3><p>简单概括了一下整个项目的流程，然后总结说：自己的项目虽然不能涵盖所有可能的类型，但至少提出了一个框架。</p>
+<h3 id="提升和扩展ChartAccent"><a href="#提升和扩展ChartAccent" class="headerlink" title="提升和扩展ChartAccent"></a>提升和扩展ChartAccent</h3><p>提出的几个问题：</p>
+<ul>
+<li>标记之间的覆盖问题（z-order），通过排序来表示哪个在上面</li>
+<li>增加基本的撤销和重做</li>
+<li>同时，如果有效地建立表格和其他的一些可视化展示也将进一步研究</li>
+<li>决定专注于研发和测试一组支持标注的交互工具</li>
+<li>确保ChartAccent.js能够兼容d3.js的结果而不是仅局限于现在ChartAccent工具作的图。<ul>
+<li>这一目标可能涉及D3.js的结构函数[22]</li>
+</ul>
+</li>
+<li>扩展对其他类型的图的支持（节点图，树状图）</li>
+</ul>
+<h3 id="理想的默认样式和模板"><a href="#理想的默认样式和模板" class="headerlink" title="理想的默认样式和模板"></a>理想的默认样式和模板</h3><p>在实验中发现默认样式任意出现不符合使用需求的情况，同时用户会有自己的使用倾向，计划允许用户设置自己的使用偏好。</p>
+<p>此外，一种样式可能多次使用，比如在情景一中使用每年最高气温高出blabla的月份。</p>
+<p>为了灵活性，计划设计相应的注释规范语言和相应的模板编辑器。</p>
+<h3 id="研究的局限性和网页展示"><a href="#研究的局限性和网页展示" class="headerlink" title="研究的局限性和网页展示"></a>研究的局限性和网页展示</h3><p>不确定参与者是否有兴趣，下一步计划在实验中包含参与者提供的图表。</p>
+<p>尽管告诉参与者，实验只是为了研究ChartAccent的性能，但还是会因为参与者的紧张影响时间，所以提交到github.io上，诸君尽情使用。</p>
+<p>允许人 提交图表、选择图表、导出图表，也可以将整个标注的过程导出成gif。</p>
+
+      
+    </div>
+
+    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/可视化/" rel="tag"># 可视化</a>
+          
+            <a href="/tags/PacificVis/" rel="tag"># PacificVis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/03/在hexo-next博文中使用codepen/" rel="next" title="在hexo+next博文中使用codepen">
+                <i class="fa fa-chevron-left"></i> 在hexo+next博文中使用codepen
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/me.jpg"
+               alt="果果茶" />
+          <p class="site-author-name" itemprop="name">果果茶</p>
+           
+              <p class="site-description motion-element" itemprop="description">Hello ~ Welcome to a cat holic's cafe</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SimGuo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/tetWQKWfewNtgJ7" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3258482183/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/149158666/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/guo-guo-23-84/activities" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景和相关工作"><span class="nav-number">3.</span> <span class="nav-text">背景和相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有关data-driven-storytelling中的annotation"><span class="nav-number">3.1.</span> <span class="nav-text">有关data-driven storytelling中的annotation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#现在的标记工具"><span class="nav-number">3.2.</span> <span class="nav-text">现在的标记工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-aware-annotation"><span class="nav-number">3.2.1.</span> <span class="nav-text">Data-aware annotation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interactive-visualization-authoring-tools"><span class="nav-number">3.2.2.</span> <span class="nav-text">Interactive visualization authoring tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Annotation-via-programming"><span class="nav-number">3.2.3.</span> <span class="nav-text">Annotation via programming</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANNOTATION-DESIGN-SPACE"><span class="nav-number">4.</span> <span class="nav-text">ANNOTATION DESIGN SPACE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于被标注图表的调查"><span class="nav-number">4.1.</span> <span class="nav-text">关于被标注图表的调查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">4.2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#维度一：注释格式"><span class="nav-number">4.2.1.</span> <span class="nav-text">维度一：注释格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#维度二：注释目标类型"><span class="nav-number">4.2.2.</span> <span class="nav-text">维度二：注释目标类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CHARTACCENT"><span class="nav-number">5.</span> <span class="nav-text">CHARTACCENT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与ChartAccent的交互"><span class="nav-number">5.1.</span> <span class="nav-text">与ChartAccent的交互</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注释对象选择"><span class="nav-number">5.1.1.</span> <span class="nav-text">注释对象选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标注格式的调整"><span class="nav-number">5.1.2.</span> <span class="nav-text">标注格式的调整</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">5.2.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景一"><span class="nav-number">5.2.1.</span> <span class="nav-text">场景一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#场景二"><span class="nav-number">5.2.2.</span> <span class="nav-text">场景二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现细节"><span class="nav-number">5.3.</span> <span class="nav-text">实现细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估"><span class="nav-number">6.</span> <span class="nav-text">评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参加者和设置"><span class="nav-number">6.1.</span> <span class="nav-text">参加者和设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务和数据集"><span class="nav-number">6.2.</span> <span class="nav-text">任务和数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程"><span class="nav-number">6.3.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">6.4.</span> <span class="nav-text">结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提示和任务完成时间"><span class="nav-number">6.4.1.</span> <span class="nav-text">提示和任务完成时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户评价"><span class="nav-number">6.4.2.</span> <span class="nav-text">用户评价</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探讨和未来的工作"><span class="nav-number">7.</span> <span class="nav-text">探讨和未来的工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对带标记图表的反思"><span class="nav-number">7.1.</span> <span class="nav-text">对带标记图表的反思</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升和扩展ChartAccent"><span class="nav-number">7.2.</span> <span class="nav-text">提升和扩展ChartAccent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理想的默认样式和模板"><span class="nav-number">7.3.</span> <span class="nav-text">理想的默认样式和模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#研究的局限性和网页展示"><span class="nav-number">7.4.</span> <span class="nav-text">研究的局限性和网页展示</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">果果茶</span>
+</div>
+
+<div class="powered-by">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+  本站总访问量 <span id="busuanzi_value_site_uv"></span>次
+  </span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://simguo-github-io.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://simguo.github.io/2017/08/07/用可视化进行数据叙事阅读笔记/';
+          this.page.identifier = '2017/08/07/用可视化进行数据叙事阅读笔记/';
+          this.page.title = '用可视化进行数据叙事阅读笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://simguo-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.1"></script>
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

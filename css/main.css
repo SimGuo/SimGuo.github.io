@@ -1708,7 +1708,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #16cf39;
+  background: #f591b3;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2879,12 +2879,17 @@ pre .javascript .function {
   color: #0abda0;
 }
 .menu a:hover::before {
-  content: "\5B";
+  content: " ";
   left: -10px;
 }
 .menu a:hover::after {
-  content: "\5D";
+  content: " ";
   right: -10px;
+}
+.menu .menu-item a:hover,
+.menu-item-active a {
+  background: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.5);
 }
 .post-body a {
   color: #6975a7;
@@ -2898,4 +2903,39 @@ pre .javascript .function {
   color: #f15838;
   border-bottom: 1px dashed #f28a31;
   padding-bottom: 3px;
+}
+body {
+  background: url("/img/0000/4.jpg") fixed;
+}
+.headband {
+  height: 0px;
+  background: #6a8a82;
+}
+.site-meta {
+  -webkit-border-image: url("/img/0000/f3.png");
+  background: rgba(65,89,57,0.59);
+}
+.site-subtitle {
+  color: #eee;
+}
+.sidebar {
+  background: url("/img/0000/sidebar3.jpg");
+  background-size: 100% auto;
+}
+.sidebar-inner.affix {
+  position: fixed;
+  top: 0px;
+  box-shadow: 0 2px 6px #dbdbdb;
+}
+.sidebar-inner {
+  background: url("/img/0000/sidebar2.png");
+  background-size: 100% auto;
+}
+.header-inner {
+  background: url("/img/0000/sidebar2.png");
+  background-size: 100% auto;
+}
+.content-wrap {
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 2px 6px #dbdbdb;
 }

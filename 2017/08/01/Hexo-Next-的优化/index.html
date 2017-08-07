@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Always with Sunshine">
 <meta property="og:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-03T15:26:51.621Z">
+<meta property="og:updated_time" content="2017-08-04T06:14:22.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + Next 的优化">
 <meta name="twitter:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
@@ -122,7 +122,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -431,7 +431,9 @@
 <p>完成效果参考下一节的 <strong>在文章尾部添加End</strong></p>
 <h2 id="修改超链接样式"><a href="#修改超链接样式" class="headerlink" title="修改超链接样式"></a>修改超链接样式</h2><p>依然在<code>/theme/next/source/css/_custom/custom.styl</code>中修改，添加如下代码：</p>
 <h3 id="——-修改颜色"><a href="#——-修改颜色" class="headerlink" title="—— 修改颜色"></a>—— 修改颜色</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#6975a7</span>;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> dashed <span class="number">#6465a5</span>;</div><div class="line">    <span class="attribute">background-color</span>: transparent;</div><div class="line">    <span class="attribute">word-wrap</span>: break-word;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">a</span>: <span class="selector-tag">hover</span>&#123;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#f15838</span>;</div><div class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> dashed <span class="number">#f28a31</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中<code>a</code>定义了超链接的基本样式，<code>a:hover</code>定义了超链接在鼠标悬停时颜色的变化。<code>.post-body</code>使得改变的样式只作用与文章内部，否则你会发现文章标题下面的分类等等样式都会被改变。</p>
+<p>其中<code>a</code>定义了超链接的基本样式，<code>a:hover</code>定义了超链接在鼠标悬停时颜色的变化。<code>.post-body</code>使得改变的样式只作用与文章内部，否则你会发现文章标题下面的分类等等样式都会被改变。可以简单预览一下效果：</p>
+<iframe height="265" scrolling="no" title="Blockquote配色展示" src="//codepen.io/SimGuo/embed/eEBBYz/?height=265&theme-id=light&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SimGuo/pen/eEBBYz/" target="_blank" rel="external">Blockquote配色展示</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
 <h3 id="——-菜单鼠标悬停后样式"><a href="#——-菜单鼠标悬停后样式" class="headerlink" title="—— 菜单鼠标悬停后样式"></a>—— 菜单鼠标悬停后样式</h3><p>增加如下内容（其中<code>“\5B” &amp; “\5D”</code>是<code>[ &amp; ]</code>符号在css中对应的编码 ）：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#0ABDA0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::before</span> &#123; </div><div class="line">    <span class="attribute">content</span>: <span class="string">"\5B"</span>;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">10px</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span> &#123;</div><div class="line">    <span class="attribute">content</span>: <span class="string">"\5D"</span>;</div><div class="line">    <span class="attribute">right</span>:-<span class="number">10px</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="——-增加font-awesome符号"><a href="#——-增加font-awesome符号" class="headerlink" title="—— 增加font-awesome符号"></a>—— 增加font-awesome符号</h3><p>在文章可以直接使用如下代码即可使用<code>font-awesome</code>符号</p>
@@ -592,7 +594,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -603,7 +605,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -614,7 +616,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
