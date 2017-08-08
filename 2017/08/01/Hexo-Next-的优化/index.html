@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Always with Sunshine">
 <meta property="og:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-08T02:10:55.716Z">
+<meta property="og:updated_time" content="2017-08-08T03:28:52.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + Next 的优化">
 <meta name="twitter:description" content="本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。   样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改) 在进行代码块修改之后，总结了一个小套路：  首先确定好自己想要修改的模块 使用浏览器的检查元素，可以找到对应的模块的css样式 然后先在检察元素模式下对css样式进行修改，调整出自己">
@@ -442,7 +442,36 @@
 <p><a href="https://9iphp.com/fa-icons" target="_blank" rel="external"><i class="fa fa-book"></i> FontAwesome 4.7.0 中完整的675个图标样式CSS参考</a></p>
 <p>上面的超链接在markdown文件中的内容是<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">&lt;i class="fa fa-book"&gt;&lt;/i&gt; FontAwesome 4.7.0 中完整的675个图标样式CSS参考</span>](<span class="link">https://9iphp.com/fa-icons</span>)</div></pre></td></tr></table></figure></p>
 <p>不过，因为我配置的next主题下font-awesome的版本不是4.7.0，所以我直接下载了4.7.0版本的font-awesome的css文件，替换了<code>\theme\next\source\lib\font-awesome\css\</code>中的文件</p>
-<h2 id="修改侧边栏样式"><a href="#修改侧边栏样式" class="headerlink" title="修改侧边栏样式"></a>修改侧边栏样式</h2><p>| 类名 | 对应元素 |<br>|：–：|：– |<br>| .site-meta | 原来模板里面黑色的，包含网站标题、介绍的部分 |<br>| .header-inner | 在没有下拉时包含site-meta和菜单的部分 |<br>| .sidebar-inner | 在没有下拉时的包含文章目录和站点概览的部分 |<br>| .sidebar | 在进行了下拉之后的包含文章目录和站点概览的部分 |<br>| .headband | 在piscal的scheme下上面有3px的黑色，这就是对应的类 |</p>
+<h2 id="修改侧边栏样式"><a href="#修改侧边栏样式" class="headerlink" title="修改侧边栏样式"></a>修改侧边栏样式</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">类名</th>
+<th style="text-align:left">对应元素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.site-meta</td>
+<td style="text-align:left">原来模板里面黑色的，包含网站标题、介绍的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.header-inner</td>
+<td style="text-align:left">在没有下拉时包含site-meta和菜单的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.sidebar-inner</td>
+<td style="text-align:left">在没有下拉时的包含文章目录和站点概览的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.sidebar</td>
+<td style="text-align:left">在进行了下拉之后的包含文章目录和站点概览的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.headband</td>
+<td style="text-align:left">在piscal的scheme下上面有3px的黑色，这就是对应的类</td>
+</tr>
+</tbody>
+</table>
 <p>我做的修改只是简单地添加了背景。我添加背景的要点是<strong>透明 + 固定宽度</strong>。</p>
 <p><strong>透明</strong>：将使用的png文件放在SAI里面（当然也可以用ps，博主是手残板绘党，所以经常用SAI）调低了透明度就可以了。<br><strong>固定宽度</strong>：之所以使用固定宽度，是因为下拉阅读文章的时候会实时展开目录，如果使用其他格式，会导致图片随着阅读被奇怪的拉伸。所以使用固定宽度会比较好~</p>
 <p>我的custom.styl里面的定义（这里我还修改了阴影）：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.sidebar</span>&#123;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">6px</span> <span class="number">#dbdbdb</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"/img/0000/sidebar3.jpg"</span>);</div><div class="line">    <span class="attribute">background-size</span>:<span class="number">100%</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
