@@ -476,7 +476,7 @@
 <p>为了扩充设计空间，也从新闻媒体中提取资源，因为他们面向对象广，通常围绕一个故事展开，数量多，易于获取。</p>
 <p>到底，作者就可以设定了<code>annotation space</code>的基本样式和<code>annotation</code>的类型</p>
 <p>（我觉得作者后面这段真是有点强行口胡）</p>
-<p>说什么根机器学习一样，自己提取样式的图库只是训练集，也要测试集来验证他们的是否可以泛华。（讲道理，我觉得要泛华，首先这个训练集大小可以随意变吧，若是不是人工提取的样式，我觉得说还有道理，但如果是人工的话，考虑人工的效率，就不能认为训练集大小可以随意大了）</p>
+<p>说什么和机器学习一样，自己提取样式的图库只是训练集，也要测试集来验证他们的是否可以泛化。（讲道理，我觉得要泛化，首先这个训练集大小可以随意变吧，若是不是人工提取的样式，我觉得说还有道理，但如果是人工的话，考虑人工的效率，就不能认为训练集大小可以随意大了）</p>
 <p>Anyway，作者收集了一些图，主要是条形图，折线图，散点图。筛选后，选出了257个。</p>
 <p>筛选，如果出现两张图，都有写在柱形边的文字，则只留下一个。否则，如果两张图一张有独特的标记（比如柱形图中表示平均值的竖线）则同时保留两个图。在丢弃具有重复注释形式的图表之后，留下了23个经济学人图表和39个WSJ图表。</p>
 <p>然后，作者同样再从 The New York Times (10), FiveThirtyEight (11), The Washington Post (11), and Bloomberg Visual Data (12) 又收集了一些条形、折线、散点图，最后收集了106张。</p>
@@ -988,11 +988,22 @@
 <p><a href="https://9iphp.com/fa-icons" target="_blank" rel="external"><i class="fa fa-book"></i> FontAwesome 4.7.0 中完整的675个图标样式CSS参考</a></p>
 <p>上面的超链接在markdown文件中的内容是<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">&lt;i class="fa fa-book"&gt;&lt;/i&gt; FontAwesome 4.7.0 中完整的675个图标样式CSS参考</span>](<span class="link">https://9iphp.com/fa-icons</span>)</div></pre></td></tr></table></figure></p>
 <p>不过，因为我配置的next主题下font-awesome的版本不是4.7.0，所以我直接下载了4.7.0版本的font-awesome的css文件，替换了<code>\theme\next\source\lib\font-awesome\css\</code>中的文件</p>
+<h2 id="修改侧边栏样式"><a href="#修改侧边栏样式" class="headerlink" title="修改侧边栏样式"></a>修改侧边栏样式</h2><p>| 类名 | 对应元素 |<br>|：–：|：– |<br>| .site-meta | 原来模板里面黑色的，包含网站标题、介绍的部分 |<br>| .header-inner | 在没有下拉时包含site-meta和菜单的部分 |<br>| .sidebar-inner | 在没有下拉时的包含文章目录和站点概览的部分 |<br>| .sidebar | 在进行了下拉之后的包含文章目录和站点概览的部分 |<br>| .headband | 在piscal的scheme下上面有3px的黑色，这就是对应的类 |</p>
+<p>我做的修改只是简单地添加了背景。我添加背景的要点是<strong>透明 + 固定宽度</strong>。</p>
+<p><strong>透明</strong>：将使用的png文件放在SAI里面（当然也可以用ps，博主是手残板绘党，所以经常用SAI）调低了透明度就可以了。<br><strong>固定宽度</strong>：之所以使用固定宽度，是因为下拉阅读文章的时候会实时展开目录，如果使用其他格式，会导致图片随着阅读被奇怪的拉伸。所以使用固定宽度会比较好~</p>
+<p>我的custom.styl里面的定义（这里我还修改了阴影）：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.sidebar</span>&#123;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">6px</span> <span class="number">#dbdbdb</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"/img/0000/sidebar3.jpg"</span>);</div><div class="line">    <span class="attribute">background-size</span>:<span class="number">100%</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="修改canvas-nest的颜色等"><a href="#修改canvas-nest的颜色等" class="headerlink" title="修改canvas-nest的颜色等"></a>修改canvas-nest的颜色等</h2><p>canvas-nest有几个配置项，可参考<a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md" target="_blank" rel="external"><i class="fa fa-book"></i> 官方文档</a>。</p>
+<p>我在文件夹中搜索带<code>canvas-nest</code>的项，发现next中并没有提供对其样式的修改的支持，<code>canvas-nest</code>只出现在<code>canvas-nest.min.js</code>和一个判断配置项中<code>canvas-nest</code>是否为真，为真则将对应js将入一个js插件列表中。</p>
+<p>因此，我认为只能通过修改<code>canvas-nest.min.js</code>的默认值来达到修改目的。</p>
+<p>其实，只要搜索便可以找到配置项在文件中对应的位置，比如<code>c:o(v,&quot;color&quot;,&quot;0,0,0&quot;)</code>，此处<code>0,0,0</code>便是默认值，修改即可。</p>
 <hr>
 <h1 id="文章布局修改"><a href="#文章布局修改" class="headerlink" title="文章布局修改"></a>文章布局修改</h1><h2 id="整体修改思路-1"><a href="#整体修改思路-1" class="headerlink" title="整体修改思路"></a>整体修改思路</h2><p>在<code>\themes\layout\_macro\post.swig</code>中是文章的整体定义。利用Sublime将局部收起，我们可以很清晰地看到文章的整体架构，因此，在如果想在文章头部或者尾部增加一些元素，或者调整文章局部元素，都可以通过修改<code>post.swig</code>中的部分代码实现。</p>
 <h2 id="在文章尾部添加End"><a href="#在文章尾部添加End" class="headerlink" title="在文章尾部添加End"></a>在文章尾部添加End</h2><p>根据思路，可以看到<code>post.swig</code>中文章结束应该是在<code>&lt;div class=&quot;post-body.....&lt;/div&gt;</code>之后，后面是微信打赏部分<code>&#39;wechat-subscriber.swig&#39;</code>，在两者中间添加自己定义的样式的结束标志即可~</p>
 <p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color:#73a2c0;font-size:25px;padding-top:40px;font-family:'YeahPapa';"</span>&gt;</span></div><div class="line">    ---------------- ♥ The End ♥ ----------------</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>熟悉html和css的同学可以自己定义字体，颜色，大小啦 ~ 也可以自己试着定义canvas动画。</p>
+<h2 id="修改文章的样式"><a href="#修改文章的样式" class="headerlink" title="修改文章的样式"></a>修改文章的样式</h2><p>我的文章样式修改很简单啦，只是将内容背景改成了半透明，加了周围的阴影w。</p>
+<p>对custom.style的添加：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.content-wrap</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.5);</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">6px</span> <span class="number">#dbdbdb</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
 <h1 id="让谷歌和百度搜索到自己在GitHub上的博客"><a href="#让谷歌和百度搜索到自己在GitHub上的博客" class="headerlink" title="让谷歌和百度搜索到自己在GitHub上的博客"></a>让谷歌和百度搜索到自己在GitHub上的博客</h1><p><a href="https://maxwellyue.github.io/2016/08/07/%E5%A6%82%E4%BD%95%E8%AE%A9%E8%B0%B7%E6%AD%8C%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1GitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external"><i class="fa fa-book"></i> 如何让谷歌和百度搜索到自己在GitHub上的博客</a></p>
 <hr>
 <blockquote>
