@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="baidu-site-verification" content="Y7TrdjqIm8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="qOa5sYnqibCBEjy_O0zyO07-XqEiQmGCxGnGUQWXFz4" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="图像处理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进">
+<meta name="keywords" content="图像处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像去模糊论文阅（fan）读（yi）">
+<meta property="og:url" content="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/index.html">
+<meta property="og:site_name" content="Always with Sunshine">
+<meta property="og:description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-24T16:43:39.930Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图像去模糊论文阅（fan）读（yi）">
+<meta name="twitter:description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/"/>
+
+
+
+
+
+  <title>图像去模糊论文阅（fan）读（yi） | Always with Sunshine</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-103779771-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?babcd1a6aa2a9cc46b0a97909d5b8a83";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Always with Sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">—— growth of a fruit seed</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="果果茶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Always with Sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图像去模糊论文阅（fan）读（yi）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T14:22:35+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/24/图像去模糊论文阅读/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）<br>主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&gt; </p>
+</blockquote>
+<hr>
+<h1 id="Part-1-——-论文阅（fan）读（yi）"><a href="#Part-1-——-论文阅（fan）读（yi）" class="headerlink" title="Part 1 —— 论文阅（fan）读（yi）"></a>Part 1 —— 论文阅（fan）读（yi）</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进行盲去卷积（即不知道h退化函数情况下复原）是有效的。但是，其有一定的限制并且在图像比较亮的时候很难估算退化核。作者观察发现<strong>清晰图像中的亮度高的像素在退化后不亮</strong>。基于这一发现，作者首先数学上阐述了原因，然后定义它为BCP(Bright Channel Prior）。然后，提出了一种为这些图像去模糊的技术，很好得提升了现有的运动去模糊算法的效果。提出的这一方法<strong>结合了BCP和DCP</strong>的优势。这种结合起来的先验知识被称为<code>extreme channels prior</code>并且这种方式协调使用了亮部和暗部的信息，对有效的图像复原是很重要的。大量的实验表明提出的这个方法相比于很多现在的图像复原技术，无论在合成还是自然图片的处理上，都是更有鲁棒性的并且可使用的。</p>
+<h2 id="1、-介绍"><a href="#1、-介绍" class="headerlink" title="1、 介绍"></a>1、 介绍</h2><p>基于退化是均匀和移不变的假设，表示图像退化的数学模型为：</p>
+<p>$$b = l \otimes k + n （空间域）—— (Eq1)$$</p>
+<p>其中，b是退化后的图像，l是原图像，k是退化核，n是噪声，$\otimes$是卷积符号。<br>盲复原就是，在给出了b的情况下，去计算出l和k，而这是一个非常<code>ill-posed problem（解不唯一）</code>，因此需要一些额外的信息和限制条件才能解决这个问题。</p>
+<p>总的来说，大多数已有的算法都利用了自然图像的一些统计信息。比如：[5][13]中的heavy-tailed梯度分布， 归一化稀疏先验[12]，L0正则化先验[25]，patch recurrence prior[15]，强度和梯度结合的先验[16]。最近，Pan et al.在[17]提出了基于DCP[6]来复原图像的有效方法。这个算法（emmm不太理解原因）比别的结果都好一些，但是作者说它在亮点更多和噪声更大的时候不行，因为DCP的先验在这种情况下不适用。</p>
+<p>不过受他的启发，作者就提出了新的先验知识BCP啦。所谓的BCP是，在局部块中的最亮的点在退化后不再亮。数学上证明了这个经验性的发现，并利用这个属性来恢复图像和估计退化核。因此，作者打算使用L0正则化的逆BCP过程来最大化清晰图像的亮部。（？？不理解？）最优化L0正则项是困难的。在提出的算法中，使用半二次罚函数方法来解决非突的L0范数极小化。</p>
+<p>本文的共享总结如下：</p>
+<ul>
+<li>提出了一个新的自然图像的先验知识ECP</li>
+<li>证明了亮的点在退化后减少了，并通过比较5000个自然图像和模糊后的结果来验证理论。</li>
+<li>使用BCP来blabla(没看懂，希望后文有)</li>
+</ul>
+<h2 id="2、-相关工作"><a href="#2、-相关工作" class="headerlink" title="2、 相关工作"></a>2、 相关工作</h2><p>今年，在图像盲复原的工作上有很大的发展。很多方式使用尖锐的边缘来估计退化核。例子、例子、例子…….但是，这个算法计算复杂度高不实用，需要大的数据集操作。</p>
+<p>其他方法使用了一些统计的先验知识和附加信息。例子、例子、栗子……尽管这些技术对退化核估计是有用的，但他们会在一开始就丢失一些细节。Hu et al.使用亮条纹来实现对低亮度的图像的复原。</p>
+<p>近来，提出了L0稀疏表示的新方法，并在论文[25]中的正则化去模糊中被使用。论文[16]中，Pan等人对特定文本在强度和梯度上使用L0先验来去模糊，是对其的一个改进。在[17]中，通过研究模糊过程中暗像素的变化，提出了一个遗传方法。<strong>在【6】中提出了DCP，基于的观察是：大多数的自然图片中，至少有一个颜色通道的像素值比较接近0。而Pan等人在【17】中将这个先验修改为：自然图像中暗通道是稀疏的而不是0，并强调了核估计的稀疏性。</strong></p>
+<p>尽管这个工作很出色，对很多数据都适用，但是没有暗像素就没有办法了嘛。</p>
+<h2 id="BCP"><a href="#BCP" class="headerlink" title="BCP"></a>BCP</h2><p>在大多数的自然场景块中，至少一个颜色通道的像素值会很大。为了规范化得描述这个发现，定义一张图I的亮通道为：<br>$$B(I)(x) = \max_{y \in \Omega (x)} \left ( \max I^c (y) | c\in (r,g,b) \right<br>) —— Eq(2)$$<br>其中，x是像素点的位置，$I^c$是I的颜色通道，$\Omega(X)$表示以x为中心的一个局部的块。从上式可以看出的，所谓的亮通道是由两个max得出来的。如果I是一个灰度图，那只有第一个max是有用的。（<strong>也就是说所谓的BC，以这个点为中心的块中所有像素点三个颜色通道中最大的一个值</strong>）使用这个概念，我们可以总结B(I)的强度应该是很高的，可能接近1的，除了在一些缺少光照或者阴影占主导地位的图片中。将这样的发现称为BCP。</p>
+<p>在图像的亮通道中高的强度值主要依赖于三个事实：</p>
+<ul>
+<li>(1)光照：阳光过其他存在的光源，在白天天空的部分会被太阳照亮。</li>
+<li>(2)白色或者亮的物体和表面，比如白色的墙，地板</li>
+<li>(3)斑斓的物理或平面，如只含在至少一个颜色通道上反射比较强的物体，绿叶黄花蓝色的水面，也会导致亮通道的高强度。</li>
+</ul>
+<p>使用PASCAL2012数据集中随机挑选的5000张无人为处理的图片验证了这个观察的结果：</p>
+<ul>
+<li>图2(a)表示了亮通道中不同强度的像素点分布的直方图。可以看到强度高的点占很大比重</li>
+<li>图2(b)和(c)分别是随着强度是亮通道和暗通道的可能性，其中两者横坐标方向不同，是为了可以比较直观的看出曲线走势相似，可以说由图中BCP和DCP是相当的。</li>
+</ul>
+<p>为了在去模糊的过程中使用BCP，作者分析了亮通道在退化过程中是如何变化的。</p>
+<p>为了便于比较，假想噪声小到可以疏略，有<br>$$b(x) = \sum_{z \in \Phi(x)} l \left( x-z+[\dfrac{p}{2}] \right) k(z) —— (3)$$</p>
+<p>其中$\Phi(x)$表示以x为中心的块，大小为p，这个大小和退化核k的大小相同。$[\frac{p}{2}]$表示取整。根据退化的属性，有 $k(z)\geqslant 0$ 和 $\sum_{z\in \Phi(x)} k(z) = 1$.</p>
+<blockquote>
+<p><strong>模糊核先验知识 </strong><br>首先图像的形成过程就是光子在传感器上不断累积的过程，因此模糊核中的所有元素都是<strong>非负的</strong>，即其次，更为重要的一点是模糊核通常是稀疏的，也即包含相对少量的非零元素。模糊核的这种非负稀疏特点被之前的图像去模糊方法广泛地使用。<br>第二个先验知识不知道依据。</p>
+</blockquote>
+<p>首先，对上述式子的理解比较直观，认为z是k(z)中的一个点（坐标从0,0到p变化），则在原图上实际中心为x时，坐标应该是$x-z+[\frac{p}{2}]$，这里这里加了$z \in \Phi(x)$的条件，应该是默认边缘的话都填充0。则文中的不等式推导(4)就很容易可以得出了结果:<br>$$b(x) \leqslant \max_{y\in \Omega(X)} l(y) —— (4)$$<br>不等式(4)说明点x处的强度在退化后不会比原始图像中其邻域最亮的点大。特殊情况是，如果x本身正好是邻域中最亮的，那不等式(4)等价于$b(x)\leqslant l(x)$。将这一结果应用到亮通道的定义中，满足：<br>$$B(b)(x) \leqslant B(l)(x) —— (5)$$<br>(5)的证明过程需要详细解释：</p>
+<ul>
+<li>第一步是根据定义展开</li>
+<li>第二步不太理解，可能是为了简化？只考虑其中一个通道的话，可以这么写吧</li>
+<li>第三步也是根据定义展开</li>
+<li>第四步，主要是由于z和y并没有实际上的联系，z表示的是k中一个位置，所以在y固定时求和的最大，肯定没有固定对每个一个z选择让后面这个值最大的y所得到的结果大</li>
+<li>第五步是为了划规到x的邻域，因为此处所涉及到的l中的点是在原图中y的邻域里面的，而y是在x的邻域中，所以实际上涉及到的点相对于x的邻域大小和在B(b)(x)中的邻域大小不一样</li>
+</ul>
+<p>而两个邻域分别是$\Omega(x)$和$\Omega^l(X)$。两个的面积关系如下：$S(\Omega^l) = S(\Omega) + p$<br>为了保持这个性质，选择小的块进行计算。式5表示在模糊后图像的亮通道比相应在亮的图中的强度低。因此，还可以得出：<br>$$ || 1- B(b)(x)||0 \geqslant || 1-B(l)(x)||0$$<br>(L0范数是指向量中不是0的个数)，等号当且仅当所有点x周围的点的三个通道的强度都小于1或者所有点的值相等时间，才会成立。而实际上，使用了PASCAL2012的数据集分析，显示出原图中强度为1的点真的比模糊后的多，再次证明一下自己提出的BCP的正确性。<br>、</p>
+<h2 id="4、-终于到算法内容啦（希望不要看不懂"><a href="#4、-终于到算法内容啦（希望不要看不懂" class="headerlink" title="4、 终于到算法内容啦（希望不要看不懂"></a>4、 终于到算法内容啦（希望不要看不懂</h2><p>在这一节，给了一个忙复原的模型，并且给了一个核估计的有效的算法。使用MAP框架 —— 最大后验概率方法。<br>$$(\hat{l},\hat{k}) = arg \min_{l,k} \ell(l\otimes k, b) + \gamma p(k) + \lambda p(l) —— (7)$$</p>
+<p>emmm，其中各项的内容希望会在后面给出</p>
+<h3 id="4-1-提出的ECP"><a href="#4-1-提出的ECP" class="headerlink" title="4.1 提出的ECP"></a>4.1 提出的ECP</h3><p>使用ECP来给出p(l)的定义</p>
+<p>使用ECP和DCP结合来给出p(l)的定义</p>
+<h2 id="4-2-目标函数"><a href="#4-2-目标函数" class="headerlink" title="4.2 目标函数"></a>4.2 目标函数</h2><p>简而言之，式子10就是目标函数，看着觉得看不懂，鼓励一下自己加油，只要知道它怎么计算就好了</p>
+<p>目标函数中的第一项是为了刻画还原出来的图像与模糊的图像之间的差别，两者差距不能太大，第二项是要求k尽可能稀疏，第三项是为了保留图像中一个大的梯度变换忽视一些小的变化，第四项则是保证暗通道的稀疏性</p>
+<h2 id="4-3-最优化这个目标函数"><a href="#4-3-最优化这个目标函数" class="headerlink" title="4.3 最优化这个目标函数"></a>4.3 最优化这个目标函数</h2><p>直接去解到10的最优解是很困难的，因此选择使用基于半二次罚函数的交替最小化的算法(可能需要看一下论文24的内容？)<br>对于生成的中间结果的 原图l 和 模糊核k，通过调整其中的一个来优化目标函数。<br>因此，问题变成了两个子问题：<br>固定k，求l使得(11)最小和固定l求k使得(12)最小</p>
+<h3 id="4-3-1-估计原图像"><a href="#4-3-1-估计原图像" class="headerlink" title="4.3.1 估计原图像"></a>4.3.1 估计原图像</h3><p>考虑到L0范数计算上难以处理，提出一个有效的算法来解决问题11，基于半二次罚函数的技术。<br>引入新的辅助变量g,p,q，使得目标函数(11)的形式变成(13)，其中$\alpha , \beta, \omega$是正的惩罚参数。然后交替得最小化l,p,q,g来解决问题。<br>则在给定p,q,g的情况下，问题变成(14)，（15）定义了对于中间图像D(l)和B(l)的具体计算方式，然后再把问题以(16)的形式表示<br>则实际上最优解应为式子(17)的表示<br>给定l的时候，相应的g,pg分别计算出都为(21)的结果</p>
+<h3 id="4-3-2-估计模糊核"><a href="#4-3-2-估计模糊核" class="headerlink" title="4.3.2 估计模糊核"></a>4.3.2 估计模糊核</h3><p>类似的方式计算，最后的结果为(23)</p>
+
+      
+    </div>
+
+    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图像处理/" rel="tag"># 图像处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/22/编译技术笔记（一）-词法分析/" rel="next" title="编译技术笔记（一） 词法分析">
+                <i class="fa fa-chevron-left"></i> 编译技术笔记（一） 词法分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/me.jpg"
+               alt="果果茶" />
+          <p class="site-author-name" itemprop="name">果果茶</p>
+           
+              <p class="site-description motion-element" itemprop="description">Hello ~ Welcome to a cat holic's cafe</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SimGuo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/tetWQKWfewNtgJ7" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3258482183/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/149158666/" target="_blank" title="douban">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  douban
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/guo-guo-23-84/activities" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1-——-论文阅（fan）读（yi）"><span class="nav-number">1.</span> <span class="nav-text">Part 1 —— 论文阅（fan）读（yi）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1、 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-相关工作"><span class="nav-number">1.3.</span> <span class="nav-text">2、 相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BCP"><span class="nav-number">1.4.</span> <span class="nav-text">BCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、-终于到算法内容啦（希望不要看不懂"><span class="nav-number">1.5.</span> <span class="nav-text">4、 终于到算法内容啦（希望不要看不懂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-提出的ECP"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1 提出的ECP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-目标函数"><span class="nav-number">1.6.</span> <span class="nav-text">4.2 目标函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-最优化这个目标函数"><span class="nav-number">1.7.</span> <span class="nav-text">4.3 最优化这个目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-估计原图像"><span class="nav-number">1.7.1.</span> <span class="nav-text">4.3.1 估计原图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-估计模糊核"><span class="nav-number">1.7.2.</span> <span class="nav-text">4.3.2 估计模糊核</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">果果茶</span>
+</div>
+
+<div class="powered-by">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+  本站总访问量 <span id="busuanzi_value_site_uv"></span>次
+  </span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://simguo-github-io.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://simguo.github.io/2017/12/24/图像去模糊论文阅读/';
+          this.page.identifier = '2017/12/24/图像去模糊论文阅读/';
+          this.page.title = '图像去模糊论文阅（fan）读（yi）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://simguo-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.1"></script>
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

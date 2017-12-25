@@ -295,6 +295,385 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="果果茶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Always with Sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/24/图像去模糊论文阅读/" itemprop="url">图像去模糊论文阅（fan）读（yi）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T14:22:35+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/24/图像去模糊论文阅读/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）<br>主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&gt; </p>
+</blockquote>
+<hr>
+<h1 id="Part-1-——-论文阅（fan）读（yi）"><a href="#Part-1-——-论文阅（fan）读（yi）" class="headerlink" title="Part 1 —— 论文阅（fan）读（yi）"></a>Part 1 —— 论文阅（fan）读（yi）</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进行盲去卷积（即不知道h退化函数情况下复原）是有效的。但是，其有一定的限制并且在图像比较亮的时候很难估算退化核。作者观察发现<strong>清晰图像中的亮度高的像素在退化后不亮</strong>。基于这一发现，作者首先数学上阐述了原因，然后定义它为BCP(Bright Channel Prior）。然后，提出了一种为这些图像去模糊的技术，很好得提升了现有的运动去模糊算法的效果。提出的这一方法<strong>结合了BCP和DCP</strong>的优势。这种结合起来的先验知识被称为<code>extreme channels prior</code>并且这种方式协调使用了亮部和暗部的信息，对有效的图像复原是很重要的。大量的实验表明提出的这个方法相比于很多现在的图像复原技术，无论在合成还是自然图片的处理上，都是更有鲁棒性的并且可使用的。</p>
+<h2 id="1、-介绍"><a href="#1、-介绍" class="headerlink" title="1、 介绍"></a>1、 介绍</h2><p>基于退化是均匀和移不变的假设，表示图像退化的数学模型为：</p>
+<p>$$b = l \otimes k + n （空间域）—— (Eq1)$$</p>
+<p>其中，b是退化后的图像，l是原图像，k是退化核，n是噪声，$\otimes$是卷积符号。<br>盲复原就是，在给出了b的情况下，去计算出l和k，而这是一个非常<code>ill-posed problem（解不唯一）</code>，因此需要一些额外的信息和限制条件才能解决这个问题。</p>
+<p>总的来说，大多数已有的算法都利用了自然图像的一些统计信息。比如：[5][13]中的heavy-tailed梯度分布， 归一化稀疏先验[12]，L0正则化先验[25]，patch recurrence prior[15]，强度和梯度结合的先验[16]。最近，Pan et al.在[17]提出了基于DCP[6]来复原图像的有效方法。这个算法（emmm不太理解原因）比别的结果都好一些，但是作者说它在亮点更多和噪声更大的时候不行，因为DCP的先验在这种情况下不适用。</p>
+<p>不过受他的启发，作者就提出了新的先验知识BCP啦。所谓的BCP是，在局部块中的最亮的点在退化后不再亮。数学上证明了这个经验性的发现，并利用这个属性来恢复图像和估计退化核。因此，作者打算使用L0正则化的逆BCP过程来最大化清晰图像的亮部。（？？不理解？）最优化L0正则项是困难的。在提出的算法中，使用半二次罚函数方法来解决非突的L0范数极小化。</p>
+<p>本文的共享总结如下：</p>
+<ul>
+<li>提出了一个新的自然图像的先验知识ECP</li>
+<li>证明了亮的点在退化后减少了，并通过比较5000个自然图像和模糊后的结果来验证理论。</li>
+<li>使用BCP来blabla(没看懂，希望后文有)</li>
+</ul>
+<h2 id="2、-相关工作"><a href="#2、-相关工作" class="headerlink" title="2、 相关工作"></a>2、 相关工作</h2><p>今年，在图像盲复原的工作上有很大的发展。很多方式使用尖锐的边缘来估计退化核。例子、例子、例子…….但是，这个算法计算复杂度高不实用，需要大的数据集操作。</p>
+<p>其他方法使用了一些统计的先验知识和附加信息。例子、例子、栗子……尽管这些技术对退化核估计是有用的，但他们会在一开始就丢失一些细节。Hu et al.使用亮条纹来实现对低亮度的图像的复原。</p>
+<p>近来，提出了L0稀疏表示的新方法，并在论文[25]中的正则化去模糊中被使用。论文[16]中，Pan等人对特定文本在强度和梯度上使用L0先验来去模糊，是对其的一个改进。在[17]中，通过研究模糊过程中暗像素的变化，提出了一个遗传方法。<strong>在【6】中提出了DCP，基于的观察是：大多数的自然图片中，至少有一个颜色通道的像素值比较接近0。而Pan等人在【17】中将这个先验修改为：自然图像中暗通道是稀疏的而不是0，并强调了核估计的稀疏性。</strong></p>
+<p>尽管这个工作很出色，对很多数据都适用，但是没有暗像素就没有办法了嘛。</p>
+<h2 id="BCP"><a href="#BCP" class="headerlink" title="BCP"></a>BCP</h2><p>在大多数的自然场景块中，至少一个颜色通道的像素值会很大。为了规范化得描述这个发现，定义一张图I的亮通道为：<br>$$B(I)(x) = \max_{y \in \Omega (x)} \left ( \max I^c (y) | c\in (r,g,b) \right<br>) —— Eq(2)$$<br>其中，x是像素点的位置，$I^c$是I的颜色通道，$\Omega(X)$表示以x为中心的一个局部的块。从上式可以看出的，所谓的亮通道是由两个max得出来的。如果I是一个灰度图，那只有第一个max是有用的。（<strong>也就是说所谓的BC，以这个点为中心的块中所有像素点三个颜色通道中最大的一个值</strong>）使用这个概念，我们可以总结B(I)的强度应该是很高的，可能接近1的，除了在一些缺少光照或者阴影占主导地位的图片中。将这样的发现称为BCP。</p>
+<p>在图像的亮通道中高的强度值主要依赖于三个事实：</p>
+<ul>
+<li>(1)光照：阳光过其他存在的光源，在白天天空的部分会被太阳照亮。</li>
+<li>(2)白色或者亮的物体和表面，比如白色的墙，地板</li>
+<li>(3)斑斓的物理或平面，如只含在至少一个颜色通道上反射比较强的物体，绿叶黄花蓝色的水面，也会导致亮通道的高强度。</li>
+</ul>
+<p>使用PASCAL2012数据集中随机挑选的5000张无人为处理的图片验证了这个观察的结果：</p>
+<ul>
+<li>图2(a)表示了亮通道中不同强度的像素点分布的直方图。可以看到强度高的点占很大比重</li>
+<li>图2(b)和(c)分别是随着强度是亮通道和暗通道的可能性，其中两者横坐标方向不同，是为了可以比较直观的看出曲线走势相似，可以说由图中BCP和DCP是相当的。</li>
+</ul>
+<p>为了在去模糊的过程中使用BCP，作者分析了亮通道在退化过程中是如何变化的。</p>
+<p>为了便于比较，假想噪声小到可以疏略，有<br>$$b(x) = \sum_{z \in \Phi(x)} l \left( x-z+[\dfrac{p}{2}] \right) k(z) —— (3)$$</p>
+<p>其中$\Phi(x)$表示以x为中心的块，大小为p，这个大小和退化核k的大小相同。$[\frac{p}{2}]$表示取整。根据退化的属性，有 $k(z)\geqslant 0$ 和 $\sum_{z\in \Phi(x)} k(z) = 1$.</p>
+<blockquote>
+<p><strong>模糊核先验知识 </strong><br>首先图像的形成过程就是光子在传感器上不断累积的过程，因此模糊核中的所有元素都是<strong>非负的</strong>，即其次，更为重要的一点是模糊核通常是稀疏的，也即包含相对少量的非零元素。模糊核的这种非负稀疏特点被之前的图像去模糊方法广泛地使用。<br>第二个先验知识不知道依据。</p>
+</blockquote>
+<p>首先，对上述式子的理解比较直观，认为z是k(z)中的一个点（坐标从0,0到p变化），则在原图上实际中心为x时，坐标应该是$x-z+[\frac{p}{2}]$，这里这里加了$z \in \Phi(x)$的条件，应该是默认边缘的话都填充0。则文中的不等式推导(4)就很容易可以得出了结果:<br>$$b(x) \leqslant \max_{y\in \Omega(X)} l(y) —— (4)$$<br>不等式(4)说明点x处的强度在退化后不会比原始图像中其邻域最亮的点大。特殊情况是，如果x本身正好是邻域中最亮的，那不等式(4)等价于$b(x)\leqslant l(x)$。将这一结果应用到亮通道的定义中，满足：<br>$$B(b)(x) \leqslant B(l)(x) —— (5)$$<br>(5)的证明过程需要详细解释：</p>
+<ul>
+<li>第一步是根据定义展开</li>
+<li>第二步不太理解，可能是为了简化？只考虑其中一个通道的话，可以这么写吧</li>
+<li>第三步也是根据定义展开</li>
+<li>第四步，主要是由于z和y并没有实际上的联系，z表示的是k中一个位置，所以在y固定时求和的最大，肯定没有固定对每个一个z选择让后面这个值最大的y所得到的结果大</li>
+<li>第五步是为了划规到x的邻域，因为此处所涉及到的l中的点是在原图中y的邻域里面的，而y是在x的邻域中，所以实际上涉及到的点相对于x的邻域大小和在B(b)(x)中的邻域大小不一样</li>
+</ul>
+<p>而两个邻域分别是$\Omega(x)$和$\Omega^l(X)$。两个的面积关系如下：$S(\Omega^l) = S(\Omega) + p$<br>为了保持这个性质，选择小的块进行计算。式5表示在模糊后图像的亮通道比相应在亮的图中的强度低。因此，还可以得出：<br>$$ || 1- B(b)(x)||0 \geqslant || 1-B(l)(x)||0$$<br>(L0范数是指向量中不是0的个数)，等号当且仅当所有点x周围的点的三个通道的强度都小于1或者所有点的值相等时间，才会成立。而实际上，使用了PASCAL2012的数据集分析，显示出原图中强度为1的点真的比模糊后的多，再次证明一下自己提出的BCP的正确性。<br>、</p>
+<h2 id="4、-终于到算法内容啦（希望不要看不懂"><a href="#4、-终于到算法内容啦（希望不要看不懂" class="headerlink" title="4、 终于到算法内容啦（希望不要看不懂"></a>4、 终于到算法内容啦（希望不要看不懂</h2><p>在这一节，给了一个忙复原的模型，并且给了一个核估计的有效的算法。使用MAP框架 —— 最大后验概率方法。<br>$$(\hat{l},\hat{k}) = arg \min_{l,k} \ell(l\otimes k, b) + \gamma p(k) + \lambda p(l) —— (7)$$</p>
+<p>emmm，其中各项的内容希望会在后面给出</p>
+<h3 id="4-1-提出的ECP"><a href="#4-1-提出的ECP" class="headerlink" title="4.1 提出的ECP"></a>4.1 提出的ECP</h3><p>使用ECP来给出p(l)的定义</p>
+<p>使用ECP和DCP结合来给出p(l)的定义</p>
+<h2 id="4-2-目标函数"><a href="#4-2-目标函数" class="headerlink" title="4.2 目标函数"></a>4.2 目标函数</h2><p>简而言之，式子10就是目标函数，看着觉得看不懂，鼓励一下自己加油，只要知道它怎么计算就好了</p>
+<p>目标函数中的第一项是为了刻画还原出来的图像与模糊的图像之间的差别，两者差距不能太大，第二项是要求k尽可能稀疏，第三项是为了保留图像中一个大的梯度变换忽视一些小的变化，第四项则是保证暗通道的稀疏性</p>
+<h2 id="4-3-最优化这个目标函数"><a href="#4-3-最优化这个目标函数" class="headerlink" title="4.3 最优化这个目标函数"></a>4.3 最优化这个目标函数</h2><p>直接去解到10的最优解是很困难的，因此选择使用基于半二次罚函数的交替最小化的算法(可能需要看一下论文24的内容？)<br>对于生成的中间结果的 原图l 和 模糊核k，通过调整其中的一个来优化目标函数。<br>因此，问题变成了两个子问题：<br>固定k，求l使得(11)最小和固定l求k使得(12)最小</p>
+<h3 id="4-3-1-估计原图像"><a href="#4-3-1-估计原图像" class="headerlink" title="4.3.1 估计原图像"></a>4.3.1 估计原图像</h3><p>考虑到L0范数计算上难以处理，提出一个有效的算法来解决问题11，基于半二次罚函数的技术。<br>引入新的辅助变量g,p,q，使得目标函数(11)的形式变成(13)，其中$\alpha , \beta, \omega$是正的惩罚参数。然后交替得最小化l,p,q,g来解决问题。<br>则在给定p,q,g的情况下，问题变成(14)，（15）定义了对于中间图像D(l)和B(l)的具体计算方式，然后再把问题以(16)的形式表示<br>则实际上最优解应为式子(17)的表示<br>给定l的时候，相应的g,pg分别计算出都为(21)的结果</p>
+<h3 id="4-3-2-估计模糊核"><a href="#4-3-2-估计模糊核" class="headerlink" title="4.3.2 估计模糊核"></a>4.3.2 估计模糊核</h3><p>类似的方式计算，最后的结果为(23)</p>
+
+          
+        
+      
+    </div>
+
+    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2017/09/22/编译技术笔记（一）-词法分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="果果茶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Always with Sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/22/编译技术笔记（一）-词法分析/" itemprop="url">编译技术笔记（一） 词法分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-22T10:23:23+08:00">
+                2017-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn/" itemprop="url" rel="index">
+                    <span itemprop="name">Learn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/22/编译技术笔记（一）-词法分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://simguo.github.io/2017/09/22/编译技术笔记（一）-词法分析/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>2017.12.23日的吐槽，说实话我也看不懂我这都写的啥了</p>
+</blockquote>
+<h2 id="词法分析器的概念"><a href="#词法分析器的概念" class="headerlink" title="词法分析器的概念"></a>词法分析器的概念</h2><p>关于NFA，首先了解状态转换图（由表示状态的元素，和边（连接状态）组成）</p>
+<p><strong>状态转换图实例</strong></p>
+<ul>
+<li>关系算符的转换</li>
+<li>标识符和保留字的转换图</li>
+<li>无符号数的转换图<ul>
+<li>digit表示数字, digit+表示不少于一个数字</li>
+<li>.表示小数点</li>
+<li>E表示指数</li>
+<li>()？表示可有可无</li>
+</ul>
+</li>
+</ul>
+<p>然后可以根据状态图手动编写 <strong>词法分析器</strong>。</p>
+<ol>
+<li>首先通过正则表达式来描述词法单元的模式</li>
+<li><strong>基本目标</strong>：判断一个串s是否属于一个正则表达式R表示的语言</li>
+</ol>
+<p>词法自动识别的过程中可能遇到的问题：</p>
+<ul>
+<li>匹配最长可能的串</li>
+<li>排在前面的正则表达式优先匹配</li>
+<li>构造一个ERROR正则表达式</li>
+</ul>
+<p>##词法分析器生成工具 —— LEX<br>Lex 是一种词法分析程序的自动构造工具。通常和Yacc一起使用，生成编译器的前端（生成中间代码，后端对程序进行优化）</p>
+<p>过程： <code>正则表达式 -&gt; NFA -&gt; DFA -&gt; minDFA -&gt;词法分析器</code> （利用了正则表达式和DFA的等价性）</p>
+<h2 id="FA-有限自动机"><a href="#FA-有限自动机" class="headerlink" title="FA 有限自动机"></a>FA 有限自动机</h2><p>DFA确定的有限自动机（没输入一个字符，进入确定的状态）<br>NFA不确定的有限自动机</p>
+<p>DFA的形式定义：<code>五元组 Ｍ＝(Σ, Q, q0, F, δ),</code></p>
+<p>P29页对应的正则表达式：(a|b)<em>(aa|bb)(a|b)</em><br>或者(b|\e)(ab)<em>(b|aa)(b|a)</em></p>
+<p><strong>DFA 示例2 —— 能被5整除的二进制数</strong><br> 图中表示的状态其实是余数的状态变化。</p>
+
+          
+        
+      
+    </div>
+
+    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2017/08/07/用可视化进行数据叙事阅读笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1025,7 +1404,7 @@
 <p>我在文件夹中搜索带<code>canvas-nest</code>的项，发现next中并没有提供对其样式的修改的支持，<code>canvas-nest</code>只出现在<code>canvas-nest.min.js</code>和一个判断配置项中<code>canvas-nest</code>是否为真，为真则将对应js将入一个js插件列表中。</p>
 <p>因此，我认为只能通过修改<code>canvas-nest.min.js</code>的默认值来达到修改目的。</p>
 <p>其实，只要搜索便可以找到配置项在文件中对应的位置，比如<code>c:o(v,&quot;color&quot;,&quot;0,0,0&quot;)</code>，此处<code>0,0,0</code>便是默认值，修改即可。</p>
-<hr>
+<h2 id="修改标签样式"><a href="#修改标签样式" class="headerlink" title="修改标签样式"></a>修改标签样式</h2><hr>
 <h1 id="文章布局修改"><a href="#文章布局修改" class="headerlink" title="文章布局修改"></a>文章布局修改</h1><h2 id="整体修改思路-1"><a href="#整体修改思路-1" class="headerlink" title="整体修改思路"></a>整体修改思路</h2><p>在<code>\themes\layout\_macro\post.swig</code>中是文章的整体定义。利用Sublime将局部收起，我们可以很清晰地看到文章的整体架构，因此，在如果想在文章头部或者尾部增加一些元素，或者调整文章局部元素，都可以通过修改<code>post.swig</code>中的部分代码实现。</p>
 <h2 id="在文章尾部添加End"><a href="#在文章尾部添加End" class="headerlink" title="在文章尾部添加End"></a>在文章尾部添加End</h2><p>根据思路，可以看到<code>post.swig</code>中文章结束应该是在<code>&lt;div class=&quot;post-body.....&lt;/div&gt;</code>之后，后面是微信打赏部分<code>&#39;wechat-subscriber.swig&#39;</code>，在两者中间添加自己定义的样式的结束标志即可~</p>
 <p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color:#73a2c0;font-size:25px;padding-top:40px;font-family:'YeahPapa';"</span>&gt;</span></div><div class="line">    ---------------- ♥ The End ♥ ----------------</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -1033,7 +1412,7 @@
 <h2 id="修改文章的样式"><a href="#修改文章的样式" class="headerlink" title="修改文章的样式"></a>修改文章的样式</h2><p>我的文章样式修改很简单啦，只是将内容背景改成了半透明，加了周围的阴影w。</p>
 <p>对custom.style的添加：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.content-wrap</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.5);</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">6px</span> <span class="number">#dbdbdb</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
-<h1 id="让谷歌和百度搜索到自己在GitHub上的博客"><a href="#让谷歌和百度搜索到自己在GitHub上的博客" class="headerlink" title="让谷歌和百度搜索到自己在GitHub上的博客"></a>让谷歌和百度搜索到自己在GitHub上的博客</h1><p><a href="https://maxwellyue.github.io/2016/08/07/%E5%A6%82%E4%BD%95%E8%AE%A9%E8%B0%B7%E6%AD%8C%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1GitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external"><i class="fa fa-book"></i> 如何让谷歌和百度搜索到自己在GitHub上的博客</a></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h1 id="让谷歌和百度搜索到自己在GitHub上的博客"><a href="#让谷歌和百度搜索到自己在GitHub上的博客" class="headerlink" title="让谷歌和百度搜索到自己在GitHub上的博客"></a>让谷歌和百度搜索到自己在GitHub上的博客</h1><p><a href="https://maxwellyue.github.io/2016/08/07/%E5%A6%82%E4%BD%95%E8%AE%A9%E8%B0%B7%E6%AD%8C%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1GitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external"><i class="fa fa-book"></i> 如何让谷歌和百度搜索到自己在GitHub上的博客</a></p>
 <hr>
 <blockquote>
 <p>未完待续</p>
@@ -1292,7 +1671,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1303,7 +1682,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1314,7 +1693,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
