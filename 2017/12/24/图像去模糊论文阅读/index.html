@@ -102,19 +102,19 @@
 
 
 
-<meta name="description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进">
+<meta name="description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要 摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中">
 <meta name="keywords" content="图像处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像去模糊论文阅（fan）读（yi）">
 <meta property="og:url" content="https://simguo.github.io/2017/12/24/图像去模糊论文阅读/index.html">
 <meta property="og:site_name" content="Always with Sunshine">
-<meta property="og:description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进">
+<meta property="og:description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要 摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://simguo.github.io/img/20171225/ECP_Algorithm.JPG">
-<meta property="og:updated_time" content="2017-12-25T07:50:07.802Z">
+<meta property="og:updated_time" content="2017-12-25T07:54:50.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像去模糊论文阅（fan）读（yi）">
-<meta name="twitter:description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进">
+<meta name="twitter:description" content="阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&amp;gt;    Part 1 —— 论文阅（fan）读（yi）摘要 摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中">
 <meta name="twitter:image" content="https://simguo.github.io/img/20171225/ECP_Algorithm.JPG">
 
 
@@ -397,7 +397,8 @@
 <p>阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）<br>主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&gt; </p>
 </blockquote>
 <hr>
-<h1 id="Part-1-——-论文阅（fan）读（yi）"><a href="#Part-1-——-论文阅（fan）读（yi）" class="headerlink" title="Part 1 —— 论文阅（fan）读（yi）"></a>Part 1 —— 论文阅（fan）读（yi）</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进行盲去卷积（即不知道h退化函数情况下复原）是有效的。但是，其有一定的限制并且在图像比较亮的时候很难估算退化核。作者观察发现<strong>清晰图像中的亮度高的像素在退化后不亮</strong>。基于这一发现，作者首先数学上阐述了原因，然后定义它为BCP(Bright Channel Prior）。然后，提出了一种为这些图像去模糊的技术，很好得提升了现有的运动去模糊算法的效果。提出的这一方法<strong>结合了BCP和DCP</strong>的优势。这种结合起来的先验知识被称为<code>extreme channels prior</code>并且这种方式协调使用了亮部和暗部的信息，对有效的图像复原是很重要的。大量的实验表明提出的这个方法相比于很多现在的图像复原技术，无论在合成还是自然图片的处理上，都是更有鲁棒性的并且可使用的。</p>
+<h1 id="Part-1-——-论文阅（fan）读（yi）"><a href="#Part-1-——-论文阅（fan）读（yi）" class="headerlink" title="Part 1 —— 论文阅（fan）读（yi）"></a>Part 1 —— 论文阅（fan）读（yi）</h1><p><strong>摘要</strong></p>
+<p>摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进行盲去卷积（即不知道h退化函数情况下复原）是有效的。但是，其有一定的限制并且在图像比较亮的时候很难估算退化核。作者观察发现<strong>清晰图像中的亮度高的像素在退化后不亮</strong>。基于这一发现，作者首先数学上阐述了原因，然后定义它为BCP(Bright Channel Prior）。然后，提出了一种为这些图像去模糊的技术，很好得提升了现有的运动去模糊算法的效果。提出的这一方法<strong>结合了BCP和DCP</strong>的优势。这种结合起来的先验知识被称为<code>extreme channels prior</code>并且这种方式协调使用了亮部和暗部的信息，对有效的图像复原是很重要的。大量的实验表明提出的这个方法相比于很多现在的图像复原技术，无论在合成还是自然图片的处理上，都是更有鲁棒性的并且可使用的。</p>
 <h2 id="1、-介绍"><a href="#1、-介绍" class="headerlink" title="1、 介绍"></a>1、 介绍</h2><p>基于退化是均匀和移不变的假设，表示图像退化的数学模型为：</p>
 <p>$$b = l \otimes k + n （空间域）—— (Eq1)$$</p>
 <p>其中，b是退化后的图像，l是原图像，k是退化核，n是噪声，$\otimes$是卷积符号。<br>盲复原就是，在给出了b的情况下，去计算出l和k，而这是一个非常<code>ill-posed problem（解不唯一）</code>，因此需要一些额外的信息和限制条件才能解决这个问题。</p>
@@ -452,7 +453,10 @@
 <blockquote>
 <p>感觉数学计算太复杂了，我智商跟不上了QVQ</p>
 </blockquote>
-<h2 id="Part-2-其他"><a href="#Part-2-其他" class="headerlink" title="Part 2 其他"></a>Part 2 其他</h2><p><img src="/img/20171225/ECP_Algorithm.JPG"></p>
+<hr>
+<h1 id="Part-2-其他"><a href="#Part-2-其他" class="headerlink" title="Part 2 其他"></a>Part 2 其他</h1><p>简单自己画了一下实际算法的流程。</p>
+<p><img src="/img/20171225/ECP_Algorithm.JPG"></p>
+<p>惊喜得发现作者主页有Matlab源码，认真学习源码去啦。</p>
 
       
     </div>
@@ -506,6 +510,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/26/web作业十一 —— 基于hits算法来找www.pku.edu.cn的相似页面/" rel="prev" title="基于hits算法来找www.pku.edu.cn的相似页面">
+                基于hits算法来找www.pku.edu.cn的相似页面 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -585,7 +593,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -607,7 +615,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -689,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1-——-论文阅（fan）读（yi）"><span class="nav-number">1.</span> <span class="nav-text">Part 1 —— 论文阅（fan）读（yi）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1、 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-相关工作"><span class="nav-number">1.3.</span> <span class="nav-text">2、 相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BCP"><span class="nav-number">1.4.</span> <span class="nav-text">BCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、-终于到算法内容啦（希望不要看不懂"><span class="nav-number">1.5.</span> <span class="nav-text">4、 终于到算法内容啦（希望不要看不懂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-提出的ECP"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1 提出的ECP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-目标函数"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.2 目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-最优化这个目标函数"><span class="nav-number">1.5.3.</span> <span class="nav-text">4.3 最优化这个目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-估计原图像"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">4.3.1 估计原图像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-估计模糊核"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">4.3.2 估计模糊核</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-2-其他"><span class="nav-number">1.6.</span> <span class="nav-text">Part 2 其他</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1-——-论文阅（fan）读（yi）"><span class="nav-number">1.</span> <span class="nav-text">Part 1 —— 论文阅（fan）读（yi）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、-介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1、 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-相关工作"><span class="nav-number">1.2.</span> <span class="nav-text">2、 相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BCP"><span class="nav-number">1.3.</span> <span class="nav-text">BCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、-终于到算法内容啦（希望不要看不懂"><span class="nav-number">1.4.</span> <span class="nav-text">4、 终于到算法内容啦（希望不要看不懂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-提出的ECP"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 提出的ECP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-目标函数"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-最优化这个目标函数"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 最优化这个目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-估计原图像"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.3.1 估计原图像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-估计模糊核"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">4.3.2 估计模糊核</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-2-其他"><span class="nav-number">2.</span> <span class="nav-text">Part 2 其他</span></a></li></ol></div>
             
 
           </div>
@@ -712,8 +720,8 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
