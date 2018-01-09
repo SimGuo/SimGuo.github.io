@@ -110,7 +110,7 @@
 <meta property="og:description" content="2008年1.B类地址能容纳多少台主机A类地址第一位为0，前缀长7位，后缀长24位，可以容纳$2^{24}-2$主机，B类地址前两位为10，前缀长14位，后缀长16位，每个B类地址能容纳$2^{16}-2$台主机，C类地址前三位为110，前缀长21位，后缀长8位，每个C类地址能容纳$2^8-2$台主机。至于为什么每个要减2，是因为后缀全0和全1是被保留的，后缀全0表示整个网络的所有主机，后缀全1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://simguo.github.io/img/20180109/1.png">
-<meta property="og:updated_time" content="2018-01-09T08:43:12.681Z">
+<meta property="og:updated_time" content="2018-01-09T08:47:24.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络与web技术概论往年题整理">
 <meta name="twitter:description" content="2008年1.B类地址能容纳多少台主机A类地址第一位为0，前缀长7位，后缀长24位，可以容纳$2^{24}-2$主机，B类地址前两位为10，前缀长14位，后缀长16位，每个B类地址能容纳$2^{16}-2$台主机，C类地址前三位为110，前缀长21位，后缀长8位，每个C类地址能容纳$2^8-2$台主机。至于为什么每个要减2，是因为后缀全0和全1是被保留的，后缀全0表示整个网络的所有主机，后缀全1">
@@ -432,15 +432,11 @@
 <hr>
 <h3 id="11秋"><a href="#11秋" class="headerlink" title="11秋"></a>11秋</h3><p>一、选择（10分，错一道扣2分）<br>IP的特点<br><code>不安全算特点吗？灵活性？</code><br>网络管理协议哪个协议既依赖TCP又依赖UDP 四个选项：HTTP SMTP VOIP DNS<br><code>域名服务DNS既可以依赖TCP，也可以依赖UDP，HTTP和SMTP依赖TCP，VOIP应该是UDP</code><br>C/S和P2P在哪层有区别<br><code>应该是应用层的工作模式不同？</code><br>RIP的描述选错误的<br><code>RIP是Routing Information Protocol的缩写，是属于网络层的，是内部网关协议，距离矢量算法，收敛慢blabla，放在UDP报文中</code><br>UDP的描述哪个是错误的<br><code>UDP是无连接的，不可靠的，是传输层协议</code><br>二、名次解释15分<br><strong>共享型局域网/交换式局域网</strong><br>这两个就是使用了集线器还是交换机的区别<br><strong>防火墙和VPN</strong><br>已有<br><strong>SYN攻击</strong><br>上面已有<br><strong>三、ICMP可以有自己的传输机制，为什么还要用IP数据报来进行传输</strong><br>网路层的数据时要以数据报的形式来传输的，icmp也是网络层的协议，所以要封装在数据报里了<br><strong>四、软件从单机、RPC到服务，请从不同方面说明其背后的推动力量。。。</strong><br><strong>五、从技术和机遇说JAVA为什么成功</strong><br><strong>六、TCP的流量控制、拥塞控制，结合实际说说拥塞机制可以有什么改进</strong><br>已有<br><strong>七、IPV6相比IPV4的优势，发展缓慢的原因分析，以及谈谈它的发展机遇</strong><br><strong>八、写出与搜索引擎平行或近乎平行的两种互联网信息应用模式，并比较这三种</strong></p>
 <hr>
-<p>2012 年秋计算机网络与 Web 技术期末考题回忆<br>compiled by maelranger@bdwm<br>一、选择。（10 分，错一道扣 2 分，一共 6 道题）</p>
-<ol>
-<li>IP 数据报传输过程中哪项内容不变。（好多人选“校验和”，但这个是错误答案..）</li>
-<li>HTTPS 直接与哪一项协议通信？（答案 TLS）</li>
-<li>IP 数据报的最大长度（答案 65535）</li>
-<li>关于 DES,RSA 和 MD5 的几个叙述哪个不正确</li>
-<li>差分曼彻斯特编码的缺点（答案编码效率低）</li>
-<li>ICMP 不能用来完成哪一项任务（答案报文纠错）<br>二、概念解释。（5’<em>3）<br><strong>1. 交换器与路由器</strong><br><strong>2. C/S 与 P2P</strong><br><strong>3. 中间件</strong><br>三、为什么规定最小帧长？(7’)<br><strong>四、如果 TCP 传输只进行两次握手会出现什么问题？逐一叙述。(10’)</strong><br><img src="/img/20180109/1.png"><br><em>*五、简述无线局域网的体系架构。为什么无限终端用户更倾向于用 Wi-Fi 而不是 Wimax,3G等技术。(10’)</em></em><br>两种类型的无线LAN</li>
-</ol>
+<h3 id="2012-年秋计算机网络与-Web-技术期末考题回忆"><a href="#2012-年秋计算机网络与-Web-技术期末考题回忆" class="headerlink" title="2012 年秋计算机网络与 Web 技术期末考题回忆"></a>2012 年秋计算机网络与 Web 技术期末考题回忆</h3><p>一、选择。（10 分，错一道扣 2 分，一共 6 道题）<br>1.IP 数据报传输过程中哪项内容不变。（好多人选“校验和”，但这个是错误答案..）<br>2.HTTPS 直接与哪一项协议通信？（答案 TLS）<br>3.IP 数据报的最大长度（答案 65535）<br>4.关于 DES,RSA 和 MD5 的几个叙述哪个不正确<br>5.差分曼彻斯特编码的缺点（答案编码效率低）<br>6.ICMP 不能用来完成哪一项任务（答案报文纠错）</p>
+<p>二、概念解释。（5’<em>3）<br><em>*1. 交换器与路由器</em></em></p>
+<p><strong>2. C/S 与 P2P</strong></p>
+<p><strong>3. 中间件</strong></p>
+<p><strong>三、为什么规定最小帧长？(7’)</strong><br>结合CDMA/CD吧，主要为了能及时到冲突。<br><strong>四、如果 TCP 传输只进行两次握手会出现什么问题？逐一叙述。(10’)</strong><br><img src="/img/20180109/1.png"><br><strong>五、简述无线局域网的体系架构。为什么无限终端用户更倾向于用 Wi-Fi 而不是 Wimax,3G等技术。(10’)</strong><br>两种类型的无线LAN</p>
 <ul>
 <li>基础结构型（Infrastructure）：一台无线主机只与一个接入点通信，由接入点转发所有分组。目前的无线LAN大多是这种方式，从互连设备延伸到各个接入点的有线连接，通常由双绞线以太网构成<br>  3个构件：<br>  互连设备：如用于连接“接入点”的交换机或路由器<br>  接入点（AP）：可非正式地被称为“基站”<br>  无线主机：也称为无线节点或无线站点</li>
 <li>特别构建型（Ad hoc）：无线主机之间相互通信，不使用基站。这种方式很少使用</li>
@@ -684,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2008年"><span class="nav-number">1.</span> <span class="nav-text">2008年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2009年"><span class="nav-number">2.</span> <span class="nav-text">2009年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09秋"><span class="nav-number">3.</span> <span class="nav-text">09秋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11冬"><span class="nav-number">4.</span> <span class="nav-text">11冬</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11秋"><span class="nav-number">5.</span> <span class="nav-text">11秋</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2008年"><span class="nav-number">1.</span> <span class="nav-text">2008年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2009年"><span class="nav-number">2.</span> <span class="nav-text">2009年</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09秋"><span class="nav-number">3.</span> <span class="nav-text">09秋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11冬"><span class="nav-number">4.</span> <span class="nav-text">11冬</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11秋"><span class="nav-number">5.</span> <span class="nav-text">11秋</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2012-年秋计算机网络与-Web-技术期末考题回忆"><span class="nav-number">6.</span> <span class="nav-text">2012 年秋计算机网络与 Web 技术期末考题回忆</span></a></li></ol></div>
             
 
           </div>
