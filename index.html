@@ -295,6 +295,165 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2018/01/13/记一下shadowsocks搭建梯子的过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="果果茶">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Always with Sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/13/记一下shadowsocks搭建梯子的过程/" itemprop="url">记一次shadowsocks搭建梯子的过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T13:15:00+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JustForFun/" itemprop="url" rel="index">
+                    <span itemprop="name">JustForFun</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/13/记一下shadowsocks搭建梯子的过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="https://simguo.github.io/2018/01/13/记一下shadowsocks搭建梯子的过程/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="服务器租用-ramnode"><a href="#服务器租用-ramnode" class="headerlink" title="服务器租用 ramnode"></a>服务器租用 <a href="https://www.ramnode.com/" target="_blank" rel="external">ramnode</a></h2><p>博主用的是学长安利的Ramnode的服务器，一年15刀，比vultr便宜诶~每个月上限500G流量，不过，我根本连100G都用不到。<br>打开Ramnode首页，选择VPS，如下：<br><img src="/img/20180113/1.JPG"><br>有四个地区的服务器可以选择，我选择的是LA。<br>然后进入的是服务器的配置页面，我用的centos系统，在下面可以选择自己想使用的系统。随便填个自己喜欢的domain名，然后continue。<br>检查一下配置信息，checkout。<br>用paypal付完款~之后如果是第一次注册用户的话，需要邮箱验证一下，然后就能在<code>client area</code>看到自己租的服务器了。点击services可以看到服务器的详细信息。在<code>manage product</code>里面可以修改<code>root password</code></p>
+<h2 id="服务器安装shadowsocks"><a href="#服务器安装shadowsocks" class="headerlink" title="服务器安装shadowsocks"></a>服务器安装shadowsocks</h2><p>用ssh登陆服务器，我的系统选择是centos</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools &amp;&amp; easy_install pip</div></pre></td></tr></table></figure>
+<p>会报错没有<code>pip</code>包，需要安装epel<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</div><div class="line">yum install python-pip</div></pre></td></tr></table></figure></p>
+<p>然后安装ss包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p>
+<p>安装成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Installing collected packages: shadowsocks</div><div class="line">  Running setup.py install <span class="keyword">for</span> shadowsocks</div><div class="line">Successfully installed shadowsock</div></pre></td></tr></table></figure>
+<h3 id="服务器配置-——-使用配置文件"><a href="#服务器配置-——-使用配置文件" class="headerlink" title="服务器配置 —— 使用配置文件"></a>服务器配置 —— 使用配置文件</h3><p>创建配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
+<p>修改配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
+<p>文件内容如下，注释内是对每个配置项的解释，实际上写的时候不要有配置项<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123; </div><div class="line">"server": "A.B.C.D", %% 你自己的服务器地址</div><div class="line">"server_port": 4341, %% 你连接到服务器上用的端口号，随便写</div><div class="line">"local_address": "127.0.0.1", </div><div class="line">"local_port": 1080, %%local的这两项这么写就可以了</div><div class="line">"password": "YourPassWord", %%你用ss连接到服务器时要用的密码</div><div class="line">"timeout":600, </div><div class="line">"method":"aes-256-cfb" %% 加密方式</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>启动服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d start</div></pre></td></tr></table></figure></p>
+<p>结束的话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p>
+<h3 id="本地配置——Windows"><a href="#本地配置——Windows" class="headerlink" title="本地配置——Windows"></a>本地配置——Windows</h3><p>下载<code>shadowsocks</code>，然后按你在服务器上写的配置项填写即可</p>
+<p><img style="height:420px" src="/img/20180113/2.JPG"></p>
+
+          
+        
+      
+    </div>
+
+    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2018/01/08/计算机网络与web技术概论往年题整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -453,154 +612,6 @@
 </li>
 </ul>
 <p><strong>八、因特网上有没有可靠的传输？为什么 IP 协议不定义为可靠的？(18’)</strong><br>有吧？TCP应该就是可靠的传输？</p>
-
-          
-        
-      
-    </div>
-
-    <div style="text-align:center;color: #73a2c0;font-size: 25px;padding-top: 40px;font-family:'YeahPapa';">---------------- ♥ The End ♥ ----------------</div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://simguo.github.io/2017/12/26/web作业十一 —— 基于hits算法来找www.pku.edu.cn的相似页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="果果茶">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/img/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Always with Sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/26/web作业十一 —— 基于hits算法来找www.pku.edu.cn的相似页面/" itemprop="url">基于hits算法来找www.pku.edu.cn的相似页面</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T00:00:00+08:00">
-                2017-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learn/" itemprop="url" rel="index">
-                    <span itemprop="name">Learn</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/26/web作业十一 —— 基于hits算法来找www.pku.edu.cn的相似页面/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="https://simguo.github.io/2017/12/26/web作业十一 —— 基于hits算法来找www.pku.edu.cn的相似页面/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>挖个新坑开始学习</p>
-</blockquote>
 
           
         
@@ -2052,7 +2063,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
