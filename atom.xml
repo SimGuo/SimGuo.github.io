@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simguo.github.io/"/>
-  <updated>2018-01-13T07:18:38.057Z</updated>
+  <updated>2018-01-13T07:53:42.311Z</updated>
   <id>https://simguo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://simguo.github.io/2018/01/13/%E8%AE%B0%E4%B8%80%E4%B8%8Bshadowsocks%E6%90%AD%E5%BB%BA%E6%A2%AF%E5%AD%90%E7%9A%84%E8%BF%87%E7%A8%8B/"/>
     <id>https://simguo.github.io/2018/01/13/记一下shadowsocks搭建梯子的过程/</id>
     <published>2018-01-13T05:15:00.000Z</published>
-    <updated>2018-01-13T07:18:38.057Z</updated>
+    <updated>2018-01-13T07:53:42.311Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务器租用-ramnode"><a href="#服务器租用-ramnode" class="headerlink" title="服务器租用 ramnode"></a>服务器租用 <a href="https://www.ramnode.com/" target="_blank" rel="external">ramnode</a></h2><p>博主用的是学长安利的Ramnode的服务器，一年15刀，比vultr便宜诶~每个月上限500G流量，不过，我根本连100G都用不到。<br>打开Ramnode首页，选择VPS，如下：<br><img src="/img/20180113/1.JPG"><br>有四个地区的服务器可以选择，我选择的是LA。<br>然后进入的是服务器的配置页面，我用的centos系统，在下面可以选择自己想使用的系统。随便填个自己喜欢的domain名，然后continue。<br>检查一下配置信息，checkout。<br>用paypal付完款~之后如果是第一次注册用户的话，需要邮箱验证一下，然后就能在<code>client area</code>看到自己租的服务器了。点击services可以看到服务器的详细信息。在<code>manage product</code>里面可以修改<code>root password</code></p>
 <h2 id="服务器安装shadowsocks"><a href="#服务器安装shadowsocks" class="headerlink" title="服务器安装shadowsocks"></a>服务器安装shadowsocks</h2><p>用ssh登陆服务器，我的系统选择是centos</p>
@@ -36,6 +36,9 @@
 <p>结束的话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p>
 <h3 id="本地配置——Windows"><a href="#本地配置——Windows" class="headerlink" title="本地配置——Windows"></a>本地配置——Windows</h3><p>下载<code>shadowsocks</code>，然后按你在服务器上写的配置项填写即可</p>
 <p><img style="height:420px" src="/img/20180113/2.JPG"></p>
+<p>然后启用代理就可以愉快翻墙啦~~~</p>
+<p>Android端也是一样的操作，我是直接在googleplay里面找了shadowsocks的app（在电脑上找的），然后用apkpure下载下来传到手机上安装的，配置项的填写方式和上面一样。</p>
+<h3 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a><a href="https://teddysun.com/486.html?spm=5176.100239.blogcont137280.16.48caf1c7912bAj" target="_blank" rel="external">一键安装脚本</a></h3><p>如果不想用前面的步骤的话，如下即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">chmod +x shadowsocks-all.sh</div><div class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">

@@ -409,6 +409,9 @@
 <p>结束的话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p>
 <h3 id="本地配置——Windows"><a href="#本地配置——Windows" class="headerlink" title="本地配置——Windows"></a>本地配置——Windows</h3><p>下载<code>shadowsocks</code>，然后按你在服务器上写的配置项填写即可</p>
 <p><img style="height:420px" src="/img/20180113/2.JPG"></p>
+<p>然后启用代理就可以愉快翻墙啦~~~</p>
+<p>Android端也是一样的操作，我是直接在googleplay里面找了shadowsocks的app（在电脑上找的），然后用apkpure下载下来传到手机上安装的，配置项的填写方式和上面一样。</p>
+<h3 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a><a href="https://teddysun.com/486.html?spm=5176.100239.blogcont137280.16.48caf1c7912bAj" target="_blank" rel="external">一键安装脚本</a></h3><p>如果不想用前面的步骤的话，如下即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">chmod +x shadowsocks-all.sh</div><div class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure></p>
 
           
         
