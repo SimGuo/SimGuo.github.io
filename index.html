@@ -395,17 +395,18 @@
       
         
           
-          下载Phantomjs官网地址。本来想在官网上下载，但速度非常慢，于是找了一个国内镜像，地址来自于一个收集了各种开源工具的国内镜像的博客。
-下载的文件是phantomjs-2.1.1-windows.zip。
-方便大家下载，我也直接丢个博客内下载地址吧，phantomjs-2.1.1-windows
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/16/记一下Windows下phantomjs的安装/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="下载Phantomjs"><a href="#下载Phantomjs" class="headerlink" title="下载Phantomjs"></a>下载Phantomjs</h2><p><a href="http://phantomjs.org/download.html" target="_blank" rel="external"><i class="fa fa-link"></i>官网地址</a>。本来想在官网上下载，但速度非常慢，于是找了一个国内镜像，地址来自于一个收集了<a href="https://betacat.online/posts/2016-10-19/mirror-sites-in-china/" target="_blank" rel="external"><i class="fa fa-book"></i>各种开源工具的国内镜像的博客</a>。</p>
+<p>下载的文件是<code>phantomjs-2.1.1-windows.zip</code>。</p>
+<p>方便大家下载，我也直接丢个博客内下载地址吧，<a href="/files/phantomjs-2.1.1-windows.zip">phantomjs-2.1.1-windows.zip</a>。</p>
+<h2 id="解压和添加环境变量"><a href="#解压和添加环境变量" class="headerlink" title="解压和添加环境变量"></a>解压和添加环境变量</h2><p>解压文件，然后我习惯性得把文件夹名改成phantomjs，移到我存放各种程序的G盘。所以此时我的文件地址就是<code>G:\phantomjs</code>。</p>
+<p>简单得测试了一下：<br><img src="/img/20180116/1.JPG"></p>
+<p>顺便也可以看到解压出来的文件夹信息的内容。</p>
+<p><strong>添加环境变量</strong><br>编辑系统环境变量的时候，直接在<code>Path</code>变量下添加你的phantomjs文件夹的位置，比如我的就是<code>G:\phantomjs\bin</code><br>然后重开一下cmd，尝试查看版本信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phantomjs -v</div></pre></td></tr></table></figure></p>
+<p>显示2.1.1就证明环境变量添加成功啦~</p>
+<h2 id="在代码中使用"><a href="#在代码中使用" class="headerlink" title="在代码中使用"></a>在代码中使用</h2><p>因为已经设置了环境变量，所以使用时可以直接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">driver = webdriver.PhantomJS(executable_path=&apos;phantomjs&apos;)</div></pre></td></tr></table></figure></p>
+<p>如果懒不想搞环境变量的话，就根据自己的存储路径写就行了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">driver = webdriver.PhantomJS(executable_path=&apos;G:\phantomjs\bin\phantomjs.exe&apos;)</div></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -549,15 +550,25 @@
       
         
           
-          服务器租用 ramnode博主用的是学长安利的Ramnode的服务器，一年15刀，比vultr便宜诶~每个月上限500G流量，不过，我根本连100G都用不到。打开Ramnode首页，选择VPS，如下：有四个地区的服务器可以选择，我选择的是LA。然后进入的是服务器的配置页面，我用的centos系统，在
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/13/记一下shadowsocks搭建梯子的过程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="服务器租用-ramnode"><a href="#服务器租用-ramnode" class="headerlink" title="服务器租用 ramnode"></a>服务器租用 <a href="https://www.ramnode.com/" target="_blank" rel="external">ramnode</a></h2><p>博主用的是学长安利的Ramnode的服务器，一年15刀，比vultr便宜诶~每个月上限500G流量，不过，我根本连100G都用不到。<br>打开Ramnode首页，选择VPS，如下：<br><img src="/img/20180113/1.JPG"><br>有四个地区的服务器可以选择，我选择的是LA。<br>然后进入的是服务器的配置页面，我用的centos系统，在下面可以选择自己想使用的系统。随便填个自己喜欢的domain名，然后continue。<br>检查一下配置信息，checkout。<br>用paypal付完款~之后如果是第一次注册用户的话，需要邮箱验证一下，然后就能在<code>client area</code>看到自己租的服务器了。点击services可以看到服务器的详细信息。在<code>manage product</code>里面可以修改<code>root password</code></p>
+<h2 id="服务器安装shadowsocks"><a href="#服务器安装shadowsocks" class="headerlink" title="服务器安装shadowsocks"></a>服务器安装shadowsocks</h2><p>用ssh登陆服务器，我的系统选择是centos</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools &amp;&amp; easy_install pip</div></pre></td></tr></table></figure>
+<p>会报错没有<code>pip</code>包，需要安装epel<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</div><div class="line">yum install python-pip</div></pre></td></tr></table></figure></p>
+<p>然后安装ss包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p>
+<p>安装成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Installing collected packages: shadowsocks</div><div class="line">  Running setup.py install <span class="keyword">for</span> shadowsocks</div><div class="line">Successfully installed shadowsock</div></pre></td></tr></table></figure>
+<h3 id="服务器配置-——-使用配置文件"><a href="#服务器配置-——-使用配置文件" class="headerlink" title="服务器配置 —— 使用配置文件"></a>服务器配置 —— 使用配置文件</h3><p>创建配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
+<p>修改配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
+<p>文件内容如下，注释内是对每个配置项的解释，实际上写的时候不要有配置项<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123; </div><div class="line">"server": "A.B.C.D", %% 你自己的服务器地址</div><div class="line">"server_port": 4341, %% 你连接到服务器上用的端口号，随便写</div><div class="line">"local_address": "127.0.0.1", </div><div class="line">"local_port": 1080, %%local的这两项这么写就可以了</div><div class="line">"password": "YourPassWord", %%你用ss连接到服务器时要用的密码</div><div class="line">"timeout":600, </div><div class="line">"method":"aes-256-cfb" %% 加密方式</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>启动服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d start</div></pre></td></tr></table></figure></p>
+<p>结束的话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssserver -c /etc/shadowsocks.json -d stop</div></pre></td></tr></table></figure></p>
+<h3 id="本地配置——Windows"><a href="#本地配置——Windows" class="headerlink" title="本地配置——Windows"></a>本地配置——Windows</h3><p>下载<code>shadowsocks</code>，然后按你在服务器上写的配置项填写即可</p>
+<p><img style="height:420px" src="/img/20180113/2.JPG"></p>
+<p>然后启用代理就可以愉快翻墙啦~~~</p>
+<p>Android端也是一样的操作，我是直接在googleplay里面找了shadowsocks的app（在电脑上找的），然后用apkpure下载下来传到手机上安装的，配置项的填写方式和上面一样。</p>
+<h3 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a><a href="https://teddysun.com/486.html?spm=5176.100239.blogcont137280.16.48caf1c7912bAj" target="_blank" rel="external">一键安装脚本</a></h3><p>如果不想用前面的步骤的话，如下即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</div><div class="line">chmod +x shadowsocks-all.sh</div><div class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</div></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -701,16 +712,66 @@
       
         
           
+            <hr>
+<h3 id="2008年"><a href="#2008年" class="headerlink" title="2008年"></a>2008年</h3><p><strong>1.B类地址能容纳多少台主机</strong><br>A类地址第一位为0，前缀长7位，后缀长24位，可以容纳$2^{24}-2$主机，<br>B类地址前两位为10，前缀长14位，后缀长16位，每个B类地址能容纳$2^{16}-2$台主机，<br>C类地址前三位为110，前缀长21位，后缀长8位，每个C类地址能容纳$2^8-2$台主机。<br>至于为什么每个要减2，是因为后缀全0和全1是被保留的，后缀全0表示整个网络的所有主机，后缀全1表示对整个网络的所有主机进行广播。</p>
+<p><strong>2. 哪种介质错率最低（光纤，电缆，双绞线）</strong><br>光纤的出错率最低，光信号在传输的过程中受到的干扰和衰减都比较小。</p>
+<p><strong>3. 应用层协议（FTP，HTTP，SMTP）</strong></p>
+<ul>
+<li>HTTP是浏览器用于与web服务器交互的主要传输协议。HTTP是用来获取网页和网页相关内容的标准协议，通过与URL对应的服务器的80端口建立TCP连接来发送请求信息，在旧的版本中收到响应后断开TCP连接，即TCP连接是非持久的，但实际上这样是低效的，因此后来允许在网页中指定多个实体，多个进程建立TCP连接，来减少延迟。</li>
+<li>FTP协议是TCP/IP中支持文本传输的一个重要协议，FTP基于client-server模型，但建立双重连接，端口21建立控制连接，端口20建立数据传输连接。小型文本传输协议TFTP基于UDP。</li>
+<li>SMTP是简单邮件传输协议，定义了邮件在邮件传输系统中通过发送者和接受者之间的TCP连接进行传输。SMTP要求客户和服务器之间先建立一个会话，然后客户可以发送多个邮件，发送完之后中断连接，退出SMTP会话。SMTP允许客户端向服务器查询某个邮箱地址是否存在，SMTP对可靠性的支持——要求客户端保留一个信息副本直到接收方将一个副本放入一个非易失性存储中。</li>
+</ul>
+<p><strong>4. 为什么分片要在路由器，装片在主机</strong><br>（自己写的）：分片在路由器是因为发送者在发送时仅知道下一站地址，无法预测传输路径上可能的最小的MTU，而路由器连接了异构网络，可以根据连接的网络的MTU进行分片。<br>装片在主机是因为，如果在路由器上进行装片，则存在两个问题：①装片后还会被再次分片，则装片的操作是冗余的，②路由器要进行装片必须等待所有分片到达，一方面，在每个途径的路由器进行装片则会有大量不必要的延迟，另一方面，不同的分组所走的路径可能不同，则路由器不一定能接收到所有分片，此时装片会导致错误。<br>（课件上说法）：若在路由器上装片，则如果遇到MTU更小的网络还需要分片，因此过早重装是个浪费。在主机上装片有助于减少路由器状态，同时允许动态改变路径。</p>
+<blockquote>
+<p>IPV6中分片是由发送者进行的，对分片进行不断尝试直到能够发给接收方为止，利用ICMP协议。</p>
+</blockquote>
+<p><strong>5. 不改域名，改进DNS服务器的两种方法</strong><br>（1）复制，根服务器存在多个副本，一个新站点加入网络时，在本地DNS服务器中配置一个根服务器表，该站点的服务器使用给定时间内响应最快的DNS服务器。<br>（2）缓存，每个域名服务器有一个缓存，在查找一个新域名的时候将一个副本置于其缓存中。则在于另一个服务器通信以查找绑定信息之前，先查看自身的缓存，如果已有缓存则根据缓存来生成回答。另外，为了防止过期的映射，每个副本中会有一个生存时间。</p>
+<p><strong>6. 垂直搜索相关讨论</strong><br>垂直搜索即基于主题集成的搜索，针对通用搜索引擎信息量大、搜索结果不够精确（只能粗粒度的查询，返回结果过多，不保证用户需要的的结果排在前面）。<br>而垂直搜索对相同或相关主题的来自不同web信息源的数据按统一的形式进行存储、管理和应用。则能提供更精确的搜索结果，针对性强，但信息整合比较耗费时间和精力。集成方式，可以只存储集成架构，具体查询时根据架构到信息源生成结果，适用于信息源变化快，查询量大的场景。</p>
+<p><strong>7. 以太网IP地址冲突对连接的影响和解决方法</strong><br>以太网IP地址冲突时，会导致一方计算机无法接入网络。一般冲突产生的原因是IP地址已经分配完，没有新的IP地址可供分配。此时解决方式是，使用NAT网络地址转换技术，一个站点内的计算机使用相同的IP使用因特网，NAT为计算机分配一个唯一的本地地址，对外交换信息的时候将这个私有地址转换为全球因特网可识别的IP地址</p>
+<p><strong>8. TCP拥塞控制机制</strong><br>TCP使用窗口机制来控制网络流量。TCP的窗口机制分为接收端窗口（接收端可由于接收的缓存大小）和拥塞窗口（根据网络拥塞程度设定的窗口值）。实际在发送时选择两者的最小值作为发送窗口大小。<br>接收端窗口可知，而拥塞窗口需要刺探。一般使用慢启动的方法，为拥塞窗口cwnd设置一个初始值和阈值threshold，当cwnd低于threshold的时候，如果没有出现数据丢失则将cwnd设为原来的两倍，直到超过threshold或者出现数据丢失；当cwnd大于threshold的时候，线性得增长cwnd来刺探，如果出现数据丢失则迅速回退，重新慢启动，来避免拥塞。</p>
+<p><strong>9. 密码认证方面的XX</strong></p>
+<ul>
+<li>数据加密标准DES，对原文进行一系列复杂的变化得到密文再解密。可以用密钥来定制变换，即使用64位的密钥对原文进行变换，知道密钥的人可以再用密钥进行反变换。使用的密钥位数越长，破解越难。</li>
+<li>公开密钥算法RSA，使用一组公钥和密钥来对内容加密。使用加密方程和解密方程</li>
+<li>报文摘要方案MD5，MD5是一种不可逆的变换，对内容生成长为128的指纹，一般不同的内容生成的MD5不同。MD5可以用于确保信息的传输完整一致。即提供一段数据传输前计算出的Md5，在传输后再计算一次MD5与原来比较，看是否发生变化。</li>
+</ul>
+<p>DES和MD5是靠复杂的算法来产生随机的输出，没有正式的数学基础。两者速度都比RSA快。</p>
+<hr>
+<h3 id="2009年"><a href="#2009年" class="headerlink" title="2009年"></a>2009年</h3><p><strong>选择题 ：</strong><br>输油管道是双工、单工还是半双工  <code>半双工吧</code><br>以太网帧大小  <code>最小长度为64字节（512bits）</code><br>网桥能否连接wifi和以太网<br><code>不能，网桥或交换机作用于MAC的子层，如果要连接不同的传输介质形成的网络，那需要网络工作在相同的高层协议下，但以太网与Wifi网的高层协议是不同的，所以不能。</code></p>
+<p><strong>名词解释:</strong><br><strong>1.vpn与防火墙</strong><br><code>防火墙</code>：在服务器和客户主机之间进行访问隔离，实现授权互访和互通等功能。防火墙是在不同网络或网络安全域之间的一系列组件，是不同网络安全域之间唯一的出入口，根据企业或机构不同的安全政策，控制出入信息流，并且本身具有抗攻击能力，是提供信息安全服务和实现网络信息安全的基础设施。<br><code>VPN</code>：虚拟私有网络，和传统的分组过滤器一样工具，只允许从机构内其他站点的路由器发过来的分组通过，只允许发送给机构内其他站点路由器的分组通过，并在发出分组前对内容进行加密。<br><strong>2.SOA与SaaS</strong><br><code>SOA</code>：面向服务体系架构。分服务提供者、服务使用者和服务注册中心。服务提供者应该是一个网络实体，可以接受来自使用者的请求，并将自己的服务内容和契约发布到服务注册中心便于使用者发现和访问。服务使用者可以向注册中心发起查询，然后通过连接绑定服务，根据契约使用服务。服务注册中心，发现服务，提供可用服务的存储库，允许使用者的查询请求。</p>
+<p><code>SaaS</code>：软件即服务。是一种软件供应商利用Internet提供服务的形式。供应商将应用软件部署在自己的服务器上，用户根据自己的需求通过互联网向供应商订购服务，根据使用服务的多少和时间进行收费。</p>
+<p><strong>3.链路状态路由</strong><br>每个路由维护一个拓扑图，在拓扑结构变化时更新。发现它的邻居节点，并知道其网络地址<br>，测量到其各邻居节点的延迟或开销，组装一个分组，包含它刚刚知道的所有信息，将这个分组发送给所有其他路由器，使用Dijkstra算法计算到每个其他路由器的最短路径。</p>
+<p><strong>算法简答：</strong><br><strong>1、ping ip地址不通的原因，ping域名不通的原因</strong><br>ping ip不通：中间节点的访问控制对ICMP进行了过滤，如防火墙；延时太大；引入NAT设备使得内网地址被隐蔽，则无法ping通。<br>ping域名不通可能是本地dns服务器出错、域名解析错误、域名对应主机不可访问。<br><strong>2、ip数据报重组的过程</strong><br>根据IP数据包中的片标识和相对片偏移重组。但收到一个分片的时候会开始计时，如果超过生命市场仍没有收到所有分片，则丢掉这个分组。<br><strong>3、无线局域网为什么用csma/ca不用csma/cd，怎样才能用csma/cd</strong><br>无线局域网之间距离影响了计算机之间的通信。比如计算机1和3距离较远无法互相通信，计算机2能与两者通信，但计算机1和3彼此检测不到对方，则检测不到冲突。<br><strong>4、tcp/ip拥塞控制的机理，核心思想，改进办法</strong><br>机理和核心思想见去年题目。<br>课件上注释里面一个改进方法：原来是要等到过了生命周期才会判定包丢失，而改进方法中是当收到了同一片标识的三个片时，如果三个片都不是开始的段，则可能开始的段已经丢失了，网络可能产生了轻微拥塞。<br><strong>5、搜索引擎的改进办法</strong><br><code>垂直搜索</code>：未来，搜索引擎将从平行搜索转向垂直搜索，只对某一领域的信息进行精确搜索，这种细化是搜索引擎未来发展的一个方向。而所谓入口，就是指搜索将变成用户登入互联网的第一道关卡，搜索引擎的品牌和用户的习惯将直接引导市场走向。<br><code>关键词选择策略</code>：判断页面对于人们实际要搜索的关键词是否是优化的，也就是在针对这些关键词的搜索结果中页面是否会获得高排名。选择好的关键词，考虑：<br>流行度（Popularity）：人们会使用您的关键词进行搜索吗？<br>竞争度（Competitiveness）：有多少其他页面也针对这些关键词？应该增加更特定的关键词吗？<br><code>对关键词进行优化</code>:对于搜索引擎来说，页面文本是页面中最重要的部分。搜索引擎会给予页面标题、文本标题或强调的文本较高的权重。这就是前 200 个单词如此重要的原因。这也是 “自左上角向下” 关键词优化策略的基础。除了页面上的前 200个单词和强调的文本之外，还要确保主体文本包含关键词。<br><code>排名检查</code>：在研究了页面之后，检查页面对于它的关键词是否能够获得好排名。<br><strong>6、dos攻击设计</strong><br>dos攻击和ddos可以放在一起说，还有syn攻击。dos——deny of service，向目标服务器发送大量虚假请求，服务器由于不断应付这些无用信息而精疲力尽，合法的用户却因此无法享受到相应服务。</p>
+<blockquote>
+<p>DDoS：分布式拒绝服务攻击<br>首先利用木马程序等控制一些高带宽服务器，然后在这些服务器上安装攻击软件，集数十台、数百台甚至上千台机器对目标服务器发动攻击——即使是高性能的商业网站，也难以逃脱瘫痪的命运<br>理论上，分清是从很多信源来的合法的过重载荷还是DDoS攻击几乎是不可能的，是有效攻击手段</p>
+</blockquote>
+<hr>
+<h3 id="09秋"><a href="#09秋" class="headerlink" title="09秋"></a>09秋</h3><p><strong>选择：</strong><br>1、数据链路层功能<br><code>数据链路层的功能包括数据链路的建立与释放、流量控制、差错处理并向网络层提供数据传送服务</code><br>2、传输速度为信噪比函数体现在哪个原理<br><code>香农定理</code><br>3、哪些协议属于IP层协议<br><code>ARP地址解析,ICMP互联网控制消息协议,IGMP网络群组管理协议</code><br>4、哪个协议可以远程连接任意主机<br><code>ssh????</code><br>5、局域网能否有路由器<br><code>可以把，路由器连接不同的网络，可以把两个小的局域网连接成一个大的</code><br><strong>名词解释：</strong><br><strong>1、SYN攻击</strong><br>利用TCP的三次握手<br>SYN攻击属于DOS攻击的一种，它利用TCP协议缺陷，通过发送大量的半连接请求，耗费CPU和内存资源。服务器接收到连接请求（syn=j），将此信息加入未连接队列，并发送请求包给客户（syn=k,ack=j+1），此时进入SYN_RECV状态。当服务器未收到客户端的确认包时，重发请求包，一直到超时，才将此条目从未连接队列删除。配合IP欺骗，SYN攻击能达到很好的效果，通常，客户端在短时间内伪造大量不存在的IP地址，向服务器不断地发送syn包，服务器回复确认包，并等待客户的确认，由于源地址是不存在的，服务器需要不断的重发直至超时，这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，目标系统运行缓慢，严重者引起网络堵塞甚至系统瘫痪。<br><strong>2、N层计算模式</strong><br>在逻辑上，网络分层体系结构原理允许不同主机的对等实体进行通信，但禁止不同主机非对等实体间进行直接通信；在物理上，每一层必须依靠下层提供的服务来与另一台主机的对等层通信，这是 对等层通信的实质 。也就是说，模型中的上层（第n+1层）使用下层(第n层)所提供的服务，是下层(第n层)服务消费者；而模型中的下层(第n层)向上层（第n+1层）提供服务，是上层（第n+1层）的服务生产者（提供者）。<br><strong>3、DHCP</strong><br>动态主机配置协议DHCP<br>当主机启动时，它广播一个DHCP请求，服务器则发送一个DHCP应答。管理员一般将固定地址分配给服务器，而将动态地址分配给其他主机<br>按需分配的地址不是永久的，而是由DHCP产生一个有限的地址租用期。当租期满时，主机可以释放地址，也可以与DHCP服务器重新协商延长租期，但服务器拥有绝对的控制权<br><strong>简答：</strong><br><strong>1、DNS使用UDP，丢失了分组，影响？解决措施？</strong><br><code>为什么使用UDP</code>客户端向DNS服务器查询域名，一般返回的内容都不超过512字节，用UDP传输即可。不用经过TCP三次握手，这样DNS服务器负载更低，响应更快。<br>UDP本身多用于对实时性要求比较高的情况下。<br><strong>2、C/S模式改进措施</strong><br>课件上没有找到，药丸<br><strong>3、搜索引擎改进措施</strong><br>不知道不知道不知道，要哭<br><strong>4、SPF是否在ad hoc无线网络中适用？原因？ad hoc看重的路由度量？</strong><br>啥？这是啥？我看过吗？<br><strong>5、TCP三次握手原因？两次握手弊端？举例说明</strong><br>建立可靠连接，弊端根据之前那张图口胡一下吧<br><strong>6、A试图与B公钥加密通信，B回应公钥明文与根CA发布的X.509证书：</strong><br><strong>（1）A还需要什么步骤才能鉴定B身份？</strong><br>A请求B证实自己的身份，B再发送一段使用自己的私钥加密后的内容以及原文给A。A通过B在证书中给出的公钥，对加密的内容进行解密，并与B发过来的原文比较，如果是一致的，则B的身份可信。<br><strong>（2）T截获A向B请求公钥的请求，并试图以自己公钥冒充B欺骗A，B不在意A身份，则理论可成功否？原因？</strong><br>不可以吧，因为用T没有证书？</p>
+<hr>
+<h3 id="11冬"><a href="#11冬" class="headerlink" title="11冬"></a>11冬</h3><p><strong>1.选择题</strong><br>(1)     曼彻斯特编码的缺点<code>效率低吧</code><br>(2)     比特和波特的关系<code>可大可小，看具体信号的编码方式</code><br>(3)     网络管理在哪一层<code>应、应用层？</code><br>(4)     Parallel crawler用什么hash<code>站点或者url</code><br>(5)     HTTPS工作在那里？（忘记了）<code>HTTP是应用层，HTTPS是传输层</code><br><strong>2.名词解释</strong><br><strong>（1） wifi 和wimax</strong><br><strong>（2） 交换机和路由器</strong><br><strong>（3） p2p技术</strong><br>Peer-to-Peer技术，没有Client和Server的概念，各节点之间平等，都是信息的consumer和provider,目前主要用于文件共享和实时多媒体业务<br><strong>3.问答题</strong><br><strong>（1） 以太网伴随我们这么久，以太网成功的地方。</strong><br><strong>（2） 搜索多元化了，如何给用户提供更好的搜索。</strong><br><strong>（3） IPv6主机怎样知道MTU？为神马IPv6要主机来分片</strong><br><strong>（4） TCP链接关闭时，主动方进入time waited后为什么要等两个MSL再关闭？给出一个例子支撑你的观点</strong><br>1）可靠地实现TCP全双工连接的终止<br>TCP协议在关闭连接的四次握手过程中，最终的ACK是由主动关闭连接的一端（后面统称A端）发出的，如果这个ACK丢失，对方（后面统称B端）将重发出最终的FIN，因此A端必须维护状态信息（TIME_WAIT）允许它重发最终的ACK。如果A端不维持TIME_WAIT状态，而是处于CLOSED 状态，那么A端将响应RST分节，B端收到后将此分节解释成一个错误（在java中会抛出connection reset的SocketException)。<br>因而，要实现TCP全双工连接的正常终止，必须处理终止过程中四个分节任何一个分节的丢失情况，主动关闭连接的A端必须维持TIME_WAIT状态 。2）允许老的重复分节在网络中消逝<br>TCP分节可能由于路由器异常而“迷途”，在迷途期间，TCP发送端可能因确认超时而重发这个分节，迷途的分节在路由器修复后也会被送到最终目的地，这个迟到的迷途分节到达时可能会引起问题。在关闭“前一个连接”之后，马上又重新建立起一个相同的IP和端口之间的“新连接”，“前一个连接”的迷途重复分组在“前一个连接”终止后到达，而被“新连接”收到了。为了避免这个情况，TCP协议不允许处于TIME_WAIT状态的连接启动一个新的可用连接，因为TIME_WAIT状态持续2MSL，就可以保证当成功建立一个新TCP连接的时候，来自旧连接重复分组已经在网络中消逝。<br>（5） 软件发展的过程，简述互联网带来的革命，云计算的挑战和机遇<br>（6）比较RIP 和OSPF，为甚前者用于较小的自治网络，后者用于大规模的自治网络？</p>
+<hr>
+<h3 id="11秋"><a href="#11秋" class="headerlink" title="11秋"></a>11秋</h3><p>一、选择（10分，错一道扣2分）<br>IP的特点<br><code>不安全算特点吗？灵活性？</code><br>网络管理协议哪个协议既依赖TCP又依赖UDP 四个选项：HTTP SMTP VOIP DNS<br><code>域名服务DNS既可以依赖TCP，也可以依赖UDP，HTTP和SMTP依赖TCP，VOIP应该是UDP</code><br>C/S和P2P在哪层有区别<br><code>应该是应用层的工作模式不同？</code><br>RIP的描述选错误的<br><code>RIP是Routing Information Protocol的缩写，是属于网络层的，是内部网关协议，距离矢量算法，收敛慢blabla，放在UDP报文中</code><br>UDP的描述哪个是错误的<br><code>UDP是无连接的，不可靠的，是传输层协议</code><br>二、名次解释15分<br><strong>共享型局域网/交换式局域网</strong><br>这两个就是使用了集线器还是交换机的区别<br><strong>防火墙和VPN</strong><br>已有<br><strong>SYN攻击</strong><br>上面已有<br><strong>三、ICMP可以有自己的传输机制，为什么还要用IP数据报来进行传输</strong><br>网路层的数据时要以数据报的形式来传输的，icmp也是网络层的协议，所以要封装在数据报里了<br><strong>四、软件从单机、RPC到服务，请从不同方面说明其背后的推动力量。。。</strong><br><strong>五、从技术和机遇说JAVA为什么成功</strong><br><strong>六、TCP的流量控制、拥塞控制，结合实际说说拥塞机制可以有什么改进</strong><br>已有<br><strong>七、IPV6相比IPV4的优势，发展缓慢的原因分析，以及谈谈它的发展机遇</strong><br><strong>八、写出与搜索引擎平行或近乎平行的两种互联网信息应用模式，并比较这三种</strong></p>
+<hr>
+<h3 id="2012-年秋计算机网络与-Web-技术期末考题回忆"><a href="#2012-年秋计算机网络与-Web-技术期末考题回忆" class="headerlink" title="2012 年秋计算机网络与 Web 技术期末考题回忆"></a>2012 年秋计算机网络与 Web 技术期末考题回忆</h3><p>一、选择。（10 分，错一道扣 2 分，一共 6 道题）<br>1.IP 数据报传输过程中哪项内容不变。（好多人选“校验和”，但这个是错误答案..）<br>2.HTTPS 直接与哪一项协议通信？（答案 TLS）<br>3.IP 数据报的最大长度（答案 65535）<br>4.关于 DES,RSA 和 MD5 的几个叙述哪个不正确<br>5.差分曼彻斯特编码的缺点（答案编码效率低）<br>6.ICMP 不能用来完成哪一项任务（答案报文纠错）</p>
+<p>二、概念解释。（5’<em>3）<br><em>*1. 交换器与路由器</em></em></p>
+<p><strong>2. C/S 与 P2P</strong></p>
+<p><strong>3. 中间件</strong></p>
+<p><strong>三、为什么规定最小帧长？(7’)</strong><br>结合CDMA/CD吧，主要为了能及时到冲突。<br><strong>四、如果 TCP 传输只进行两次握手会出现什么问题？逐一叙述。(10’)</strong><br><img src="/img/20180109/1.png"><br><strong>五、简述无线局域网的体系架构。为什么无限终端用户更倾向于用 Wi-Fi 而不是 Wimax,3G等技术。(10’)</strong><br>两种类型的无线LAN</p>
+<ul>
+<li>基础结构型（Infrastructure）：一台无线主机只与一个接入点通信，由接入点转发所有分组。目前的无线LAN大多是这种方式，从互连设备延伸到各个接入点的有线连接，通常由双绞线以太网构成<br>  3个构件：<br>  互连设备：如用于连接“接入点”的交换机或路由器<br>  接入点（AP）：可非正式地被称为“基站”<br>  无线主机：也称为无线节点或无线站点</li>
+<li>特别构建型（Ad hoc）：无线主机之间相互通信，不使用基站。这种方式很少使用</li>
+</ul>
+<p><strong>六、RIP 为什么采用 UDP 而不是 TCP进行传输？为什么在小网络里工作良好但是在大网络里出问题？(15’)</strong><br>收敛速度的问题<br><strong>七、简述搜索引擎遇到的挑战。与社交网络结合能否解决问题？(15’)</strong><br>普通页面成长困难<br>Web spam越来越多<br>搜索引擎通过操纵搜索结果，在不知不觉中操纵人们的生活<br>期待更好的搜索算法</p>
+<ul>
+<li>当前的一些主要排名算法如PageRank等确实需要改进</li>
+<li>需要更客观的排名算法来提高搜索结果<blockquote>
+<p>摘自知乎的搜索引擎与社交网络<br>(1)在搜索引擎中引入社交元素，早在04年就有搜索引擎尝试过浅层的，那时候采用的策略是对用户的搜索结果进行web缓存，然后当同区域的用户检索时，在结果排序中会引入已经经过机器学习的用户检索结果的条目，不过后来发现这种策略对效果提高不大，而且服务器load和客户端负载均提高了，不是一个好的办法；(2)首先要明确搜索引擎为什么要引入社交元素：这是由于目前的Web社交网络形成了一个巨大的Deep Web(针对爬虫而言)，而这个数据量对搜索引擎来说是非常大而且有用的，搜索引擎作为流量入口和分发出口，势必需要这些用户活跃度和新鲜度很高数据，不然势必会造成两部分的信息孤岛；(3)社交网络的数据对传统搜索引擎是个机遇，同时也是一个挑战，机遇指的是社交网络的数据建立在关系平台上，能解决搜索引擎一直面临的新鲜度、可信度、覆盖度等问题，同时挑战也很多，社交性的UGC数据不适合采用传统的搜索引擎技术手段进行处理，实时性和准确性是一个不小的挑战，同时搜索结果的排序也需要重新定位和思考；(4)我的看法：保持传统搜索引擎数据源的纯洁性，不要把网页数据和社交网络数据整合处理(目前均是如此)，搜索引擎公司跟社交网站可以采取合作开发、共享数据源、对接搜索接口等商业手段进行合作，在搜索结果中引入社交搜索的条目，同时注意处理好不同数据源的结果排序问题。同时针对社交搜索的结果展示和用户交互上尚有很大的可提高空间</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>八、因特网上有没有可靠的传输？为什么 IP 协议不定义为可靠的？(18’)</strong><br>有吧？TCP应该就是可靠的传输？</p>
+
           
-2008年1.B类地址能容纳多少台主机A类地址第一位为0，前缀长7位，后缀长24位，可以容纳$2^{24}-2$主机，B类地址前两位为10，前缀长14位，后缀长16位，每个B类地址能容纳$2^{16}-2$台主机，C类地址前三位为110，前缀长21位，后缀长8位，每个C类地址能容纳$2^8-2$台
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/08/计算机网络与web技术概论往年题整理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -854,20 +915,72 @@
       
         
           
+            <blockquote>
+<p>阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）<br>主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&gt; </p>
+</blockquote>
+<hr>
+<h1 id="Part-1-——-论文阅（fan）读（yi）"><a href="#Part-1-——-论文阅（fan）读（yi）" class="headerlink" title="Part 1 —— 论文阅（fan）读（yi）"></a>Part 1 —— 论文阅（fan）读（yi）</h1><p><strong>摘要</strong></p>
+<p>摄像头的移动会导致的运动模糊，影响了很多计算机视觉任务。 DCP（Dark Channel Prior)在包含自然、面孔、文本和低亮度的场景中进行盲去卷积（即不知道h退化函数情况下复原）是有效的。但是，其有一定的限制并且在图像比较亮的时候很难估算退化核。作者观察发现<strong>清晰图像中的亮度高的像素在退化后不亮</strong>。基于这一发现，作者首先数学上阐述了原因，然后定义它为BCP(Bright Channel Prior）。然后，提出了一种为这些图像去模糊的技术，很好得提升了现有的运动去模糊算法的效果。提出的这一方法<strong>结合了BCP和DCP</strong>的优势。这种结合起来的先验知识被称为<code>extreme channels prior</code>并且这种方式协调使用了亮部和暗部的信息，对有效的图像复原是很重要的。大量的实验表明提出的这个方法相比于很多现在的图像复原技术，无论在合成还是自然图片的处理上，都是更有鲁棒性的并且可使用的。</p>
+<h2 id="1、-介绍"><a href="#1、-介绍" class="headerlink" title="1、 介绍"></a>1、 介绍</h2><p>基于退化是均匀和移不变的假设，表示图像退化的数学模型为：</p>
+<p>$$b = l \otimes k + n （空间域）—— (Eq1)$$</p>
+<p>其中，b是退化后的图像，l是原图像，k是退化核，n是噪声，$\otimes$是卷积符号。<br>盲复原就是，在给出了b的情况下，去计算出l和k，而这是一个非常<code>ill-posed problem（解不唯一）</code>，因此需要一些额外的信息和限制条件才能解决这个问题。</p>
+<p>总的来说，大多数已有的算法都利用了自然图像的一些统计信息。比如：[5][13]中的heavy-tailed梯度分布， 归一化稀疏先验[12]，L0正则化先验[25]，patch recurrence prior[15]，强度和梯度结合的先验[16]。最近，Pan et al.在[17]提出了基于DCP[6]来复原图像的有效方法。这个算法（emmm不太理解原因）比别的结果都好一些，但是作者说它在亮点更多和噪声更大的时候不行，因为DCP的先验在这种情况下不适用。</p>
+<p>不过受他的启发，作者就提出了新的先验知识BCP啦。所谓的BCP是，在局部块中的最亮的点在退化后不再亮。数学上证明了这个经验性的发现，并利用这个属性来恢复图像和估计退化核。因此，作者打算使用L0正则化的逆BCP过程来最大化清晰图像的亮部。（？？不理解？）最优化L0正则项是困难的。在提出的算法中，使用半二次罚函数方法来解决非突的L0范数极小化。</p>
+<p>本文的共享总结如下：</p>
+<ul>
+<li>提出了一个新的自然图像的先验知识ECP</li>
+<li>证明了亮的点在退化后减少了，并通过比较5000个自然图像和模糊后的结果来验证理论。</li>
+<li>使用BCP来blabla(没看懂，希望后文有)</li>
+</ul>
+<h2 id="2、-相关工作"><a href="#2、-相关工作" class="headerlink" title="2、 相关工作"></a>2、 相关工作</h2><p>今年，在图像盲复原的工作上有很大的发展。很多方式使用尖锐的边缘来估计退化核。例子、例子、例子…….但是，这个算法计算复杂度高不实用，需要大的数据集操作。</p>
+<p>其他方法使用了一些统计的先验知识和附加信息。例子、例子、栗子……尽管这些技术对退化核估计是有用的，但他们会在一开始就丢失一些细节。Hu et al.使用亮条纹来实现对低亮度的图像的复原。</p>
+<p>近来，提出了L0稀疏表示的新方法，并在论文[25]中的正则化去模糊中被使用。论文[16]中，Pan等人对特定文本在强度和梯度上使用L0先验来去模糊，是对其的一个改进。在[17]中，通过研究模糊过程中暗像素的变化，提出了一个遗传方法。<strong>在【6】中提出了DCP，基于的观察是：大多数的自然图片中，至少有一个颜色通道的像素值比较接近0。而Pan等人在【17】中将这个先验修改为：自然图像中暗通道是稀疏的而不是0，并强调了核估计的稀疏性。</strong></p>
+<p>尽管这个工作很出色，对很多数据都适用，但是没有暗像素就没有办法了嘛。</p>
+<h2 id="BCP"><a href="#BCP" class="headerlink" title="BCP"></a>BCP</h2><p>在大多数的自然场景块中，至少一个颜色通道的像素值会很大。为了规范化得描述这个发现，定义一张图I的亮通道为：<br>$$B(I)(x) = \max_{y \in \Omega (x)} \left ( \max I^c (y) | c\in (r,g,b) \right<br>) —— Eq(2)$$<br>其中，x是像素点的位置，$I^c$是I的颜色通道，$\Omega(X)$表示以x为中心的一个局部的块。从上式可以看出的，所谓的亮通道是由两个max得出来的。如果I是一个灰度图，那只有第一个max是有用的。（<strong>也就是说所谓的BC，以这个点为中心的块中所有像素点三个颜色通道中最大的一个值</strong>）使用这个概念，我们可以总结B(I)的强度应该是很高的，可能接近1的，除了在一些缺少光照或者阴影占主导地位的图片中。将这样的发现称为BCP。</p>
+<p>在图像的亮通道中高的强度值主要依赖于三个事实：</p>
+<ul>
+<li>(1)光照：阳光过其他存在的光源，在白天天空的部分会被太阳照亮。</li>
+<li>(2)白色或者亮的物体和表面，比如白色的墙，地板</li>
+<li>(3)斑斓的物理或平面，如只含在至少一个颜色通道上反射比较强的物体，绿叶黄花蓝色的水面，也会导致亮通道的高强度。</li>
+</ul>
+<p>使用PASCAL2012数据集中随机挑选的5000张无人为处理的图片验证了这个观察的结果：</p>
+<ul>
+<li>图2(a)表示了亮通道中不同强度的像素点分布的直方图。可以看到强度高的点占很大比重</li>
+<li>图2(b)和(c)分别是随着强度是亮通道和暗通道的可能性，其中两者横坐标方向不同，是为了可以比较直观的看出曲线走势相似，可以说由图中BCP和DCP是相当的。</li>
+</ul>
+<p>为了在去模糊的过程中使用BCP，作者分析了亮通道在退化过程中是如何变化的。</p>
+<p>为了便于比较，假想噪声小到可以疏略，有<br>$$b(x) = \sum_{z \in \Phi(x)} l \left( x-z+[\dfrac{p}{2}] \right) k(z) —— (3)$$</p>
+<p>其中$\Phi(x)$表示以x为中心的块，大小为p，这个大小和退化核k的大小相同。$[\frac{p}{2}]$表示取整。根据退化的属性，有 $k(z)\geqslant 0$ 和 $\sum_{z\in \Phi(x)} k(z) = 1$.</p>
+<blockquote>
+<p><strong>模糊核先验知识 </strong><br>首先图像的形成过程就是光子在传感器上不断累积的过程，因此模糊核中的所有元素都是<strong>非负的</strong>，即其次，更为重要的一点是模糊核通常是稀疏的，也即包含相对少量的非零元素。模糊核的这种非负稀疏特点被之前的图像去模糊方法广泛地使用。<br>第二个先验知识不知道依据。</p>
+</blockquote>
+<p>首先，对上述式子的理解比较直观，认为z是k(z)中的一个点（坐标从0,0到p变化），则在原图上实际中心为x时，坐标应该是$x-z+[\frac{p}{2}]$，这里这里加了$z \in \Phi(x)$的条件，应该是默认边缘的话都填充0。则文中的不等式推导(4)就很容易可以得出了结果:<br>$$b(x) \leqslant \max_{y\in \Omega(X)} l(y) —— (4)$$<br>不等式(4)说明点x处的强度在退化后不会比原始图像中其邻域最亮的点大。特殊情况是，如果x本身正好是邻域中最亮的，那不等式(4)等价于$b(x)\leqslant l(x)$。将这一结果应用到亮通道的定义中，满足：<br>$$B(b)(x) \leqslant B(l)(x) —— (5)$$<br>(5)的证明过程需要详细解释：</p>
+<ul>
+<li>第一步是根据定义展开</li>
+<li>第二步不太理解，可能是为了简化？只考虑其中一个通道的话，可以这么写吧</li>
+<li>第三步也是根据定义展开</li>
+<li>第四步，主要是由于z和y并没有实际上的联系，z表示的是k中一个位置，所以在y固定时求和的最大，肯定没有固定对每个一个z选择让后面这个值最大的y所得到的结果大</li>
+<li>第五步是为了划规到x的邻域，因为此处所涉及到的l中的点是在原图中y的邻域里面的，而y是在x的邻域中，所以实际上涉及到的点相对于x的邻域大小和在B(b)(x)中的邻域大小不一样</li>
+</ul>
+<p>而两个邻域分别是$\Omega(x)$和$\Omega^l(X)$。两个的面积关系如下：$S(\Omega^l) = S(\Omega) + p$<br>为了保持这个性质，选择小的块进行计算。式5表示在模糊后图像的亮通道比相应在亮的图中的强度低。因此，还可以得出：<br>$$ || 1- B(b)(x)||0 \geqslant || 1-B(l)(x)||0$$<br>(L0范数是指向量中不是0的个数)，等号当且仅当所有点x周围的点的三个通道的强度都小于1或者所有点的值相等时间，才会成立。而实际上，使用了PASCAL2012的数据集分析，显示出原图中强度为1的点真的比模糊后的多，再次证明一下自己提出的BCP的正确性。<br>、</p>
+<h2 id="4、-终于到算法内容啦（希望不要看不懂"><a href="#4、-终于到算法内容啦（希望不要看不懂" class="headerlink" title="4、 终于到算法内容啦（希望不要看不懂"></a>4、 终于到算法内容啦（希望不要看不懂</h2><p>在这一节，给了一个忙复原的模型，并且给了一个核估计的有效的算法。使用MAP框架 —— 最大后验概率方法。<br>$$(\hat{l},\hat{k}) = arg \min_{l,k} \ell(l\otimes k, b) + \gamma p(k) + \lambda p(l) —— (7)$$</p>
+<p>emmm，其中各项的内容希望会在后面给出</p>
+<h3 id="4-1-提出的ECP"><a href="#4-1-提出的ECP" class="headerlink" title="4.1 提出的ECP"></a>4.1 提出的ECP</h3><p>使用ECP来给出p(l)的定义</p>
+<p>使用ECP和DCP结合来给出p(l)的定义</p>
+<h3 id="4-2-目标函数"><a href="#4-2-目标函数" class="headerlink" title="4.2 目标函数"></a>4.2 目标函数</h3><p>简而言之，式子10就是目标函数，看着觉得看不懂，鼓励一下自己加油，只要知道它怎么计算就好了</p>
+<p>目标函数中的第一项是为了刻画还原出来的图像与模糊的图像之间的差别，两者差距不能太大，第二项是要求k尽可能稀疏，第三项是为了保留图像中一个大的梯度变换忽视一些小的变化，第四项则是保证暗通道的稀疏性</p>
+<h3 id="4-3-最优化这个目标函数"><a href="#4-3-最优化这个目标函数" class="headerlink" title="4.3 最优化这个目标函数"></a>4.3 最优化这个目标函数</h3><p>直接去解到10的最优解是很困难的，因此选择使用基于半二次罚函数的交替最小化的算法(可能需要看一下论文24的内容？)<br>对于生成的中间结果的 原图l 和 模糊核k，通过调整其中的一个来优化目标函数。<br>因此，问题变成了两个子问题：<br>固定k，求l使得(11)最小和固定l求k使得(12)最小</p>
+<h4 id="4-3-1-估计原图像"><a href="#4-3-1-估计原图像" class="headerlink" title="4.3.1 估计原图像"></a>4.3.1 估计原图像</h4><p>考虑到L0范数计算上难以处理，提出一个有效的算法来解决问题11，基于半二次罚函数的技术。<br>引入新的辅助变量g,p,q，使得目标函数(11)的形式变成(13)，其中$\alpha , \beta, \omega$是正的惩罚参数。然后交替得最小化l,p,q,g来解决问题。<br>则在给定p,q,g的情况下，问题变成(14)，（15）定义了对于中间图像D(l)和B(l)的具体计算方式，然后再把问题以(16)的形式表示<br>则实际上最优解应为式子(17)的表示<br>给定l的时候，相应的g,pg分别计算出都为(21)的结果</p>
+<h4 id="4-3-2-估计模糊核"><a href="#4-3-2-估计模糊核" class="headerlink" title="4.3.2 估计模糊核"></a>4.3.2 估计模糊核</h4><p>类似的方式计算，最后的结果为(23)</p>
+<blockquote>
+<p>感觉数学计算太复杂了，我智商跟不上了QVQ</p>
+</blockquote>
+<hr>
+<h1 id="Part-2-其他"><a href="#Part-2-其他" class="headerlink" title="Part 2 其他"></a>Part 2 其他</h1><p>简单自己画了一下实际算法的流程。</p>
+<p><img src="/img/20171225/ECP_Algorithm.JPG"></p>
+<p>惊喜得发现作者主页有Matlab源码，认真学习源码去啦。</p>
+
           
-阅读论文 ： Image Deblurring via Extreme Channels Prior （CVPR2017）主要是为了完成图像处理大作业QVQ，可能会更新将论文内容实现的过程&gt; 
-
-
-Part 1 —— 论文阅（fan）读（yi）摘要
-摄像头的移动会导致的运动模糊，影响了很多计
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/24/图像去模糊论文阅读/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1011,26 +1124,41 @@ Part 1 —— 论文阅（fan）读（yi）摘要
       
         
           
+            <blockquote>
+<p>2017.12.23日的吐槽，说实话我也看不懂我这都写的啥了</p>
+</blockquote>
+<h2 id="词法分析器的概念"><a href="#词法分析器的概念" class="headerlink" title="词法分析器的概念"></a>词法分析器的概念</h2><p>关于NFA，首先了解状态转换图（由表示状态的元素，和边（连接状态）组成）</p>
+<p><strong>状态转换图实例</strong></p>
+<ul>
+<li>关系算符的转换</li>
+<li>标识符和保留字的转换图</li>
+<li>无符号数的转换图<ul>
+<li>digit表示数字, digit+表示不少于一个数字</li>
+<li>.表示小数点</li>
+<li>E表示指数</li>
+<li>()？表示可有可无</li>
+</ul>
+</li>
+</ul>
+<p>然后可以根据状态图手动编写 <strong>词法分析器</strong>。</p>
+<ol>
+<li>首先通过正则表达式来描述词法单元的模式</li>
+<li><strong>基本目标</strong>：判断一个串s是否属于一个正则表达式R表示的语言</li>
+</ol>
+<p>词法自动识别的过程中可能遇到的问题：</p>
+<ul>
+<li>匹配最长可能的串</li>
+<li>排在前面的正则表达式优先匹配</li>
+<li>构造一个ERROR正则表达式</li>
+</ul>
+<p>##词法分析器生成工具 —— LEX<br>Lex 是一种词法分析程序的自动构造工具。通常和Yacc一起使用，生成编译器的前端（生成中间代码，后端对程序进行优化）</p>
+<p>过程： <code>正则表达式 -&gt; NFA -&gt; DFA -&gt; minDFA -&gt;词法分析器</code> （利用了正则表达式和DFA的等价性）</p>
+<h2 id="FA-有限自动机"><a href="#FA-有限自动机" class="headerlink" title="FA 有限自动机"></a>FA 有限自动机</h2><p>DFA确定的有限自动机（没输入一个字符，进入确定的状态）<br>NFA不确定的有限自动机</p>
+<p>DFA的形式定义：<code>五元组 Ｍ＝(Σ, Q, q0, F, δ),</code></p>
+<p>P29页对应的正则表达式：(a|b)<em>(aa|bb)(a|b)</em><br>或者(b|\e)(ab)<em>(b|aa)(b|a)</em></p>
+<p><strong>DFA 示例2 —— 能被5整除的二进制数</strong><br> 图中表示的状态其实是余数的状态变化。</p>
+
           
-2017.12.23日的吐槽，说实话我也看不懂我这都写的啥了
-
-词法分析器的概念关于NFA，首先了解状态转换图（由表示状态的元素，和边（连接状态）组成）
-状态转换图实例
-
-关系算符的转换
-标识符和保留字的转换图
-无符号数的转换图
-digit表示数字, digit+表示不少于一个数字
-.表示小数点
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/22/编译技术笔记（一）-词法分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1174,20 +1302,208 @@ digit表示数字, digit+表示不少于一个数字
       
         
           
+            <blockquote>
+<p>阅读论文： ChartAccent: Annotation for Data-Driven Storytelling（PacificVis2017）<br>其实基本上是翻译了（死</p>
+</blockquote>
+<hr>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>（基本上和介绍说的一样的内容）<br>简单介绍了<code>annotation</code>的重要性，和本文的内容。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>强调<code>annotation</code>的重要性</p>
+<ul>
+<li>帮助展示着解释数据中的核心信息</li>
+<li>强调图表中重要的部分</li>
+<li>吸引观看者的兴趣</li>
+<li>可以增加图表的上下文环境</li>
+<li>可以加深对图表的记忆和印象</li>
+</ul>
+<p>开发<code>ChartAccent</code>的必要性：</p>
+<ul>
+<li>主流绘图软件对增加<code>annotation</code>的支持有限</li>
+<li>为了增加个性化的<code>annotation``annotation</code>的脱节。</li>
+</ul>
+<p>因此以下几个问题需要被着重考虑：</p>
+<ul>
+<li><code>annotation</code>有哪些不同的类别</li>
+<li>不同类别的<code>annotation</code>一般都各自起什么作用</li>
+<li>这些<code>annotation</code>元素可以如何以 <strong>用户可修改 + 数据驱动(不与数据脱节)</strong> 的方式添加到图表上</li>
+</ul>
+<p>从而，在论文介绍的工作中包括：</p>
+<ul>
+<li>介绍如何快而简单的为图表增加<code>annotation</code></li>
+<li>基于调查设计了图表的<code>design space</code></li>
+<li><code>annotation</code>的意义和定义（哪些被认为是<code>annotation</code>）</li>
+<li>工具<code>ChartAccent</code>的介绍</li>
+<li>让人们使用<code>ChartAccent</code>对图表进行reproduction，得到了一些经验</li>
+<li>日常地口胡未来发展方向</li>
+</ul>
+<h2 id="背景和相关工作"><a href="#背景和相关工作" class="headerlink" title="背景和相关工作"></a>背景和相关工作</h2><p>对先前的<code>data-driven storytelling</code>和<code>可视化</code>的工作中<code>annotation</code>的角色和相关的技术支持和工具支持进行评价。</p>
+<h3 id="有关data-driven-storytelling中的annotation"><a href="#有关data-driven-storytelling中的annotation" class="headerlink" title="有关data-driven storytelling中的annotation"></a>有关data-driven storytelling中的annotation</h3><p><code>data-driven storytelling</code>包括可视化技术支持和笔下或口头的叙事。</p>
+<p>文中列举参考文献的内容：</p>
+<ul>
+<li>[40]中定义<code>data-driven storytelling</code>为<code>narrative visualization</code>，也指出了文本和图形标记的重要性。</li>
+<li>[29]中也强调了标记和高亮的重要性，特别是在现场演示的情况下</li>
+<li>[30]也提到对观众理解故事的帮助，并指出通过简单的操作创建标记和对已有的故事元素的再利用是有意义的。</li>
+<li>[41]给了七种常见的标记技术</li>
+<li>[14]中通过实际实验给出了标记的重要性的证明</li>
+<li>[26]认为叙事分四层：数据，可视化表示，交互性和标记，除标记以外的三层都有相当多的技术和工具支持，标记层仍待开发。</li>
+</ul>
+<p>本文的目的是枚举和实现，在数据可视化叙事的标记层，可以从哪些方面进行设计。</p>
+<h3 id="现在的标记工具"><a href="#现在的标记工具" class="headerlink" title="现在的标记工具"></a>现在的标记工具</h3><p>现有的标记工具，主要是要么是为智能产业提供支持，要么是作为可视化分析工具的插件存在的，比如<code>ManyEyes [44], sense.us [25], and CommentSpace [46]</code>。</p>
+<h4 id="Data-aware-annotation"><a href="#Data-aware-annotation" class="headerlink" title="Data-aware annotation"></a>Data-aware annotation</h4><p>annotation对数据有感知？</p>
+<ul>
+<li>对交互的支持，与数据有关的图形和文本</li>
+</ul>
+<p>几个例子：</p>
+<ul>
+<li>[12]、[13]中，提供交互的操作</li>
+<li>[23]中根据查询条件选择标签，根据相关性选择展示的标签</li>
+<li>[27]提出即时标注的概念，标注在人机交互中自动完成</li>
+</ul>
+<p>关于<code>ChartAccent</code>，作者</p>
+<ul>
+<li>提供对选择哪些不标记的支持</li>
+<li>选择哪些标记是数据驱动的（动态的</li>
+<li>哪些标记是静态的，固定不动的（静态的标记同样重要</li>
+</ul>
+<h4 id="Interactive-visualization-authoring-tools"><a href="#Interactive-visualization-authoring-tools" class="headerlink" title="Interactive visualization authoring tools"></a>Interactive visualization authoring tools</h4><p>Excel不提供<code>Data-driven annotation</code>，Lyra和IVISDesigner支持，但学习时间长，标注过程无趣。<br>Mr ChartMaker更好一些。</p>
+<p>Tableau Desktop从作者的角度看已经做得不错了，然后ChartAccent会提供更多可标记的选择，高亮和强调也做得更加灵活，选中的标记可以不影响周围的直接高亮。</p>
+<h4 id="Annotation-via-programming"><a href="#Annotation-via-programming" class="headerlink" title="Annotation via programming"></a>Annotation via programming</h4><p>当然也可以通过一些可视化编程来实现对图的精准的控制，比如ggplot,d3.js等等。<br>使用ggplot可以增加复杂的数据标记，甚至可以用很复杂的数据统计模型计算。<br>但这些都需要编程知识，而ChartAccent不需要，并能提供及时反馈。</p>
+<h2 id="ANNOTATION-DESIGN-SPACE"><a href="#ANNOTATION-DESIGN-SPACE" class="headerlink" title="ANNOTATION DESIGN SPACE"></a>ANNOTATION DESIGN SPACE</h2><p>设计空间的定义不够充分，因此作者收集了图片的语料库来提取。</p>
+<p>首先有一些图表元素不被认为是annotation：</p>
+<ul>
+<li>柱状图中的柱形，散点图里面的三点，这些与数据直接相关的图形表示不认为是annotation</li>
+<li>图表标题，图例，轴，轴标签和刻度线，以及网格线或刻度线。</li>
+</ul>
+<p>当然，虽然这些元素不算为annotation，但仍是可以被标记的</p>
+<p>最后，主要关注的应该是利用图片可视化来传达信息。</p>
+<h3 id="关于被标注图表的调查"><a href="#关于被标注图表的调查" class="headerlink" title="关于被标注图表的调查"></a>关于被标注图表的调查</h3><p>实际上是有很丰富的可视化标注的资源的：科学杂志，期刊，政府企业备忘录、在线的演讲中的配图等等。</p>
+<p>首先使用的资源是“Quantified Self”资料库，（大概是用数据描述自己的生活这样的意思）。通过这个群体用来传达自身观点的图表，提取的常见标记有：</p>
+<ul>
+<li><strong>文字、图形、趋势线、通过颜色或纹理分割突出显示的范围、指示重要值的线</strong></li>
+</ul>
+<p>为了扩充设计空间，也从新闻媒体中提取资源，因为他们面向对象广，通常围绕一个故事展开，数量多，易于获取。</p>
+<p>到底，作者就可以设定了<code>annotation space</code>的基本样式和<code>annotation</code>的类型</p>
+<p>（我觉得作者后面这段真是有点强行口胡）</p>
+<p>说什么和机器学习一样，自己提取样式的图库只是训练集，也要测试集来验证他们的是否可以泛化。（讲道理，我觉得要泛化，首先这个训练集大小可以随意变吧，若是不是人工提取的样式，我觉得说还有道理，但如果是人工的话，考虑人工的效率，就不能认为训练集大小可以随意大了）</p>
+<p>Anyway，作者收集了一些图，主要是条形图，折线图，散点图。筛选后，选出了257个。</p>
+<p>筛选，如果出现两张图，都有写在柱形边的文字，则只留下一个。否则，如果两张图一张有独特的标记（比如柱形图中表示平均值的竖线）则同时保留两个图。在丢弃具有重复注释形式的图表之后，留下了23个经济学人图表和39个WSJ图表。</p>
+<p>然后，作者同样再从 The New York Times (10), FiveThirtyEight (11), The Washington Post (11), and Bloomberg Visual Data (12) 又收集了一些条形、折线、散点图，最后收集了106张。</p>
+<p>项目图片网页：<a href="https:// chartaccent.github.io/#section-survey" target="_blank" rel="external">https:// chartaccent.github.io/#section-survey.</a></p>
+<p>在这个语料库中，类型有：标注的图表的元素、标注的类型、元素的大小颜色宽度和附加的评论。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>根据对这些图的调研，把对于标注的设计分为标注格式和标注对象两个格式。</p>
+<p>标注由各种各样的目的，因人而异，本文主要关注注释的交流目的。</p>
+<h4 id="维度一：注释格式"><a href="#维度一：注释格式" class="headerlink" title="维度一：注释格式"></a>维度一：注释格式</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">文本</td>
+<td style="text-align:left">包括类型： 点值对，上下限，平均值，上下文。属性：大小，字体，位置，对齐等等</td>
+</tr>
+<tr>
+<td style="text-align:center">图形</td>
+<td style="text-align:left">类型: 线，箭头，曲线，矩形，椭圆，括号，星型，语音气泡。 目的：可以是非数据驱动的，用来对注释的位置进行区分，或者着重突出某个元素，也可以是数据驱动的，比如线性拟合。（文中图1）</td>
+</tr>
+<tr>
+<td style="text-align:center">高亮</td>
+<td style="text-align:left">用来强调<strong>或者减弱</strong>重要性，一般通过调整填充色和大小</td>
+</tr>
+<tr>
+<td style="text-align:center">图像</td>
+<td style="text-align:left">图像/图标属性：大小，不透明度或饱和度，位置，在前景还是背景中。  图像注释提升图表的可记忆性，如图一中的国旗</td>
+</tr>
+</tbody>
+</table>
+<h4 id="维度二：注释目标类型"><a href="#维度二：注释目标类型" class="headerlink" title="维度二：注释目标类型"></a>维度二：注释目标类型</h4><p>只解释柱状图，散点图和折线图中可能的类型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数据项</td>
+<td style="text-align:left">数据项中又有：数据的某个单项、反映数据整体的值（平均值等）、一组有关的数据（11月两个城市的气温）、满足不等式条件的数据、极端值</td>
+</tr>
+<tr>
+<td style="text-align:center">坐标空间</td>
+<td style="text-align:left">笛卡尔坐标轴的定量尺度： 比如某个轴对应的属性值之间、特定属性的部分跨度（感觉和数据类型里面不等式条件的数据有点类似诶）。意义主要是：表示一段范围，这段范围不一定要包含数据项，可以为这个范围添加相应的与数据无关的上下文</td>
+</tr>
+<tr>
+<td style="text-align:center">结构化的图表元素</td>
+<td style="text-align:left">包括：图表标题，轴，轴标签和刻度线，图例，图表的绘图区域，图表本身。在图表内部，可以有一些前面提到的标注，但在图表外部也可以能额外的上下文和信息（内容较多，在图表内部无法容纳啊）</td>
+</tr>
+<tr>
+<td style="text-align:center">注释前缀</td>
+<td style="text-align:left">只是用来更直接地指代注释。图2中的(a) - (k)就是这种类型，在提及时，可以直接说注释(a)。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="CHARTACCENT"><a href="#CHARTACCENT" class="headerlink" title="CHARTACCENT"></a>CHARTACCENT</h2><p>本节介绍<code>ChartAccent</code>如何实现上面两个方面</p>
+<h3 id="与ChartAccent的交互"><a href="#与ChartAccent的交互" class="headerlink" title="与ChartAccent的交互"></a>与ChartAccent的交互</h3><p>将创建图表和创建注释分开以能够独立评估注释系统，并支持到其他注释工具的移植</p>
+<h4 id="注释对象选择"><a href="#注释对象选择" class="headerlink" title="注释对象选择"></a>注释对象选择</h4><p>典型的使用鼠标的点击和拖动实现标注对象的选择。鼠标放在坐标轴的位置，则可以选择坐标对应范围</p>
+<p><strong>数据驱动的选择</strong> 采用Heer等的设计，可以通过点击一个图例选择整个类的数据<br>点击后出现的会是默认值，可以在编辑器的Target位置（图3-6）进一步修改目标，比如使用avg等等。Target中支持一些简单的根据数据集的属性得到的公式。包括一组基本统计功能，包括最小值，最大值，平均值和中值。</p>
+<p>可以选择超过某值或者低于某值的项等等。</p>
+<h4 id="标注格式的调整"><a href="#标注格式的调整" class="headerlink" title="标注格式的调整"></a>标注格式的调整</h4><p>每个数据项的注释，都有一个默认格式，可以再editor里调整，另外也提供了手动标注的工具。在editor中还有表示趋势线的开关，可以再editor中调整文字内容，大小，颜色，字体、边框、填充色等等。</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>通过两个场景的解说和视频来讲解如何使用。</p>
+<h4 id="场景一"><a href="#场景一" class="headerlink" title="场景一"></a>场景一</h4><blockquote>
+<p>每月的温度图 —— 从2014七月到2015六月的美国各城市平均气温图。 我们想转达的是纽约的气候没有另外两个城市怡人。</p>
+</blockquote>
+<p>为了证实这一点，我们需要强调什么时候另外两个城市的温度比纽约高，利用的是柱状图。</p>
+<p>第一步选中所有条形，在editor中调低亮度，来降低整体的显著性</p>
+<p>在y轴画一根直线，在editor中输入avg@NewYork（会自动补全），然后生成一个手动的标签“NY’s average”放在直线左边。</p>
+<p>接着，在这条线的editor中选择：使用这条线选择（Select Items Using this Line），在下拉菜单中选择Above，并勾选目标城市。</p>
+<p>调整完样式后，就可以到处为png或者svg图像。</p>
+<h4 id="场景二"><a href="#场景二" class="headerlink" title="场景二"></a>场景二</h4><blockquote>
+<p>使用2000年来数国的生育率和预计寿命。目的：（i）传达更高的生育率与较低的预期寿命相关联的整体趋势，（ii）强调北美和南美国家，（iii）强调美国，中国和印度。</p>
+</blockquote>
+<p>可以建立以这两个值为维度的散点图，添加趋势线来表示两者关系，国家之间用颜色区分。</p>
+<p>对于某个州大类，可以通过图例选择，然后使用BubbleSet标注出来。</p>
+<p>对于某个国家，以China为例，可以选择China，然后添加国旗作为图片标注。</p>
+<p>最后见图1-右。</p>
+<h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><p>首先实现了ChartAccent.js库来为基于SVG的图表标记（可以使用D3.js生成）。图4表示了CHartAccent.js，Chart和ChartCreator以及终端使用者之间的关系。</p>
+<p>使得一个图表“annotatable”，图表创建者首先创建一个<code>ChartAccent 对象</code>，在其中定义好一个图表元素（应该是js中已经设计好了创建函数，然后根据传入的参数画图）– 坐标轴、标记、图例、元数据，数据之间的关系等等, ChartAccent.js中也定义了给图表创建、管理、调整标注的函数，同时也包括了对于不同的标注类型的处理函数。</p>
+<p>blabla。</p>
+<p>最后，ChartAccent就是一个包括了操作界面和封装了ChartAccent.js的独立工具。虽然目前只支持三种图。</p>
+<h2 id="评估"><a href="#评估" class="headerlink" title="评估"></a>评估</h2><p>让一些人通过这个工具对一些标注好的图片进行重现，通过实验的结果来说明他们的工具是否是易于学习的，可使用的，高效的。特别是data-driven的标记特别吸引研究者的兴趣。</p>
+<h3 id="参加者和设置"><a href="#参加者和设置" class="headerlink" title="参加者和设置"></a>参加者和设置</h3><p>11名各行业，频繁使用图表交流的参与者。有酬劳。固定的硬件配置，会录像。</p>
+<h3 id="任务和数据集"><a href="#任务和数据集" class="headerlink" title="任务和数据集"></a>任务和数据集</h3><p>图6总结了所有任务。<a href="https://chartaccent.github.io/#section-examples" target="_blank" rel="external">每个任务的逐步动画GIF</a>。为练习任务准备了十二个注释图表。</p>
+<p>创建这些图表的数据集包括：各个城市的月平均降雨量[48]（任务1）;西雅图每月降水量[48]（任务2）;北京空气质素指标[3]（任务3）;各种车辆的里程数据[32]（任务4）;各国生育率和预期寿命[18]（任务5）;Old Faithful Geyser爆发[2]（任务6）;美国主要城市的月度气温[17]（任务7）。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>先是一个熟悉ChartAccent的教程，然后使用12个练习任务进一步熟悉任务过程和工具。</p>
+<p>在开始任务前，参与者可以描述他们看到的标注，来明确自己需要标注哪些内容，然后开始，最后提交生成一张图片，进行下一个任务。允许重置，平均完成时间是22分钟。</p>
+<p>当他们卡住或者提交有误的时候会有提示，当然颜色的偏差和某一些区域的x，y值的偏差不影响，重要的是鼓励参与者尽快完成。标注7个任务的时间平均是15分钟（所以还有7分钟是？）。最后，需要填个问卷。</p>
+<p>整个过程长达1.5h。</p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>11个人中9个完成了任务，2人迟到没有足够的时间完成了前五个。</p>
+<h4 id="提示和任务完成时间"><a href="#提示和任务完成时间" class="headerlink" title="提示和任务完成时间"></a>提示和任务完成时间</h4><p>提供两种提示：一种是错误标注，一种是标注和目标结果之间的差别（多标注或者少标注了什么）</p>
+<p>Table1提供了提示数据，总的来说，需要的提示比较少，出现的都是小错误。在任务5出错最多，可能是因为是data=driven的，比较复杂。</p>
+<p>图7是各个参赛者完成各个任务的时间，完成时间其实都比较短。在过程比较复杂的Task花的时间比较多。（这个复杂主要是与highlight有关似乎）</p>
+<h4 id="用户评价"><a href="#用户评价" class="headerlink" title="用户评价"></a>用户评价</h4><p>感觉是一致好评，简单易学，以后会用。</p>
+<h2 id="探讨和未来的工作"><a href="#探讨和未来的工作" class="headerlink" title="探讨和未来的工作"></a>探讨和未来的工作</h2><h3 id="对带标记图表的反思"><a href="#对带标记图表的反思" class="headerlink" title="对带标记图表的反思"></a>对带标记图表的反思</h3><p>简单概括了一下整个项目的流程，然后总结说：自己的项目虽然不能涵盖所有可能的类型，但至少提出了一个框架。</p>
+<h3 id="提升和扩展ChartAccent"><a href="#提升和扩展ChartAccent" class="headerlink" title="提升和扩展ChartAccent"></a>提升和扩展ChartAccent</h3><p>提出的几个问题：</p>
+<ul>
+<li>标记之间的覆盖问题（z-order），通过排序来表示哪个在上面</li>
+<li>增加基本的撤销和重做</li>
+<li>同时，如果有效地建立表格和其他的一些可视化展示也将进一步研究</li>
+<li>决定专注于研发和测试一组支持标注的交互工具</li>
+<li>确保ChartAccent.js能够兼容d3.js的结果而不是仅局限于现在ChartAccent工具作的图。<ul>
+<li>这一目标可能涉及D3.js的解构函数[22]</li>
+</ul>
+</li>
+<li>扩展对其他类型的图的支持（节点图，树状图）</li>
+</ul>
+<h3 id="理想的默认样式和模板"><a href="#理想的默认样式和模板" class="headerlink" title="理想的默认样式和模板"></a>理想的默认样式和模板</h3><p>在实验中发现默认样式任意出现不符合使用需求的情况，同时用户会有自己的使用倾向，计划允许用户设置自己的使用偏好。</p>
+<p>此外，一种样式可能多次使用，比如在情景一中使用每年最高气温高出blabla的月份。</p>
+<p>为了灵活性，计划设计相应的注释规范语言和相应的模板编辑器。</p>
+<h3 id="研究的局限性和网页展示"><a href="#研究的局限性和网页展示" class="headerlink" title="研究的局限性和网页展示"></a>研究的局限性和网页展示</h3><p>不确定参与者是否有兴趣，下一步计划在实验中包含参与者提供的图表。</p>
+<p>尽管告诉参与者，实验只是为了研究ChartAccent的性能，但还是会因为参与者的紧张影响时间，所以提交到github.io上，诸君尽情使用。</p>
+<p>允许人 提交图表、选择图表、导出图表，也可以将整个标注的过程导出成gif。</p>
+
           
-阅读论文： ChartAccent: Annotation for Data-Driven Storytelling（PacificVis2017）其实基本上是翻译了（死
-
-
-摘要（基本上和介绍说的一样的内容）简单介绍了annotation的重要性，和本文的内容。
-介绍强调annotation的重
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/07/用可视化进行数据叙事阅读笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1331,18 +1647,60 @@ digit表示数字, digit+表示不少于一个数字
       
         
           
-          Above All在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示css + js + html的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。
-实现在博文中嵌入codepen只需要下面几步走~
+            <h2 id="Above-All"><a href="#Above-All" class="headerlink" title="Above All"></a>Above All</h2><p>在平时学习与前端有关的知识时，经常可以看到一些博客中嵌入的展示<code>css + js + html</code>的结果，可以非常直观的体现介绍的内容在Result上的作用，因此，简单了解了一下。</p>
+<p>实现在博文中嵌入<code>codepen</code>只需要下面几步走~</p>
+<hr>
+<h2 id="你将得到的结果"><a href="#你将得到的结果" class="headerlink" title="你将得到的结果"></a>你将得到的结果</h2><p>下面这个样例已经在之前的博文 <a href="https://simguo.github.io/2017/07/27/fullPage-js%E5%AD%A6%E4%B9%A0/"><i class="fa fa-book"></i> fullPage.js学习</a> 使用过了。下面我将演示如何将其插入文档。</p>
+<iframe height="265" scrolling="no" title="FullPage_Example" src="//codepen.io/SimGuo/embed/vJXrjw/?height=265&theme-id=light&default-tab=js,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
 
-你将得到的结果下面这个样例已经在之前的博文  full
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/03/在hexo-next博文中使用codepen/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<hr>
+<h2 id="注册一个codepen账号"><a href="#注册一个codepen账号" class="headerlink" title="注册一个codepen账号"></a>注册一个codepen账号</h2><p>官网传送门 <a href="https://codepen.io/" target="_blank" rel="external"><i class="fa fa-link"></i> https://codepen.io/</a></p>
+<p>对于嵌入<code>codepen</code>来讲，我觉得免费账号就够用啦。</p>
+<h2 id="创建一个新的Pen"><a href="#创建一个新的Pen" class="headerlink" title="创建一个新的Pen"></a>创建一个新的Pen</h2><p><i class="fa fa-circle-o"></i> 打开首页，点击右上角的Create-&gt;new pen来创建。</p>
+<p style="position: relative; padding: 5px 5px; color: white; background: black; border-radius: 3px; width: 120px; margin-left: 20px;"> Create <i class=" fa fa-chevron-right"></i> New Pen </p> 
+
+<p><i class="fa fa-circle-o"></i> 则你面前会是这样一块可供编辑的页面（这里我调整了设置），然后就可以愉快地直接写html和css以及js，也可以直接<code>ctrl+s</code>来保存，而页面下侧是实时的效果。</p>
+<p><img src="/img/20170803/layout1.PNG"></p>
+<p><i class="fa fa-circle-o"></i> 因为我觉得默认的黑色的模式没有白色好看，所以我的调整是：</p>
+<p style="position: relative; padding: 5px 5px; color: white; background: black; border-radius: 3px; width: 110px; margin-left: 20px;"> 头像 <i class=" fa fa-chevron-right"></i> Settings </p> 
+
+<p>打开后是这样的界面：</p>
+<p><img src="/img/20170803/layout2.PNG"></p>
+<p>我的选择是：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">设置项</th>
+<th style="text-align:center">选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Syntax Highlighting</td>
+<td style="text-align:center">MDN Like</td>
+</tr>
+<tr>
+<td style="text-align:center">Code Font Family</td>
+<td style="text-align:center">Source Code Pro, 12px</td>
+</tr>
+</tbody>
+</table>
+<h2 id="在你的Pen中引入外部库"><a href="#在你的Pen中引入外部库" class="headerlink" title="在你的Pen中引入外部库"></a>在你的Pen中引入外部库</h2><p>因为在pen中是直接根据你提供的js等代码生成的，所以外部js的使用也是需要知道的比较重要的事情。</p>
+<p>点击右上角的<code>settings</code>，得到类似下面的界面</p>
+<p><img src="/img/20170803/extern.PNG"></p>
+<p>选择需要引入的文件类型，比如我使用了<code>jQuery.js + fullpage.js</code>，则在<code>Add External JavaScript</code>下面加了两者的链接。</p>
+<h2 id="在文章中引入Codepen的展示窗口"><a href="#在文章中引入Codepen的展示窗口" class="headerlink" title="在文章中引入Codepen的展示窗口"></a>在文章中引入Codepen的展示窗口</h2><p>假定你在Codepen中愉快地编辑好了一个项目，现在想把它加到文件中，就只剩下复制粘贴了~</p>
+<p style="color: #9BC53D;"> <i class="fa fa-star" style="color: #9BC53D; font-size: 25px;"></i> 点击右下角的 Embed，得到下面界面</p>
+
+<p><img src="/img/20170803/res.PNG"></p>
+<p style="color: #9BC53D;"> <i class="fa fa-star" style="color: #9BC53D; font-size: 25px;"></i> 你可以在Theme中调整颜色主题 </p>
+
+<p style="color: #9BC53D;"> <i class="fa fa-star" style="color: #9BC53D; font-size: 25px;"></i> 将最下面提供的html和iframe代码直接复制粘贴到文中相应位置即可，如下是本文开头的文本 </p>
+
+<p><img src="/img/20170803/article.PNG"></p>
+<p>果然还是很简单的操作啦。不过需要注意的一点是，选择<code>iframe</code>可能会更好一些，因为我在使用<code>html</code>插入文章前面的情况下，会导致markdown文件后面产生问题。但使用<code>iframe</code>没有遇到问题。</p>
+
+          
         
       
     </div>
@@ -1486,23 +1844,110 @@ digit表示数字, digit+表示不少于一个数字
       
         
           
+            <blockquote>
+<p>本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。</p>
+</blockquote>
+<hr>
+<h1 id="样式页面样式修改"><a href="#样式页面样式修改" class="headerlink" title="样式页面样式修改"></a>样式页面样式修改</h1><h2 id="整体修改思路"><a href="#整体修改思路" class="headerlink" title="整体修改思路"></a>整体修改思路</h2><p>在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改)</p>
+<p>在进行代码块修改之后，总结了一个小套路：</p>
+<ul>
+<li>首先确定好自己想要修改的模块</li>
+<li>使用浏览器的<code>检查元素</code>，可以找到对应的模块的<code>css样式</code></li>
+<li>然后先在检察元素模式下对css样式进行修改，调整出自己喜欢的样式</li>
+<li><strong>最后把原先的css样式复制，用Sublime的Find in Files，找到对应文件(一般在自己使用的主题目录下,比如我是Next目录下的文件中)，对文件进行修改就可以了</strong></li>
+</ul>
+<p>这样就不需要想修改说明就去搜索啦 ~ (我的<code>blockquote</code>的样式修改就是这样完成的~)</p>
+<h2 id="修改-blockquote-引言-样式"><a href="#修改-blockquote-引言-样式" class="headerlink" title="修改 blockquote(引言) 样式"></a>修改 blockquote(引言) 样式</h2><p>在Chrome下右键<code>检查元素</code>，我的组件显示在浏览器右侧，选中<code>blockquote</code>模块，则原有的css样式如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#666</span>;</div><div class="line">    <span class="attribute">border-left</span>: <span class="number">4px</span> solid <span class="number">#ddd</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">blockquote</span> &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</div><div class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">40px</span>;</div><div class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在样式中<code>color: #666</code>定义了内部文字的颜色，<code>border-left: 4px solid #ddd</code>定义了左边的侧边栏的颜色。然后我们就可以对其进行修改啦 ~ </p>
+<ul>
+<li><p>复制<code>border-left: 4px solid #ddd;</code>在Sublime里搜索，找到对应文件。</p>
+</li>
+<li><p>注意自己在<code>Find Results</code>判断，哪个是原有的文件，哪个是后来生成的。</p>
+</li>
+<li><p>我的搜索结果是<code>\themes\next\source\css\_common\scaffolding\base.styl</code>，因此开心地自己修改啦~</p>
+</li>
+</ul>
+<p>修改结果，嘛，就跟本文的第一句一样了。这里提供几种配色方案~（自己从图片上取色做的配色，慎用）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//异色红绿</div><div class="line">color: #108c89;</div><div class="line">border: 1px solid #f1756d;</div><div class="line">border-left: 5px solid #f14e49;</div><div class="line">//棕色系</div><div class="line">color: #8b7462;</div><div class="line">border: 1px solid #8b7462;</div><div class="line">border-left: 5px solid #bd3b45;</div><div class="line">//蓝色系</div><div class="line">color: #328daa;</div><div class="line">border: 1px solid #8ed3f4;</div><div class="line">border-left: 5px solid #8ed3f4;</div><div class="line">//异色橙绿</div><div class="line">color: #9ba646;</div><div class="line">border: 1px solid #f29d4c;</div><div class="line">border-left: 5px solid #f29d4c;</div></pre></td></tr></table></figure>
+<h2 id="在网页中使用外部字体"><a href="#在网页中使用外部字体" class="headerlink" title="在网页中使用外部字体"></a>在网页中使用外部字体</h2><p>在网页中定义外部字体大概有三种方式，可参考博文 <a href="https://www.qianduan.net/how-to-use-personalized-fonts-in-web-design/" target="_blank" rel="external"><i class="fa fa-book"></i>如何在网页设计中使用个性化字体</a>。</p>
+<p>我选用的是利用css3的<code>@font-face</code>方式，先前我都是直接在源文件上修改的，其实为了避免自己修改的时候出差错难以恢复，可以在<code>/theme/next/source/css/_custom/custom.styl</code>中添加定义。这里我选择的字体是 <a href="https://www.qianduanmei.com/15-Amazing-Free-Fonts-for-Designers/" target="_blank" rel="external"><i class="fa fa-book"></i>15设计师常用英文字体</a> 一文中提到的YeahPapa。步骤如下：</p>
+<ul>
+<li>下载对应字体的ttf文件（当然font-face支持的其他类型文件均可，可见“如何在网页设计中…”一文</li>
+<li>将ttf文件放在<code>\theme\source\fonts\</code>文件夹中</li>
+<li><p>在<code>/theme/next/source/css/_custom/custom.styl</code>中添加：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: YeahPapa;</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'/fonts/YeahPapa.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后在自己想使用的地方使用<code>font-family:&#39;YeahPapa&#39;</code>即可</p>
+</li>
+</ul>
+<p>完成效果参考下一节的 <strong>在文章尾部添加End</strong></p>
+<h2 id="修改超链接样式"><a href="#修改超链接样式" class="headerlink" title="修改超链接样式"></a>修改超链接样式</h2><p>依然在<code>/theme/next/source/css/_custom/custom.styl</code>中修改，添加如下代码：</p>
+<h3 id="——-修改颜色"><a href="#——-修改颜色" class="headerlink" title="—— 修改颜色"></a>—— 修改颜色</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#6975a7</span>;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> dashed <span class="number">#6465a5</span>;</div><div class="line">    <span class="attribute">background-color</span>: transparent;</div><div class="line">    <span class="attribute">word-wrap</span>: break-word;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">a</span>: <span class="selector-tag">hover</span>&#123;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#f15838</span>;</div><div class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> dashed <span class="number">#f28a31</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>a</code>定义了超链接的基本样式，<code>a:hover</code>定义了超链接在鼠标悬停时颜色的变化。<code>.post-body</code>使得改变的样式只作用与文章内部，否则你会发现文章标题下面的分类等等样式都会被改变。可以简单预览一下效果：</p>
+<iframe height="265" scrolling="no" title="Blockquote配色展示" src="//codepen.io/SimGuo/embed/eEBBYz/?height=265&theme-id=light&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SimGuo/pen/eEBBYz/" target="_blank" rel="external">Blockquote配色展示</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<h3 id="——-菜单鼠标悬停后样式"><a href="#——-菜单鼠标悬停后样式" class="headerlink" title="—— 菜单鼠标悬停后样式"></a>—— 菜单鼠标悬停后样式</h3><p>增加如下内容（其中<code>“\5B” &amp; “\5D”</code>是<code>[ &amp; ]</code>符号在css中对应的编码 ）：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#0ABDA0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::before</span> &#123; </div><div class="line">    <span class="attribute">content</span>: <span class="string">"\5B"</span>;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">10px</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.menu</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span> &#123;</div><div class="line">    <span class="attribute">content</span>: <span class="string">"\5D"</span>;</div><div class="line">    <span class="attribute">right</span>:-<span class="number">10px</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="——-增加font-awesome符号"><a href="#——-增加font-awesome符号" class="headerlink" title="—— 增加font-awesome符号"></a>—— 增加font-awesome符号</h3><p>在文章可以直接使用如下代码即可使用<code>font-awesome</code>符号</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;i class="fa fa-paper-plane"&gt;&lt;/i&gt;</div></pre></td></tr></table></figure>
+<p><i class="fa fa-paper-plane"></i> 则可以得到左边的图标，这里提供一个可以查阅所有font-awesome符号的页面</p>
+<p><a href="https://9iphp.com/fa-icons" target="_blank" rel="external"><i class="fa fa-book"></i> FontAwesome 4.7.0 中完整的675个图标样式CSS参考</a></p>
+<p>上面的超链接在markdown文件中的内容是<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">&lt;i class="fa fa-book"&gt;&lt;/i&gt; FontAwesome 4.7.0 中完整的675个图标样式CSS参考</span>](<span class="link">https://9iphp.com/fa-icons</span>)</div></pre></td></tr></table></figure></p>
+<p>不过，因为我配置的next主题下font-awesome的版本不是4.7.0，所以我直接下载了4.7.0版本的font-awesome的css文件，替换了<code>\theme\next\source\lib\font-awesome\css\</code>中的文件</p>
+<h2 id="修改侧边栏样式"><a href="#修改侧边栏样式" class="headerlink" title="修改侧边栏样式"></a>修改侧边栏样式</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">类名</th>
+<th style="text-align:left">对应元素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.site-meta</td>
+<td style="text-align:left">原来模板里面黑色的，包含网站标题、介绍的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.header-inner</td>
+<td style="text-align:left">在没有下拉时包含site-meta和菜单的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.sidebar-inner</td>
+<td style="text-align:left">在没有下拉时的包含文章目录和站点概览的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.sidebar</td>
+<td style="text-align:left">在进行了下拉之后的包含文章目录和站点概览的部分</td>
+</tr>
+<tr>
+<td style="text-align:center">.headband</td>
+<td style="text-align:left">在piscal的scheme下上面有3px的黑色，这就是对应的类</td>
+</tr>
+</tbody>
+</table>
+<p>我做的修改只是简单地添加了背景。我添加背景的要点是<strong>透明 + 固定宽度</strong>。</p>
+<p><strong>透明</strong>：将使用的png文件放在SAI里面（当然也可以用ps，博主是手残板绘党，所以经常用SAI）调低了透明度就可以了。<br><strong>固定宽度</strong>：之所以使用固定宽度，是因为下拉阅读文章的时候会实时展开目录，如果使用其他格式，会导致图片随着阅读被奇怪的拉伸。所以使用固定宽度会比较好~</p>
+<p>我的custom.styl里面的定义（这里我还修改了阴影）：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.sidebar</span>&#123;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">6px</span> <span class="number">#dbdbdb</span>;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"/img/0000/sidebar3.jpg"</span>);</div><div class="line">    <span class="attribute">background-size</span>:<span class="number">100%</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="修改canvas-nest的颜色等"><a href="#修改canvas-nest的颜色等" class="headerlink" title="修改canvas-nest的颜色等"></a>修改canvas-nest的颜色等</h2><p>canvas-nest有几个配置项，可参考<a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md" target="_blank" rel="external"><i class="fa fa-book"></i> 官方文档</a>。</p>
+<p>我在文件夹中搜索带<code>canvas-nest</code>的项，发现next中并没有提供对其样式的修改的支持，<code>canvas-nest</code>只出现在<code>canvas-nest.min.js</code>和一个判断配置项中<code>canvas-nest</code>是否为真，为真则将对应js将入一个js插件列表中。</p>
+<p>因此，我认为只能通过修改<code>canvas-nest.min.js</code>的默认值来达到修改目的。</p>
+<p>其实，只要搜索便可以找到配置项在文件中对应的位置，比如<code>c:o(v,&quot;color&quot;,&quot;0,0,0&quot;)</code>，此处<code>0,0,0</code>便是默认值，修改即可。</p>
+<h2 id="修改标签样式"><a href="#修改标签样式" class="headerlink" title="修改标签样式"></a>修改标签样式</h2><hr>
+<h1 id="文章布局修改"><a href="#文章布局修改" class="headerlink" title="文章布局修改"></a>文章布局修改</h1><h2 id="整体修改思路-1"><a href="#整体修改思路-1" class="headerlink" title="整体修改思路"></a>整体修改思路</h2><p>在<code>\themes\layout\_macro\post.swig</code>中是文章的整体定义。利用Sublime将局部收起，我们可以很清晰地看到文章的整体架构，因此，在如果想在文章头部或者尾部增加一些元素，或者调整文章局部元素，都可以通过修改<code>post.swig</code>中的部分代码实现。</p>
+<h2 id="在文章尾部添加End"><a href="#在文章尾部添加End" class="headerlink" title="在文章尾部添加End"></a>在文章尾部添加End</h2><p>根据思路，可以看到<code>post.swig</code>中文章结束应该是在<code>&lt;div class=&quot;post-body.....&lt;/div&gt;</code>之后，后面是微信打赏部分<code>&#39;wechat-subscriber.swig&#39;</code>，在两者中间添加自己定义的样式的结束标志即可~</p>
+<p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"text-align:center;color:#73a2c0;font-size:25px;padding-top:40px;font-family:'YeahPapa';"</span>&gt;</span></div><div class="line">    ---------------- ♥ The End ♥ ----------------</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>熟悉html和css的同学可以自己定义字体，颜色，大小啦 ~ 也可以自己试着定义canvas动画。</p>
+<h2 id="修改文章的样式"><a href="#修改文章的样式" class="headerlink" title="修改文章的样式"></a>修改文章的样式</h2><p>我的文章样式修改很简单啦，只是将内容背景改成了半透明，加了周围的阴影w。</p>
+<p>对custom.style的添加：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.content-wrap</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(255, 255, 255, 0.5);</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">6px</span> <span class="number">#dbdbdb</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="首页只显示文章的部分"><a href="#首页只显示文章的部分" class="headerlink" title="首页只显示文章的部分"></a>首页只显示文章的部分</h2><p>修改主题目录下的_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Automatically Excerpt. Not recommend.</div><div class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</div><div class="line">auto_excerpt:</div><div class="line">  enable: true</div><div class="line">  length: 150</div></pre></td></tr></table></figure></p>
+<h1 id="让谷歌和百度搜索到自己在GitHub上的博客"><a href="#让谷歌和百度搜索到自己在GitHub上的博客" class="headerlink" title="让谷歌和百度搜索到自己在GitHub上的博客"></a>让谷歌和百度搜索到自己在GitHub上的博客</h1><p><a href="https://maxwellyue.github.io/2016/08/07/%E5%A6%82%E4%BD%95%E8%AE%A9%E8%B0%B7%E6%AD%8C%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1GitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external"><i class="fa fa-book"></i> 如何让谷歌和百度搜索到自己在GitHub上的博客</a></p>
+<hr>
+<blockquote>
+<p>未完待续</p>
+</blockquote>
+
           
-本文是在建站的中途开始写的，记录一下自己修改的部分和使用的方法，仅供参考。
-
-
-样式页面样式修改整体修改思路在记录以下内容之前，我已经借鉴其他博主的博文，对站点进行了一些修改(其中包括简单的动画，和对代码块的修改)
-在进行代码块修改之后，总结了一个小套路：
-
-首先确定好自己想要修改的模块
-使用浏览
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/01/Hexo-Next-的优化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1646,23 +2091,35 @@ digit表示数字, digit+表示不少于一个数字
       
         
           
-          
+            <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
 tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 });
+</script>
 
 
+<h1 id="一-fullPage-js插件"><a href="#一-fullPage-js插件" class="headerlink" title="(一) fullPage.js插件"></a>(一) fullPage.js插件</h1><p>fullPage.js是基于JQuery的插件，因此在引入之前需要先引入jQuery</p>
+<p><i class="fa fa-dot-circle-o"></i> 使用<a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="external"><code>github</code></a>官方地址引入最新版本<br>最新版本在文件夹dist中，可以打开文件夹，选择对应的<code>jquery.fullpage.js(css)</code>文件，在html中可直接如下引入：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.</span></span></div><div class="line">js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"https://rawgit.com/alvarotrigo/fullPage.js/master/dist/jquery.</span></span></div><div class="line">fullpage.css"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"https://rawgit.com/alvarotrigo/fullPage.js/master/dist/jquery.</span></span></div><div class="line">fullpage.js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><i class="fa fa-bookmark-o"></i> <strong>小技巧</strong></p>
+<blockquote>
+<p>在使用github原码时，一般在点击raw的时候的地址形如:<br><code>https://raw.githubusercontent.com/username/repository/branch/folder/file</code>.<br>如果直接引入这个地址，应该会在console中报错为“js文件不是可执行的”<br>只需要把前面的<code>raw.githubusercontent.com</code>改成<code>rawgit.com</code>即可</p>
+</blockquote>
+<p><i class="fa fa-dot-circle-o"></i> 从<a href="https://cdnjs.com/" target="_blank" rel="external"><code>cdnjs</code></a>引入固定版本</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax</span></span></div><div class="line">/libs/fullPage.js/2.9.4/jquery.fullpage.css"&gt;</div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.</span></span></div><div class="line">js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.</span></span></div><div class="line">fullpage.js"&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><i class="fa fa-dot-circle-o"></i> 当然，也可以自行下载js文件，直接从本地引入，这样就不需要担心自己在写网页的时候会遇到网络问题啦 ~&gt; $\omega$ &lt;~</p>
+<h1 id="二-fullPage-js整体布局"><a href="#二-fullPage-js整体布局" class="headerlink" title="(二) fullPage.js整体布局"></a>(二) fullPage.js整体布局</h1><p>fullPage.js的整体是由 <code>section</code>和<code>slide</code>构成的，竖直方向由<code>section</code>组成，横向方向由<code>slide</code>构成。</p>
+<p>对于你想使用fullPage.js的网页的部分，你可以使用如下的结构：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> = <span class="string">"yourid"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">"section"</span>&gt;</span> ...内容...  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">"section"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span> ...内容...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span> ...内容...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span> ...内容...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">"section"</span>&gt;</span> ...内容...  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">"section"</span>&gt;</span> ...内容...  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>其中<code>yourid</code>可以指定你在网页的哪个部分使用fullPage.js，比如，你可以使用fullPage.js写一个滚动显示图片的部分。</p>
+<p>在自己想使用fullPage.js的地方使用如上结构之后，在HTML中加入如下的script代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    $(document).ready(function()&#123;</div><div class="line">        $('#yourid').fullpage(&#123;</div><div class="line">            //这里是一些配置项，这里我的配置项是为了能让页面自动滚动，并且头尾相接</div><div class="line">            continuousVertical: true,</div><div class="line">            afterRender: function()&#123;</div><div class="line">                setInterval(function()&#123;</div><div class="line">                    $.fn.fullpage.moveSectionDown();</div><div class="line">                &#125;,8000);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>关于<code>$(&#39;#yourid&#39;).fullpage()</code>函数中使用的配置项，<a href="http://www.dowebok.com/77.html" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js</a> 一文中有详细说明，同时该文后也提供的在线演示：<a href="http://www.dowebok.com/demo/2014/77/" target="_blank" rel="external"><i class="fa fa-book"></i> jQuery全屏滚动插件fullPage.js演示</a> </p>
+<h1 id="三-简单样例"><a href="#三-简单样例" class="headerlink" title="(三)简单样例"></a>(三)简单样例</h1><p>下面是简单的使用fullPage.js实现自动循环滚动的样例。</p>
+<p></p><p data-height="240" data-theme-id="light" data-slug-hash="vJXrjw" data-default-tab="result" data-user="SimGuo" data-embed-version="2" data-pen-title="FullPage_Example" class="codepen">See the Pen <a href="https://codepen.io/SimGuo/pen/vJXrjw/" target="_blank" rel="external">FullPage_Example</a> by SimGuo (<a href="https://codepen.io/SimGuo" target="_blank" rel="external">@SimGuo</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-(一) fullPage.js插件fullPage.js是基于JQuery的插件，因此在引入之前需要先引入jQuery
- 使用github官方
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/27/fullPage-js学习/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>

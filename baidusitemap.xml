@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>https://simguo.github.io/2017/08/01/Hexo-Next-%E7%9A%84%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2018-01-16T04:35:17.340Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo + Next 的优化</title>
+        <pubTime>2017-08-01T15:05:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+        <tag>博客</tag>
+         
+        <tag>Hexo</tag>
+         
+        <tag>Next</tag>
+         
+         
+           
+             
+              <breadCrumb title="JustForFun" url="https://simguo.github.io/categories/JustForFun/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://simguo.github.io/2018/01/16/%E8%AE%B0%E4%B8%80%E4%B8%8BWindows%E4%B8%8Bphantomjs%E7%9A%84%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2018-01-16T04:24:00.177Z</lastmod>
     <data>
@@ -91,32 +117,6 @@
            
              
               <breadCrumb title="Learn" url="https://simguo.github.io/categories/Learn/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://simguo.github.io/2017/08/01/Hexo-Next-%E7%9A%84%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2017-08-14T12:28:47.098Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo + Next 的优化</title>
-        <pubTime>2017-08-01T15:05:00.000Z</pubTime>
-        
-        <tag>前端</tag>
-         
-        <tag>博客</tag>
-         
-        <tag>Hexo</tag>
-         
-        <tag>Next</tag>
-         
-         
-           
-             
-              <breadCrumb title="JustForFun" url="https://simguo.github.io/categories/JustForFun/"/>
           
         </display>
     </data>
