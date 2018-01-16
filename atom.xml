@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simguo.github.io/"/>
-  <updated>2018-01-13T07:53:42.311Z</updated>
+  <updated>2018-01-16T04:24:00.177Z</updated>
   <id>https://simguo.github.io/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一下Windows下Phantomjs的安装</title>
+    <link href="https://simguo.github.io/2018/01/16/%E8%AE%B0%E4%B8%80%E4%B8%8BWindows%E4%B8%8Bphantomjs%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <id>https://simguo.github.io/2018/01/16/记一下Windows下phantomjs的安装/</id>
+    <published>2018-01-16T03:11:00.000Z</published>
+    <updated>2018-01-16T04:24:00.177Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载Phantomjs"><a href="#下载Phantomjs" class="headerlink" title="下载Phantomjs"></a>下载Phantomjs</h2><p><a href="http://phantomjs.org/download.html" target="_blank" rel="external"><i class="fa fa-link"></i>官网地址</a>。本来想在官网上下载，但速度非常慢，于是找了一个国内镜像，地址来自于一个收集了<a href="https://betacat.online/posts/2016-10-19/mirror-sites-in-china/" target="_blank" rel="external"><i class="fa fa-book"></i>各种开源工具的国内镜像的博客</a>。</p>
+<p>下载的文件是<code>phantomjs-2.1.1-windows.zip</code>。</p>
+<p>方便大家下载，我也直接丢个博客内下载地址吧，<a href="/files/phantomjs-2.1.1-windows.zip">phantomjs-2.1.1-windows.zip</a>。</p>
+<h2 id="解压和添加环境变量"><a href="#解压和添加环境变量" class="headerlink" title="解压和添加环境变量"></a>解压和添加环境变量</h2><p>解压文件，然后我习惯性得把文件夹名改成phantomjs，移到我存放各种程序的G盘。所以此时我的文件地址就是<code>G:\phantomjs</code>。</p>
+<p>简单得测试了一下：<br><img src="/img/20180116/1.JPG"></p>
+<p>顺便也可以看到解压出来的文件夹信息的内容。</p>
+<p><strong>添加环境变量</strong><br>编辑系统环境变量的时候，直接在<code>Path</code>变量下添加你的phantomjs文件夹的位置，比如我的就是<code>G:\phantomjs\bin</code><br>然后重开一下cmd，尝试查看版本信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phantomjs -v</div></pre></td></tr></table></figure></p>
+<p>显示2.1.1就证明环境变量添加成功啦~</p>
+<h2 id="在代码中使用"><a href="#在代码中使用" class="headerlink" title="在代码中使用"></a>在代码中使用</h2><p>因为已经设置了环境变量，所以使用时可以直接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">driver = webdriver.PhantomJS(executable_path=&apos;phantomjs&apos;)</div></pre></td></tr></table></figure></p>
+<p>如果懒不想搞环境变量的话，就根据自己的存储路径写就行了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">driver = webdriver.PhantomJS(executable_path=&apos;G:\phantomjs\bin\phantomjs.exe&apos;)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;下载Phantomjs&quot;&gt;&lt;a href=&quot;#下载Phantomjs&quot; class=&quot;headerlink&quot; title=&quot;下载Phantomjs&quot;&gt;&lt;/a&gt;下载Phantomjs&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://phantomjs.org/down
+    
+    </summary>
+    
+      <category term="JustForFun" scheme="https://simguo.github.io/categories/JustForFun/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>记一次shadowsocks搭建梯子的过程</title>
