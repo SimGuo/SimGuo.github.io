@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simguo.github.io/"/>
-  <updated>2018-01-16T04:24:00.177Z</updated>
+  <updated>2018-02-07T06:34:44.520Z</updated>
   <id>https://simguo.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows的Linux子系统忘记root密码的解决方法</title>
+    <link href="https://simguo.github.io/2018/02/07/Windows%E7%9A%84Linux%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%BF%98%E8%AE%B0root%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://simguo.github.io/2018/02/07/Windows的Linux子系统忘记root密码的解决方法/</id>
+    <published>2018-02-07T06:27:35.000Z</published>
+    <updated>2018-02-07T06:34:44.520Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>记一下愚蠢的忘记Windows的Linux子系统的root密码之后尝试成功的一个hin简单的解决方法。<br>再也不用担心以后日常记不得密码了orz</p>
+</blockquote>
+<h3 id="用管理员权限打开CMD"><a href="#用管理员权限打开CMD" class="headerlink" title="用管理员权限打开CMD"></a>用管理员权限打开CMD</h3><p>一般在开始键的位置右键一下就能用管理员身份打开命令行，正常人应该都知道emmm<br>在命令行修改登录Linux子系统的默认用户为root<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lxrun /setdefaultuser root</div></pre></td></tr></table></figure></p>
+<h3 id="登录Linux子系统修改密码"><a href="#登录Linux子系统修改密码" class="headerlink" title="登录Linux子系统修改密码"></a>登录Linux子系统修改密码</h3><p>因为默认用户是root，所以随心所欲得修改密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">passwd root</div></pre></td></tr></table></figure></p>
+<h3 id="将默认登录用户修改回普通用户"><a href="#将默认登录用户修改回普通用户" class="headerlink" title="将默认登录用户修改回普通用户"></a>将默认登录用户修改回普通用户</h3><p>我的普通用户名是<code>fruit</code>啦。这样做其实也并不是特别有必要，但安全起见嘛~<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lxrun /setdefaultuser fruit</div></pre></td></tr></table></figure></p>
+<hr>
+<p>像我这样懒得搞双系统，经常在自己电脑上测试一些要放在服务器上跑的代码的菜鸡来讲，windows的Linux子系统可实用了w</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;记一下愚蠢的忘记Windows的Linux子系统的root密码之后尝试成功的一个hin简单的解决方法。&lt;br&gt;再也不用担心以后日常记不得密码了orz&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;用管理员权限打开CMD&quot;&gt;&lt;a href=&quot;#
+    
+    </summary>
+    
+      <category term="Learn" scheme="https://simguo.github.io/categories/Learn/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>记一下Windows下Phantomjs的安装</title>

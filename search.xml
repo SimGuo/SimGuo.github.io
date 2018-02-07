@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Windows的Linux子系统忘记root密码的解决方法]]></title>
+    <url>%2F2018%2F02%2F07%2FWindows%E7%9A%84Linux%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%BF%98%E8%AE%B0root%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[记一下愚蠢的忘记Windows的Linux子系统的root密码之后尝试成功的一个hin简单的解决方法。再也不用担心以后日常记不得密码了orz 用管理员权限打开CMD一般在开始键的位置右键一下就能用管理员身份打开命令行，正常人应该都知道emmm在命令行修改登录Linux子系统的默认用户为root1lxrun /setdefaultuser root 登录Linux子系统修改密码因为默认用户是root，所以随心所欲得修改密码1passwd root 将默认登录用户修改回普通用户我的普通用户名是fruit啦。这样做其实也并不是特别有必要，但安全起见嘛~1lxrun /setdefaultuser fruit 像我这样懒得搞双系统，经常在自己电脑上测试一些要放在服务器上跑的代码的菜鸡来讲，windows的Linux子系统可实用了w]]></content>
+      <categories>
+        <category>Learn</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[记一下Windows下Phantomjs的安装]]></title>
     <url>%2F2018%2F01%2F16%2F%E8%AE%B0%E4%B8%80%E4%B8%8BWindows%E4%B8%8Bphantomjs%E7%9A%84%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[下载Phantomjs官网地址。本来想在官网上下载，但速度非常慢，于是找了一个国内镜像，地址来自于一个收集了各种开源工具的国内镜像的博客。 下载的文件是phantomjs-2.1.1-windows.zip。 方便大家下载，我也直接丢个博客内下载地址吧，phantomjs-2.1.1-windows.zip。 解压和添加环境变量解压文件，然后我习惯性得把文件夹名改成phantomjs，移到我存放各种程序的G盘。所以此时我的文件地址就是G:\phantomjs。 简单得测试了一下： 顺便也可以看到解压出来的文件夹信息的内容。 添加环境变量编辑系统环境变量的时候，直接在Path变量下添加你的phantomjs文件夹的位置，比如我的就是G:\phantomjs\bin然后重开一下cmd，尝试查看版本信息：1phantomjs -v 显示2.1.1就证明环境变量添加成功啦~ 在代码中使用因为已经设置了环境变量，所以使用时可以直接：1driver = webdriver.PhantomJS(executable_path=&apos;phantomjs&apos;) 如果懒不想搞环境变量的话，就根据自己的存储路径写就行了：1driver = webdriver.PhantomJS(executable_path=&apos;G:\phantomjs\bin\phantomjs.exe&apos;)]]></content>
