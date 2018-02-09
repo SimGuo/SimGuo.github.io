@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[有丶烦]]></title>
+    <url>%2F2018%2F02%2F09%2F%E5%BF%83%E6%83%85%2F</url>
+    <content type="text"><![CDATA[今天我感觉有点烦，两个原因。一是打游戏网不好，虽然这是日常。二是对学生留下的爬虫代码力不从心。第二个原因是积累已久的问题，在我心里也矛盾了很久。为了保研，没有慎重考虑过就进实验室，其实到今天我都没有找到在现在这个实验室里真正让我感兴趣或者能做的事情，一直零碎得打着杂。这让我甚至怀疑自己的毕业论文能否写出来。实验室和公司有合作，所以也在公司这边实习，但我一直对这个实习抱有疑虑。我觉得我应该利用大四的机会去找外面公司的比较正式的实习，在这里，我感觉自己有点无所事事，一来自己不会找事情做，二来有的时候学长让我做、哦、是大部分时候的事情我都并不会做，就是那种这件事身边有更好的人选去完成，甚至我就是依靠询问别人才能完成的。这些种种让我觉得现在这样不适合我。比如现在提出的爬虫性能的问题。。。我真的不会优化。。。]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Windows的Linux子系统忘记root密码的解决方法]]></title>
     <url>%2F2018%2F02%2F07%2FWindows%E7%9A%84Linux%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%BF%98%E8%AE%B0root%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[记一下愚蠢的忘记Windows的Linux子系统的root密码之后尝试成功的一个hin简单的解决方法。再也不用担心以后日常记不得密码了orz 用管理员权限打开CMD一般在开始键的位置右键一下就能用管理员身份打开命令行，正常人应该都知道emmm在命令行修改登录Linux子系统的默认用户为root1lxrun /setdefaultuser root 登录Linux子系统修改密码因为默认用户是root，所以随心所欲得修改密码1passwd root 将默认登录用户修改回普通用户我的普通用户名是fruit啦。这样做其实也并不是特别有必要，但安全起见嘛~1lxrun /setdefaultuser fruit 像我这样懒得搞双系统，经常在自己电脑上测试一些要放在服务器上跑的代码的菜鸡来讲，windows的Linux子系统可实用了w]]></content>

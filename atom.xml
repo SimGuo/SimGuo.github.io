@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://simguo.github.io/"/>
-  <updated>2018-02-07T06:34:44.520Z</updated>
+  <updated>2018-02-09T05:25:36.998Z</updated>
   <id>https://simguo.github.io/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有丶烦</title>
+    <link href="https://simguo.github.io/2018/02/09/%E5%BF%83%E6%83%85/"/>
+    <id>https://simguo.github.io/2018/02/09/心情/</id>
+    <published>2018-02-08T16:00:00.000Z</published>
+    <updated>2018-02-09T05:25:36.998Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天我感觉有点烦，两个原因。一是打游戏网不好，虽然这是日常。二是对学生留下的爬虫代码力不从心。<br>第二个原因是积累已久的问题，在我心里也矛盾了很久。为了保研，没有慎重考虑过就进实验室，其实到今天我都没有找到在现在这个实验室里真正让我感兴趣或者能做的事情，一直零碎得打着杂。这让我甚至怀疑自己的毕业论文能否写出来。实验室和公司有合作，所以也在公司这边实习，但我一直对这个实习抱有疑虑。我觉得我应该利用大四的机会去找外面公司的比较正式的实习，在这里，我感觉自己有点无所事事，一来自己不会找事情做，二来有的时候学长让我做、哦、是大部分时候的事情我都并不会做，就是那种这件事身边有更好的人选去完成，甚至我就是依靠询问别人才能完成的。<br>这些种种让我觉得现在这样不适合我。比如现在提出的爬虫性能的问题。。。我真的不会优化。。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天我感觉有点烦，两个原因。一是打游戏网不好，虽然这是日常。二是对学生留下的爬虫代码力不从心。&lt;br&gt;第二个原因是积累已久的问题，在我心里也矛盾了很久。为了保研，没有慎重考虑过就进实验室，其实到今天我都没有找到在现在这个实验室里真正让我感兴趣或者能做的事情，一直零碎得打着杂
+    
+    </summary>
+    
+      <category term="生活" scheme="https://simguo.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Windows的Linux子系统忘记root密码的解决方法</title>
